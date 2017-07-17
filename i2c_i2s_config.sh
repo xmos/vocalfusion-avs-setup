@@ -33,13 +33,8 @@ sudo insmod asoc_simple_card.ko
 cd ..
 
 # Build loader
-mkdir loader
 cd loader
-
-# NEED TO MAKE REPOSITORY
-git clone http://github.com/xmos/loader
 make
-# Line 21 changed to MASTER for both (_CBM_CFM)
 
 # Create Makefile
 echo -e "obj-m := loader.o\n KDIR := /lib/modules/$(shell uname -r)/build\n PWD := $(shell pwd)\n default:\n \t$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules" > Makefile
