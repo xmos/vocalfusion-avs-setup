@@ -59,8 +59,8 @@ sudo /etc/init.d/alsa-utils restart
 #
 i2s_driver_script=$RESOURCES/load_i2s_driver.sh
 echo "pushd $ROOT > /dev/null"                     > $i2s_driver_script
-echo "sudo insmod snd_driver/asoc_simple_card.ko" >> $i2s_driver_script
 echo "sudo insmod loader/loader.ko"               >> $i2s_driver_script
+echo "sudo insmod snd_driver/asoc_simple_card.ko" >> $i2s_driver_script
 echo "popd > /dev/null"                           >> $i2s_driver_script
 
 #

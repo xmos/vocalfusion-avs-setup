@@ -7,14 +7,20 @@
 /*
 modified for linux 4.1.5
 inspired by https://github.com/msperl/spi-config
-with thanks for https://github.com/notro/rpi-source/wiki as well as Florian Meier for the rpi i2s and dma drivers
- to use a differant (simple-card compatible) codec
- change the codec name string in two places and the
- codec_dai name string. (see codec's source file)
+with thanks for https://github.com/notro/rpi-source/wiki
+as well as Florian Meier for the rpi i2s and dma drivers
+
+to use a differant (simple-card compatible) codec
+change the codec name string in two places and the
+codec_dai name string. (see codec's source file)
+
 fmt flags are set for vanilla i2s with rpi as clock slave
- N.B. playback vs capture is determined by the codec choice
-  */
+
+N.B. playback vs capture is determined by the codec choice
+*/
+
 void device_release_callback(struct device *dev) { /* do nothing */ };
+
 static struct asoc_simple_card_info snd_rpi_simple_card_info = {
     .card = "snd_rpi_simple_card", // -> snd_soc_card.name
     .name = "simple-card_codec_link", // -> snd_soc_dai_link.name
@@ -30,6 +36,7 @@ static struct asoc_simple_card_info snd_rpi_simple_card_info = {
         .sysclk = 0
     }
 };
+
 static struct platform_device snd_rpi_simple_card_device = {
     .name = "asoc-simple-card", //module alias
     .id = 0,
