@@ -1,118 +1,102 @@
 #!/bin/bash
 
-# Update Linux to newest version
+#
+# Define folders
+#
+pushd $(dirname "$0") > /dev/null
+ROOT=`pwd`
+RESOURCES=$ROOT/resources
+popd > /dev/null
 
-# Edit /boot/config.txt file to enable i2s
-sed -i -e 's/#dtparam=i2s=on/dtparam=i2s=on/' /boot/config.txt
+#
+# Enable the i2s device tree
+#
+sudo sed -i -e 's/#dtparam=i2s=on/dtparam=i2s=on/' /boot/config.txt
 
-# Add modules to enable the I2C Peripherals and Direct Memory Access Controller modules
-echo -e 'snd_soc_bcm2708 \n snd_soc_bcm2708_i2s \n bcm2708_dmaengine' >> /etc/modules
+# Add modules to enable the I2C Peripherals and Direct Memory Access
+# Controller modules that the sound card driver depends on
+sudo sh -c 'echo snd_soc_bcm2708     >> /etc/modules'
+sudo sh -c 'echo snd_soc_bcm2708_i2s >> /etc/modules'
+sudo sh -c 'echo bcm2708_dmaengine   >> /etc/modules'
 
-# Download kernal source
-sudo apt-get install bc
-sudo apt-get install libncurses5-dev
+# Download kernal source - this will take some time
+sudo apt-get -y install bc
+sudo apt-get -y install libncurses5-dev
 git clone http://github.com/notro/rpi-source
-cd rpi-source
+pushd rpi-source > /dev/null
 python rpi-source
-cd ..
+popd > /dev/null
 
-# Modify the driver source and build the modules needed.
+#
 # Build simple sound card driver
-mkdir snd_driver
-cd snd_driver
-cp ../linux/sound/soc/generic/simple-card.c ./asoc_simple_card.c
-
-# correcting in asoc_simple_card.c
-sed -i "213i ret = snd_soc_dai_det_bclk_ratio(cpu, 64);pr_alert("BCLK ratio set to 64!\n");" asoc_simple_card.c
-
-# Create Makefile
-echo -e "obj-m := asoc_simple_card.o \nKDIR := /lib/modules/$(shell uname -r)/build \nPWD := $(shell pwd) \ndefault: \n\t$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules" > Makefile
-# Build the module and insert it into the kernal
+# Modify the driver source to have the correct BCLK ratio
+#
+pushd snd_driver > /dev/null
+cp ~/linux/sound/soc/generic/simple-card.c ./asoc_simple_card.c
+patch -p1 asoc_simple_card.c < bclk_patch.txt
 make
-sudo insmod asoc_simple_card.ko
-cd ..
+popd > /dev/null
 
-# Build loader
-cd loader
+#
+# Build loader and insert it into the kernel
+#
+pushd loader > /dev/null
 make
-
-# Create Makefile
-echo -e "obj-m := loader.o\n KDIR := /lib/modules/$(shell uname -r)/build\n PWD := $(shell pwd)\n default:\n \t$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules" > Makefile
-
-# Build Makefile
-make
-sudo insmod loader.ko
-cd ~
+popd > /dev/null
 
 # Setup virtual capture device
-echo -e "pcm.monocard {\n
-type plug\n
-slave.pcm "plughw:1,0"\n
-slave.channels 2\n
-slave.rate 16000\n
-}\n
-\n
-ctl.monocard {\n
-type hw\n
-card 1\n
-device 0\n
-}\n
-\n
-pcm.!default {\n
-type asym\n
-playback.pcm {\n
-type hw\n
-card 0\n
-}\n
-capture.pcm {\n
-type plug\n
-slave.pcm "monocard"\n
-}\n
-}\n
-\n
-ctl.!default {\n
-type asym\n
-playback.pcm {\n
-type hw\n
-card 0\n
-}\n
-capture.pcm {\n
-type plug\n
-slave.pcm "monocard"\n
-}\n
-}" > ~/.asoundrc
+if [ -e ~/.asoundrc ] ; then
+    # Backup existing file
+    cp ~/.asoundrc ~/.asoundrc.bak
+fi
+cp asoundrc ~/.asoundrc
 
 # Apply changes
 sudo /etc/init.d/alsa-utils restart
 
-# Create cronjob to make it available after each reboot
-echo -e "cd ~\n sudo insmod snd_driver/asoc_simple_card.ko\n sudo insmod loader/loader.ko" > load_i2s_driver.sh
-echo "@reboot sh /home/pi/load_i2s_driver.sh" >> crontab
+#
+# Create the script to run after each reboot and make the soundcard available
+#
+i2s_driver_script=$RESOURCES/load_i2s_driver.sh
+echo "pushd $ROOT > /dev/null"                     > $i2s_driver_script
+echo "sudo insmod snd_driver/asoc_simple_card.ko" >> $i2s_driver_script
+echo "sudo insmod loader/loader.ko"               >> $i2s_driver_script
+echo "popd > /dev/null"                           >> $i2s_driver_script
 
-# Enable I2C
-sed -i -e 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/' /boot/config.txt
-echo "i2c-bcm2708" >> /etc/modules-load.d/modules.conf
-echo "options i2c-bcm2708 combined=1" >> /etc/modprobe.d/i2c.conf
+#
+# Enable I2C support
+#
+sudo sed -i -e 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/' /boot/config.txt
+sudo sh -c 'echo i2c-bcm2708 >> /etc/modules-load.d/modules.conf'
+sudo sh -c 'echo "options i2c-bcm2708 combined=1" >> /etc/modprobe.d/i2c.conf'
 
 # I2C Control Setup
 git clone https://github.com/kadamski/i2c-gpio-param.git
-cd i2c-gpio-param
+pushd i2c-gpio-param > /dev/null
 make
+popd > /dev/null
 
-# Insert module into the kernal
-echo -e "# start i2c-gpio directory\n
-cd /home/pi/i2c-gpio-param\n
-# load the i2c bit banged driver\n
-sudo insmod i2c-gpio-param.ko\n
-# instantiate a driver at bus id=1 onsame pins as hw i2c with 1sec timeout\n
-sudo bash -c 'echo "1 2 3 5 100 0 0 0" > /sys/class/i2c-gpio/add_bus'\n
-# remove the default i2c-gpio instance\n
-sudo bash -c 'echo "7" > /sys/class/i2c-gpio/remove_bus'\n
-# returnt o previous dir\n
-cd /home/pi/" > load_i2c-gpio_driver.sh
+#
+# Create script to insert module into the kernel
+#
+i2c_driver_script=$RESOURCES/load_i2c_gpio_driver.sh
+
+echo "pushd $ROOT/i2c-gpio-param > /dev/null"                                       > $i2c_driver_script
+echo "# Load the i2c bit banged driver"                                            >> $i2c_driver_script
+echo "sudo insmod i2c-gpio-param.ko"                                               >> $i2c_driver_script
+echo "# Instantiate a driver at bus id=1 on same pins as hw i2c with 1sec timeout" >> $i2c_driver_script
+echo "sudo sh -c 'echo "1 2 3 5 100 0 0 0" > /sys/class/i2c-gpio/add_bus'"         >> $i2c_driver_script
+echo "# Remove the default i2c-gpio instance"                                      >> $i2c_driver_script
+echo "sudo sh -c 'echo 7 > /sys/class/i2c-gpio/remove_bus'"                        >> $i2c_driver_script
+echo "popd > /dev/null"                                                            >> $i2c_driver_script
 
 # Run I2C control shell
-sh load_i2c-gpio_driver.sh
+source $i2c_driver_script
 
-# add to cron job to load on every boot
-echo "@reboot sh /home/pi/load_i2c-gpio_driver.sh" >> crontab
+#
+# Setup the crontab to restart I2S/I2C at reboot
+#
+echo "@reboot sh $i2s_driver_script"  > resources/crontab
+echo "@reboot sh $i2c_driver_script" >> resources/crontab
+crontab resources/crontab
+
