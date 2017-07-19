@@ -64,10 +64,8 @@ sudo /etc/init.d/alsa-utils restart
 # Create the script to run after each reboot and make the soundcard available
 #
 i2s_driver_script=$RESOURCES/load_i2s_driver.sh
-echo "pushd $ROOT > /dev/null"                     > $i2s_driver_script
+echo "cd $ROOT"                                    > $i2s_driver_script
 echo "sudo insmod loader/loader.ko"               >> $i2s_driver_script
-echo "sudo insmod snd_driver/asoc_simple_card.ko" >> $i2s_driver_script
-echo "popd > /dev/null"                           >> $i2s_driver_script
 
 #
 # Configure the I2C - disable the default built-in driver
@@ -89,14 +87,13 @@ popd > /dev/null
 #
 i2c_driver_script=$RESOURCES/load_i2c_gpio_driver.sh
 
-echo "pushd $ROOT/i2c-gpio-param > /dev/null"                                       > $i2c_driver_script
+echo "cd $ROOT/i2c-gpio-param"                                                      > $i2c_driver_script
 echo "# Load the i2c bit banged driver"                                            >> $i2c_driver_script
 echo "sudo insmod i2c-gpio-param.ko"                                               >> $i2c_driver_script
 echo "# Instantiate a driver at bus id=1 on same pins as hw i2c with 1sec timeout" >> $i2c_driver_script
 echo "sudo sh -c 'echo "1 2 3 5 100 0 0 0" > /sys/class/i2c-gpio/add_bus'"         >> $i2c_driver_script
 echo "# Remove the default i2c-gpio instance"                                      >> $i2c_driver_script
 echo "sudo sh -c 'echo 7 > /sys/class/i2c-gpio/remove_bus'"                        >> $i2c_driver_script
-echo "popd > /dev/null"                                                            >> $i2c_driver_script
 
 #
 # Setup the crontab to restart I2S/I2C at reboot
