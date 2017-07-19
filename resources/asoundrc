@@ -1,23 +1,17 @@
-pcm.monocard {
-    type plug
-    slave.pcm "plughw:1,0"
-    slave.channels 2
-    slave.rate 16000
-}
-ctl.monocard {
-    type hw
-    card 1
-    device 0
+pcm_slave.i2s48 {
+    pcm "plughw:1,0"
+    format S32_LE
+    rate 48000
 }
 pcm.!default {
     type asym
     playback.pcm {
-        type hw
-        card 0
+        type plug
+        slave i2s48
     }
     capture.pcm {
         type plug
-        slave.pcm "monocard"
+        slave i2s48
     }
 }
 ctl.!default {
