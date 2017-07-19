@@ -55,7 +55,7 @@ if [ -e ~/.asoundrc ] ; then
     # Backup existing file
     cp ~/.asoundrc ~/.asoundrc.bak
 fi
-cp asoundrc ~/.asoundrc
+cp resources/asoundrc ~/.asoundrc
 
 # Apply changes
 sudo /etc/init.d/alsa-utils restart
