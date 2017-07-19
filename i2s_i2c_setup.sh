@@ -9,6 +9,12 @@ RESOURCES=$ROOT/resources
 popd > /dev/null
 
 #
+# Disable the built-in audio output so there is only one audio
+# device in the system
+#
+sudo sed -i -e 's/dtparam=audio=on/#dtparam=audio=on/' /boot/config.txt
+
+#
 # Enable the i2s device tree
 #
 sudo sed -i -e 's/#dtparam=i2s=on/dtparam=i2s=on/' /boot/config.txt
