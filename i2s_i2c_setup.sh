@@ -64,13 +64,15 @@ echo "sudo insmod snd_driver/asoc_simple_card.ko" >> $i2s_driver_script
 echo "popd > /dev/null"                           >> $i2s_driver_script
 
 #
-# Enable I2C support
+# Configure the I2C - disable the default built-in driver
 #
-sudo sed -i -e 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/' /boot/config.txt
+sudo sed -i -e 's/#\?dtparam=i2c_arm=on/dtparam=i2c_arm=off/' /boot/config.txt
 sudo sh -c 'echo i2c-bcm2708 >> /etc/modules-load.d/modules.conf'
 sudo sh -c 'echo "options i2c-bcm2708 combined=1" >> /etc/modprobe.d/i2c.conf'
 
-# I2C Control Setup
+#
+# Build a new I2C driver
+#
 git clone https://github.com/kadamski/i2c-gpio-param.git
 pushd i2c-gpio-param > /dev/null
 make
@@ -89,9 +91,6 @@ echo "sudo sh -c 'echo "1 2 3 5 100 0 0 0" > /sys/class/i2c-gpio/add_bus'"      
 echo "# Remove the default i2c-gpio instance"                                      >> $i2c_driver_script
 echo "sudo sh -c 'echo 7 > /sys/class/i2c-gpio/remove_bus'"                        >> $i2c_driver_script
 echo "popd > /dev/null"                                                            >> $i2c_driver_script
-
-# Run I2C control shell
-source $i2c_driver_script
 
 #
 # Setup the crontab to restart I2S/I2C at reboot
