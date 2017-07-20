@@ -1,4 +1,4 @@
-pcm_slave.i2s48 {
+pcm_slave.i2s48k {
     pcm "plughw:1,0"
     format S32_LE
     rate 48000
@@ -7,21 +7,21 @@ pcm.!default {
     type asym
     playback.pcm {
         type plug
-        slave i2s48
+        slave i2s48k
     }
     capture.pcm {
         type plug
-        slave i2s48
+        slave i2s48k
     }
 }
 ctl.!default {
     type asym
     playback.pcm {
-        type hw
-        card 0
+        type plug
+        slave i2s48k
     }
     capture.pcm {
         type plug
-        slave.pcm "monocard"
+        slave i2s48k
     }
 }
