@@ -1,27 +1,90 @@
-pcm_slave.i2s48k {
-    pcm "plughw:1,0"
+#
+# The I2S hardware device. Refer to it by name as it will not always
+# be the same card number in every system.
+#
+pcm.i2s_48k {
+    type hw
+    card sndrpisimplecar
+    device 0
+
+    # The device has fixed 32-bit samples
     format S32_LE
+
+    # The device runs at 48kHz
     rate 48000
 }
+
+ctl.i2s_48k {
+    type hw
+    card sndrpisimplecar
+    device 0
+}
+
+pcm.mix_i2s_48k {
+    type dmix
+    ipc_key 115 # Must be unique
+    slave {
+        pcm i2s_48k
+    }
+}
+
+ctl.mix_i2s_48k {
+    type dmix
+    slave {
+        pcm i2s_48k
+    }
+}
+
+pcm.snoop_i2s_48k {
+    type dsnoop
+    ipc_key 116 # Must be unique
+    slave {
+        pcm i2s_48k
+    }
+}
+
+ctl.snoop_i2s_48k {
+    type dsnoop
+    slave {
+        pcm i2s_48k
+    }
+}
+
+#
+# Map the default audio playback and recording devices to the I2S device.
+#  - use plugs in order to support rate and format conversions.
+#
 pcm.!default {
     type asym
     playback.pcm {
         type plug
-        slave i2s48k
+        slave {
+            pcm mix_i2s_48k
+        }
     }
     capture.pcm {
         type plug
-        slave i2s48k
+        slave {
+            pcm snoop_i2s_48k
+        }
     }
 }
+
+#
+# Create the control interfaces
+#
 ctl.!default {
     type asym
     playback.pcm {
         type plug
-        slave i2s48k
+        slave {
+            pcm mix_i2s_48k
+        }
     }
     capture.pcm {
         type plug
-        slave i2s48k
+        slave {
+            pcm snoop_i2s_48k
+        }
     }
 }
