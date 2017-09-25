@@ -5,11 +5,7 @@ export SCRIPTS_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 pushd .
 
 if [ -z $SDK_SRC ]; then
-	$SCRIPTS_DIR/avs-init.sh
-	echo "Run me again in a new terminal"
-	echo "Press any key to exit"
-	read -n 1
-	exit 0
+	source $SCRIPTS_DIR/avs-init.sh
 fi
 
 if [ -z $SDK_CONFIG_CLIENT_ID ]; then
@@ -19,7 +15,7 @@ if [ -z $SDK_CONFIG_CLIENT_ID ]; then
 	echo "Press 'Enter' and complete the license"
 	bash alexa-rpi/bin/license.sh
 	if  [ ! -e $SCRIPTS_DIR/AlexaClientSDKConfig.json ]; then
-		$SCRIPTS_DIR/avs-userinput.sh
+		source $SCRIPTS_DIR/avs-userinput.sh
 	fi
 fi
 
