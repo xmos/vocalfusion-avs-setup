@@ -13,8 +13,14 @@ if [ -z $SDK_SRC ]; then
 	exit 0
 fi
 
-if [ -z $SDK_CONFIG_CLIENT_ID ] && [ ! -e $SCRIPTS_DIR/AlexaClientSDKConfig.json ]; then
-	$SCRIPTS_DIR/avs-userinput.sh
+if [ -z $SDK_CONFIG_CLIENT_ID ]; then
+	cd $SOURCE_FOLDER
+	git clone git://github.com/Sensory/alexa-rpi.git
+	echo "Press 'Enter' and complete the license"
+	bash alexa-rpi/bin/license.sh
+	if  [ ! -e $SCRIPTS_DIR/AlexaClientSDKConfig.json ]; then
+		$SCRIPTS_DIR/avs-userinput.sh
+	fi
 fi
 
 $SCRIPTS_DIR/avs-getdepbin.sh | sed "s/^/[apt-get dependencies] /"
