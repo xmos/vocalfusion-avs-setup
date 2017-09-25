@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+SCRIPTS_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+
 pushd .
 
 if [ -z $SDK_SRC ]; then
