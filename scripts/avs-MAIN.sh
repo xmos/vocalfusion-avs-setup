@@ -14,6 +14,7 @@ if [ -z $SDK_SRC ]; then
 fi
 
 if [ -z $SDK_CONFIG_CLIENT_ID ]; then
+	mkdir $SOURCE_FOLDER
 	cd $SOURCE_FOLDER
 	git clone git://github.com/Sensory/alexa-rpi.git
 	echo "Press 'Enter' and complete the license"

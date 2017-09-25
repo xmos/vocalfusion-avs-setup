@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-cd $SOURCE_FOLDER
-git clone git://github.com/Sensory/alexa-rpi.git
-
-echo "Press 'Enter' and complete the license"
-
-bash alexa-rpi/bin/license.sh
-
 echo "Enter your ClientId:"
 read CLIENT_ID
 echo "Enter your ClientSecret:"
