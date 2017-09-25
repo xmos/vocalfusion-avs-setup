@@ -12,5 +12,4 @@ if [ -e $SCRIPTS_DIR/AlexaClientSDKConfig.json ]; then
     cp $SCRIPTS_DIR/AlexaClientSDKConfig.json $HOME/BUILD/Integration/
 else
 	envsubst < $SDK_SRC/Integration/AlexaClientSDKConfig.json > $HOME/BUILD/Integration/AlexaClientSDKConfig.json
-	cp $HOME/BUILD/Integration/AlexaClientSDKConfig.json $SCRIPTS_DIR/
 fi
