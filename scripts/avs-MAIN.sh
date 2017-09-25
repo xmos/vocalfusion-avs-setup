@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 export SCRIPTS_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
