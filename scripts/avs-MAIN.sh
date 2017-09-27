@@ -64,6 +64,9 @@ echo "configsdk: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-buildsdk.sh | sed "s/^/[sdk build] /"
 echo "buildsdk: $SECONDS" >> $TIMER
 
+echo "####~~~~BUILD TIMES~~~~####"
+$SCRIPTS_DIR/convert_times.py
+
 $SCRIPTS_DIR/avs-pyauth.sh | sed "s/^/[authorisation] /"
 
 popd
