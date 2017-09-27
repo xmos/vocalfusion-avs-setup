@@ -26,7 +26,6 @@ if [ ! -d $SOURCE_FOLDER/alexa-rpi ]; then
 	git clone git://github.com/Sensory/alexa-rpi.git
 fi
 if [ -e $SOURCE_FOLDER/alexa-rpi/bin/license.sh ]; then
-	echo "Press 'Enter' and complete the license"
 	bash $SOURCE_FOLDER/alexa-rpi/bin/license.sh
 fi
 
