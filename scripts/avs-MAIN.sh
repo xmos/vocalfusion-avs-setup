@@ -4,19 +4,28 @@ export SCRIPTS_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 pushd .
 
+# Set environment variables and create folders
 if [ -z $SDK_SRC ]; then
 	source $SCRIPTS_DIR/avs-init.sh
+	mkdir $SOURCE_FOLDER
+	mkdir $LOCAL_BUILD
 fi
 
+# Set authentication information
 if [ -z $SDK_CONFIG_CLIENT_ID ]; then
-	mkdir $SOURCE_FOLDER
-	cd $SOURCE_FOLDER
-	git clone git://github.com/Sensory/alexa-rpi.git
-	echo "Press 'Enter' and complete the license"
-	bash alexa-rpi/bin/license.sh
 	if  [ ! -e $SCRIPTS_DIR/AlexaClientSDKConfig.json ]; then
 		source $SCRIPTS_DIR/avs-userinput.sh
 	fi
+fi
+
+# Clone sensory and complete license
+if [ ! -d $SOURCE_FOLDER/alexa-rpi ]
+	cd $SOURCE_FOLDER
+	git clone git://github.com/Sensory/alexa-rpi.git
+fi
+if [ -e $SOURCE_FOLDER/alexa-rpi/bin/license.sh ]; then
+	echo "Press 'Enter' and complete the license"
+	bash $SOURCE_FOLDER/alexa-rpi/bin/license.sh
 fi
 
 $SCRIPTS_DIR/avs-getdepbin.sh | sed "s/^/[apt-get dependencies] /"
