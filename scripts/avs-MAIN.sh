@@ -30,7 +30,7 @@ if [ -e $SOURCE_FOLDER/alexa-rpi/bin/license.sh ]; then
 	bash $SOURCE_FOLDER/alexa-rpi/bin/license.sh
 fi
 
-TIMER=~/time_taken.txt
+TIMER=$SCRIPTS_DIR/time_taken.txt
 SECONDS=0
 $SCRIPTS_DIR/avs-getdepbin.sh | sed "s/^/[apt-get dependencies] /"
 echo "apt-get deps: $SECONDS" > $TIMER
