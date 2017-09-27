@@ -28,7 +28,7 @@ sudo sh -c 'echo bcm2708_dmaengine   >> /etc/modules'
 # Download kernal source - this will take some time
 sudo apt-get -y install bc
 sudo apt-get -y install libncurses5-dev
-git clone git@github.com:notro/rpi-source
+git clone http://github.com/notro/rpi-source
 pushd rpi-source > /dev/null
 python rpi-source --skip-gcc
 popd > /dev/null
@@ -81,7 +81,7 @@ sudo sh -c 'echo "options i2c-bcm2708 combined=1" >> /etc/modprobe.d/i2c.conf'
 #
 # Build a new I2C driver
 #
-git clone git@github.com:kadamski/i2c-gpio-param.git
+git clone https://github.com/kadamski/i2c-gpio-param.git
 pushd i2c-gpio-param > /dev/null
 make
 popd > /dev/null
