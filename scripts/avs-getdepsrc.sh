@@ -4,9 +4,6 @@ if [ -z $SOURCE_FOLDER ]; then
 	exit 1
 fi
 
-mkdir $SOURCE_FOLDER
-mkdir $LOCAL_BUILD
-
 cd $SOURCE_FOLDER
 wget https://github.com/nghttp2/nghttp2/releases/download/v1.0.0/nghttp2-1.0.0.tar.gz
 tar xzf nghttp2-1.0.0.tar.gz
