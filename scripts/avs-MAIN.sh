@@ -21,7 +21,7 @@ if [ -z $SDK_CONFIG_CLIENT_ID ]; then
 fi
 
 # Clone sensory and complete license
-if [ ! -d $SOURCE_FOLDER/alexa-rpi ]
+if [ ! -d $SOURCE_FOLDER/alexa-rpi ]; then
 	cd $SOURCE_FOLDER
 	git clone git://github.com/Sensory/alexa-rpi.git
 fi
