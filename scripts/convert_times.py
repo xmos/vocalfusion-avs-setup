@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 from pprint import pprint
 
 with open("time_taken.txt", "r") as f:
