@@ -9,6 +9,8 @@ if [ -z $SDK_SRC ]; then
 	source $SCRIPTS_DIR/avs-init.sh
 	mkdir $SOURCE_FOLDER
 	mkdir $LOCAL_BUILD
+	mkdir $HOME/AVS_SDK
+	mkdir $HOME/BUILD
 fi
 
 # Set authentication information
