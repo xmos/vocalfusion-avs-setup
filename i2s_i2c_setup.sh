@@ -60,6 +60,7 @@ if [ -e /usr/share/alsa/pulse-alsa.conf ] ; then
     sudo mv /usr/share/alsa/pulse-alsa.conf  /usr/share/alsa/pulse-alsa.conf.bak
 fi
 cp $I2SROOT/resources/asoundrc ~/.asoundrc
+chmod 444 ~/.asoundrc
 
 # Apply changes
 sudo /etc/init.d/alsa-utils restart
