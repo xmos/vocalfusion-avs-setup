@@ -31,7 +31,7 @@ if [ ! -d $SOURCE_FOLDER/alexa-rpi ]; then
 	cd $SOURCE_FOLDER
 	git clone git://github.com/Sensory/alexa-rpi.git
 	cd alexa-rpi
-	git reset --hard $SENSORY_MODEL_HASH
+	git checkout $SENSORY_MODEL_HASH -- models/spot-alexa-rpi-31000.snsr
 fi
 if [ -e $SOURCE_FOLDER/alexa-rpi/bin/license.sh ]; then
 	bash $SOURCE_FOLDER/alexa-rpi/bin/license.sh
