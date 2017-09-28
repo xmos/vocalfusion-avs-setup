@@ -57,7 +57,7 @@ if [ -e ~/.asoundrc ] ; then
 fi
 if [ -e /usr/share/alsa/pulse-alsa.conf ] ; then
     # Rename existing file
-    mv /usr/share/alsa/pulse-alsa.conf  /usr/share/alsa/pulse-alsa.conf.bak
+    sudo mv /usr/share/alsa/pulse-alsa.conf  /usr/share/alsa/pulse-alsa.conf.bak
 fi
 cp $I2SROOT/resources/asoundrc ~/.asoundrc
 
