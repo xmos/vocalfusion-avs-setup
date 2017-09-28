@@ -1,8 +1,8 @@
 #! /usr/bin/env python
-
+import os
 from pprint import pprint
 
-with open("time_taken.txt", "r") as f:
+with open(os.path.join(os.environ["SCRIPTS_DIR"], "time_taken.txt"), "r") as f:
     lines = f.read().splitlines()
 
 results = []
