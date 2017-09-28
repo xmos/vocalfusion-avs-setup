@@ -1,6 +1,10 @@
 #i2s_i2c_pi_setup
 
-format sd card: (windows) diskpart -> list disk -> select disk * -> clean -> create part primary -> format fs=FAT32 quick
+You will need an amazon developer account (https://developer.amazon.com) and a device set up (https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile).
+
+If you already have a working AlexaClientSDKConfig.json (with refresh token)
+put it in i2s_i2c_pi_setup/scripts/ folder and this will be detected.
+Otherwise, keep the webpage open on the pi so you can copy these details across when asked.
 
 Download NOOBS image from https://downloads.raspberrypi.org/NOOBS/images/NOOBS-2017-07-05/NOOBS_v2_4_2.zip
 or
@@ -13,15 +17,14 @@ Once inside Raspbian, open a terminal and type
 
 enter github username and password
 
-> . i2s_i2c_pi_setup/scripts/avs-MAIN.sh
+Run the main script
+> . i2s_i2c_pi_setup/auto_install.sh
 
-Enter amazon dev details, 
-or if you already have a working AlexaClientSDKConfig.json (with refresh)
-put it in i2s_i2c_pi_setup/scripts/ folder
+Enter amazon developer details if necessary
 
 Wait for sensory to clone
 
-Accept license
+Press enter to read and accept the license
 
 The rest takes a while (one example):
 ['apt-get deps: 3m53s',
@@ -43,7 +46,7 @@ TOTAL: 1h56m26s
 
 open localhost:3000 in browser and enter credentials
 
-if using i2s:
-	run $SCRIPTS_DIR/avs_i2si2c.sh
+If you want to use the board in i2s mode, run i2s_i2c_setup.sh
+This step is hard to reverse so be ready to clean install the os or do any usb testing first
 
 avsrun [DEBUG9]
