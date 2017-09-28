@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 export SCRIPTS_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+SENSORY_MODEL_HASH_1=a8befe708af1aa80c32bce5219312a4ec439a0b0
+SENSORY_MODEL_HASH_2=ddbc9040e24ed06aafe402017fa640b86d3520b3
+SENSORY_MODEL_HASH_3=43b5cb246cb8422a8f39ae92d3e372dc19b98243
+# Select Sensory model to use
+export SENSORY_MODEL_HASH=$SENSORY_MODEL_HASH_2
 
 pushd .
 
@@ -24,6 +29,8 @@ fi
 if [ ! -d $SOURCE_FOLDER/alexa-rpi ]; then
 	cd $SOURCE_FOLDER
 	git clone git://github.com/Sensory/alexa-rpi.git
+	cd alexa-rpi
+	git reset --hard $SENSORY_MODEL_HASH
 fi
 if [ -e $SOURCE_FOLDER/alexa-rpi/bin/license.sh ]; then
 	bash $SOURCE_FOLDER/alexa-rpi/bin/license.sh
