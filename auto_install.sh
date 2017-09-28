@@ -52,13 +52,13 @@ echo "curl: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-gstreamer.sh | sed "s/^/[gstreamer] /"
 echo "gstreamer: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-gst-plugins-base.sh | sed "s/^/[gst base plugins] /"
-echo "avs-gst-plugins-base: $SECONDS" >> $TIMER
+echo "gst-plugins-base: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-libav.sh | sed "s/^/[libav] /"
 echo "libav: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-gst-plugins-good.sh | sed "s/^/[gst bad plugins] /"
-echo "avs-gst-plugins-bad: $SECONDS" >> $TIMER
+echo "gst-plugins-bad: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-gst-plugins-bad.sh | sed "s/^/[gst good plugins] /"
-echo "avs-gst-plugins-good: $SECONDS" >> $TIMER
+echo "gst-plugins-good: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-portaudio.sh | sed "s/^/[portaudio] /"
 echo "portaudio: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-sensory.sh | sed "s/^/[sensory] /"
