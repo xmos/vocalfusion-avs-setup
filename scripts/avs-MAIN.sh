@@ -12,11 +12,12 @@ pushd .
 # Set environment variables and create folders
 if [ -z $SDK_SRC ]; then
 	source $SCRIPTS_DIR/avs-init.sh
-	mkdir $SOURCE_FOLDER
-	mkdir $LOCAL_BUILD
-	mkdir $HOME/AVS_SDK
-	mkdir $HOME/BUILD
 fi
+
+mkdir -p $SOURCE_FOLDER
+mkdir -p $LOCAL_BUILD
+mkdir -p $HOME/AVS_SDK
+mkdir -p $HOME/BUILD
 
 # Set authentication information
 if [ -z $SDK_CONFIG_CLIENT_ID ]; then
