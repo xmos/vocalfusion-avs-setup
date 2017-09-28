@@ -1,9 +1,10 @@
-#i2s_i2c_pi_setup
+# Setting up the Alexa Voice Services SDK on a Raspberry Pi
 
+## Prerequisites
 You will need an amazon developer account (https://developer.amazon.com) and a device set up (https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile).
 
 If you already have a working AlexaClientSDKConfig.json (with refresh token)
-put it in i2s_i2c_pi_setup/scripts/ folder and this will be detected.
+put it in i2s_i2c_pi_setup/scripts/ folder once you have cloned the repo and this will be detected.
 Otherwise, keep the webpage open on the pi so you can copy these details across when asked.
 
 Download NOOBS image from https://downloads.raspberrypi.org/NOOBS/images/NOOBS-2017-07-05/NOOBS_v2_4_2.zip
@@ -12,41 +13,39 @@ Download Raspbian Jessie images from https://downloads.raspberrypi.org/raspbian/
 
 Visit https://elinux.org/RPi_Easy_SD_Card_Setup for easy instructions on how to flash this sd card and install raspbian
 
-Once inside Raspbian, open a terminal and type
-> git clone -b SDK_scripts https://github.com/xmos/i2s_i2c_pi_setup
+## Installation
+1. Once inside Raspbian, open a terminal and type `git clone -b SDK_scripts https://github.com/xmos/i2s_i2c_pi_setup`
+enter your github username and password if prompted
 
-enter github username and password
+2. Run the main script with `. i2s_i2c_pi_setup/auto_install.sh`
 
-Run the main script
-> . i2s_i2c_pi_setup/auto_install.sh
+3. Enter Amazon developer details if necessary
 
-Enter amazon developer details if necessary
-
-Wait for sensory to clone
-
-Press enter to read and accept the license
+4. Wait for the Sensory repo to clone and press enter to read and accept the license
 
 The rest takes a while (one example):
-['apt-get deps: 3m53s',
- 'getsrc: 2m33s',
- 'nghttp2: 1m35s',
- 'openssl: 10m0s',
- 'curl: 3m59s',
- 'gstreamer: 5m53s',
- 'avs-gst-plugins-base: 6m56s',
- 'libav: 23m29s',
- 'avs-gst-plugins-bad: 9m13s',
- 'avs-gst-plugins-good: 10m51s',
- 'portaudio: 1m4s',
- 'sensory: 0m0s',
- 'getsdk: 0m23s',
- 'configsdk: 0m14s',
- 'buildsdk: 36m23s']
-TOTAL: 1h56m26s
+- apt-get deps: 3m53s
+- getsrc: 2m33s
+- nghttp2: 1m35s
+- openssl: 10m0s
+- curl: 3m59s
+- gstreamer: 5m53s
+- gst-plugins-base: 6m56s
+- libav: 23m29s
+- gst-plugins-bad: 9m13s
+- gst-plugins-good: 10m51s
+- portaudio: 1m4s
+- sensory: 0m1s
+- getsdk: 0m23s
+- configsdk: 0m14s
+- buildsdk: 36m23s
 
-open localhost:3000 in browser and enter credentials
+- TOTAL: 1h56m26s
 
-If you want to use the board in i2s mode, run i2s_i2c_setup.sh
-This step is hard to reverse so be ready to clean install the os or do any usb testing first
+5. Open localhost:3000 in browser and enter credentials, you won't have to do this if you already have a valid configuration file.
+If you want to add one later, paste it into `~/BUILD/Integration/`
 
-avsrun [DEBUG9]
+6. If you want to use the board in i2s mode, run `i2s_i2c_setup.sh`
+This step is hard to reverse so be ready to clean install the os or do any other testing first
+
+7. Enter `avsrun [DEBUG9]` to run the sample app, `avsunit` to run the unit tests and `avsintegration` to run the integration tests.
