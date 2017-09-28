@@ -84,4 +84,4 @@ echo +++ avsrun
 echo +++ avsunit
 echo +++ avsintegration
 echo This script has not installed any i2s devices
-echo Find and run avs-i2si2c.sh to do this
+echo Find and run i2s_i2c_setup.sh to do this
