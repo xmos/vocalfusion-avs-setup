@@ -3,3 +3,4 @@
 *.ko
 *.order
 AlexaClientSDKConfig*
+time_taken.txt
