@@ -23,29 +23,29 @@ enter your github username and password if prompted
 
 4. Wait for the Sensory repo to clone and press enter to read and accept the license
 
-The rest takes a while (one example):
-- apt-get deps: 3m53s
-- getsrc: 2m33s
-- nghttp2: 1m35s
-- openssl: 10m0s
-- curl: 3m59s
-- gstreamer: 5m53s
-- gst-plugins-base: 6m56s
-- libav: 23m29s
-- gst-plugins-bad: 9m13s
-- gst-plugins-good: 10m51s
-- portaudio: 1m4s
-- sensory: 0m1s
-- getsdk: 0m23s
-- configsdk: 0m14s
-- buildsdk: 36m23s
+5. Wait for the script to complete the installation, this can take a very long time (an example given)
+   - apt-get deps: 3m53s
+   - getsrc: 2m33s
+   - nghttp2: 1m35s
+   - openssl: 10m0s
+   - curl: 3m59s
+   - gstreamer: 5m53s
+   - gst-plugins-base: 6m56s
+   - libav: 23m29s
+   - gst-plugins-bad: 9m13s
+   - gst-plugins-good: 10m51s
+   - portaudio: 1m4s
+   - sensory: 0m1s
+   - getsdk: 0m23s
+   - configsdk: 0m14s
+   - buildsdk: 36m23s
 
-- TOTAL: 1h56m26s
+   - TOTAL: 1h56m26s
 
-5. Open localhost:3000 in browser and enter credentials, you won't have to do this if you already have a valid configuration file.
+6. Open localhost:3000 in browser and enter credentials, you won't have to do this if you already have a valid configuration file.
 If you want to add one later, paste it into `~/BUILD/Integration/`
 
-6. If you want to use the board in i2s mode, run `i2s_i2c_setup.sh`
+7. If you want to use the board in i2s mode, run `i2s_i2c_setup.sh`
 This step is hard to reverse so be ready to clean install the os or do any other testing first
 
-7. Enter `avsrun [DEBUG9]` to run the sample app, `avsunit` to run the unit tests and `avsintegration` to run the integration tests.
+8. Enter `avsrun [DEBUG9]` to run the sample app, `avsunit` to run the unit tests and `avsintegration` to run the integration tests.
