@@ -2,14 +2,13 @@
 
 format sd card: (windows) diskpart -> list disk -> select disk * -> clean -> create part primary -> format fs=FAT32 quick
 
-put NOOBS on formatted sd card
+Download NOOBS image from https://downloads.raspberrypi.org/NOOBS/images/NOOBS-2017-07-05/NOOBS_v2_4_2.zip
+or
+Download Raspbian Jessie images from https://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/2017-07-05-raspbian-jessie.zip
 
-extract NOOBS so base folder is the drive
+Visit https://elinux.org/RPi_Easy_SD_Card_Setup for easy instructions on how to flash this sd card and install raspbian
 
-put in pi
-
-install Jessie [10 min]
-
+Once inside Raspbian, open a terminal and type
 > git clone -b SDK_scripts https://github.com/xmos/i2s_i2c_pi_setup
 
 enter github username and password
