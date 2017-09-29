@@ -5,7 +5,7 @@ if [ -z $SOURCE_FOLDER ]; then
 fi
 
 cd $SOURCE_FOLDER
-if [ ! $VERSION == 9 ]; then
+if [ ! $VERSION == '9' ]; then
 	wget https://github.com/nghttp2/nghttp2/releases/download/v1.0.0/nghttp2-1.0.0.tar.gz
 	tar xzf nghttp2-1.0.0.tar.gz
 	wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2a.tar.gz
