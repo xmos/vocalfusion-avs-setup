@@ -14,7 +14,7 @@ Download Raspbian Jessie images from https://downloads.raspberrypi.org/raspbian/
 Visit https://elinux.org/RPi_Easy_SD_Card_Setup for easy instructions on how to flash this sd card and install raspbian
 
 ## Installation
-1. Once inside Raspbian, open a terminal and type `git clone -b SDK_scripts https://github.com/xmos/i2s_i2c_pi_setup`
+1. Once inside Raspbian, open a terminal and type `git clone https://github.com/xmos/i2s_i2c_pi_setup`
 enter your github username and password if prompted
 
 2. Run the main script, sourcing it with `source i2s_i2c_pi_setup/auto_install.sh`
