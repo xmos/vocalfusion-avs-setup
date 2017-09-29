@@ -17,7 +17,7 @@ Visit https://elinux.org/RPi_Easy_SD_Card_Setup for easy instructions on how to 
 1. Once inside Raspbian, open a terminal and type `git clone -b SDK_scripts https://github.com/xmos/i2s_i2c_pi_setup`
 enter your github username and password if prompted
 
-2. Run the main script with `. i2s_i2c_pi_setup/auto_install.sh`
+2. Run the main script, sourcing it with `source i2s_i2c_pi_setup/auto_install.sh`
 
 3. Enter Amazon developer details if necessary
 
