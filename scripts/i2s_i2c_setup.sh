@@ -58,10 +58,10 @@ fi
 if [ -e /usr/share/alsa/pulse-alsa.conf ] ; then
     # Rename existing file
     sudo mv /usr/share/alsa/pulse-alsa.conf  /usr/share/alsa/pulse-alsa.conf.bak
-    sudo mv ~/.config/lxpanelLXDE-pi/panels/panel ~/.config/lxpanelLXDE-pi/panels/panel.bak
+    sudo mv ~/.config/lxpanel/LXDE-pi/panels/panel ~/.config/lxpanel/LXDE-pi/panels/panel.bak
 fi
 cp $I2SROOT/resources/asoundrc ~/.asoundrc
-cp $I2SROOT/resources/panel ~/.config/lxpanelLXDE-pi/panels/panel
+cp $I2SROOT/resources/panel ~/.config/lxpanel/LXDE-pi/panels/panel
 chmod 444 ~/.asoundrc
 
 # Apply changes
