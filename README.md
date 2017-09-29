@@ -45,7 +45,6 @@ enter your github username and password if prompted
 6. Open localhost:3000 in browser and enter credentials, you won't have to do this if you already have a valid configuration file.
 If you want to add one later, paste it into `~/BUILD/Integration/`
 
-7. If you want to use the board in i2s mode, run `i2s_i2c_setup.sh`
-This step is hard to reverse so be ready to clean install the os or do any other testing first
+7. Type `sudo reboot` to reboot the Pi
 
 8. Enter `avsrun [DEBUG9]` to run the sample app, `avsunit` to run the unit tests and `avsintegration` to run the integration tests.
