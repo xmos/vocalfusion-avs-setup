@@ -39,6 +39,8 @@ fi
 
 TIMER=$SCRIPTS_DIR/time_taken.txt
 SECONDS=0
+$SCRIPTS_DIR/i2s_i2c_setup.sh | sed "s/^/[audio setup] /"
+echo "audio-setup: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-getdepbin.sh | sed "s/^/[apt-get dependencies] /"
 echo "apt-get deps: $SECONDS" > $TIMER
 $SCRIPTS_DIR/avs-getdepsrc.sh | sed "s/^/[get sources] /"
@@ -70,8 +72,6 @@ $SCRIPTS_DIR/avs-configsdk.sh | sed "s/^/[sdk config] /"
 echo "configsdk: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-buildsdk.sh | sed "s/^/[sdk build] /"
 echo "buildsdk: $SECONDS" >> $TIMER
-$SCRIPTS_DIR/i2s_i2c_setup.sh | sed "s/^/[audio setup] /"
-echo "audio-setup: $SECONDS" >> $TIMER
 
 echo "####~~~~BUILD TIMES~~~~####"
 $SCRIPTS_DIR/convert_times.py
