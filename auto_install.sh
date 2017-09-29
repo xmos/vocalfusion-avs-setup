@@ -70,6 +70,8 @@ $SCRIPTS_DIR/avs-configsdk.sh | sed "s/^/[sdk config] /"
 echo "configsdk: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-buildsdk.sh | sed "s/^/[sdk build] /"
 echo "buildsdk: $SECONDS" >> $TIMER
+$SCRIPTS_DIR/i2s_i2c_setup.sh | sed "s/^/[audio setup] /"
+echo "audio-setup: $SECONDS" >> $TIMER
 
 echo "####~~~~BUILD TIMES~~~~####"
 $SCRIPTS_DIR/convert_times.py
@@ -83,5 +85,5 @@ echo +++ avsmake
 echo +++ avsrun
 echo +++ avsunit
 echo +++ avsintegration
-echo This script has not installed any i2s devices
-echo Find and run i2s_i2c_setup.sh to do this
+echo To enable the i2s device, this pi must now be rebooted
+echo type 'sudo reboot' below to do this
