@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd $HOME/AVS_SDK
-git clone git://github.com/alexa/avs-device-sdk.git
+git clone -b xmos git://github.com/xmos/avs-device-sdk.git
 
 cd $HOME/BUILD
 
