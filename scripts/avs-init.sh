@@ -9,7 +9,8 @@ echo "alias avsmake=\"cd ~ && . $SCRIPTS_DIR/../auto_install.sh\"" >>  $HOME/.ba
 echo "alias avsrun=\"LD_LIBRARY_PATH=$HOME/local-builds/lib:$LD_LIBRARY_PATH TZ=UTC ~/BUILD/SampleApp/src/SampleApp ~/BUILD/Integration/AlexaClientSDKConfig.json $HOME/local-builds/models\"" >> $HOME/.bash_aliases
 echo "alias avsunit=\"pushd LD_LIBRARY_PATH=$HOME/local-builds/lib:$LD_LIBRARY_PATH ~/BUILD && sudo make all test && popd\"" >> $HOME/.bash_aliases
 echo "alias avsintegration=\"pushd LD_LIBRARY_PATH=$HOME/local-builds/lib:$LD_LIBRARY_PATH ~/BUILD && sudo make all integration && popd\"" >> $HOME/.bash_aliases
-echo "echo \"available AVS aliases:\"" >> $HOME/.bash_aliases
-echo "echo -e \"avsmake, avsrun, avsunit, avsintegration\"" >> $HOME/.bash_aliases
+echo "echo \"Available AVS aliases:\"" >> $HOME/.bash_aliases
+echo "echo -e \"\tavsmake, avsrun, avsunit, avsintegration\"" >> $HOME/.bash_aliases
+echo "echo \"If authentication fails, please check ~/BUILD/Integration/AlexaClientSDKConfig.json\"" >> $HOME/.bash_aliases
 echo "echo \"remove .bash_aliases and open a new terminal to remove bindings\"" >> $HOME/.bash_aliases
 source $HOME/.bashrc
