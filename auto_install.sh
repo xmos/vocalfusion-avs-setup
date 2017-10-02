@@ -42,9 +42,9 @@ fi
 TIMER=$SCRIPTS_DIR/time_taken.txt
 SECONDS=0
 $SCRIPTS_DIR/i2s_i2c_setup.sh | sed "s/^/[audio setup] /"
-echo "audio-setup: $SECONDS" >> $TIMER
+echo "audio-setup: $SECONDS" > $TIMER
 $SCRIPTS_DIR/avs-getdepbin.sh | sed "s/^/[apt-get dependencies] /"
-echo "apt-get deps: $SECONDS" > $TIMER
+echo "apt-get deps: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-getdepsrc.sh | sed "s/^/[get sources] /"
 echo "getsrc: $SECONDS" >> $TIMER
 $SCRIPTS_DIR/avs-nghttp2.sh | sed "s/^/[nghttp2] /"
