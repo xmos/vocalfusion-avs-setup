@@ -1,29 +1,44 @@
-# Setting up the Alexa Voice Services SDK on a Raspberry Pi
+# xCORE VocalFusion 4-Mic Kit for AVS and Amazon Alexa Voice Services SDK on a Raspberry Pi
+
+The XMOS **xCORE VocalFusion 4-Mic Kit for AVS** provides far-field voice capture using the XMOS XVF3000 voice processor: http://xmos.com/vocalfusion-avs
+
+Combined with a Raspberry Pi running the Amazon Alexa Voice Service (AVS) Software Development Kit (SDK), this kit allows you to quickly prototype and evaluate talking with Alexa.
+
+This respository provides a simple-to-use automated script to install the Amazon AVS SDK on a Raspberry Pi and configure the Raspberry Pi to use the **xCORE VocalFusion 4-Mic Kit for AVS** for audio.
 
 ## Prerequisites
-You will need an amazon developer account (https://developer.amazon.com) and a device set up (https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile).
+You will need:
 
-If you already have a working AlexaClientSDKConfig.json (with refresh token)
-put it in i2s_i2c_pi_setup/scripts/ folder once you have cloned the repo and this will be detected.
-Otherwise, keep the webpage open on the pi so you can copy these details across when asked.
+- **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
+- Raspberry Pi 3
+- Micro-USB power supply (min. 2A)
+- MicroSD card (min. 8GB)
+- Powered mono speaker with audio 3.5mm analogue plug
+- Monitor with HDMI input
+- HDMI cable
+- Fast-Ethernet connection with internet connectivity
 
-Download NOOBS image from https://downloads.raspberrypi.org/NOOBS/images/NOOBS-2017-07-05/NOOBS_v2_4_2.zip
-or
-Download Raspbian Jessie images from https://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/2017-07-05-raspbian-jessie.zip
+You will also need an Amazon Developer account: https://developer.amazon.com 
 
-Visit https://elinux.org/RPi_Easy_SD_Card_Setup for easy instructions on how to flash this sd card and install raspbian
+## Hardware setup
+Setup your hardware by following the **Hardware Setup** at: http://xmos.com/vocalfusion-avs
 
-## Installation
-1. Once inside Raspbian, open a terminal and type `git clone https://github.com/xmos/i2s_i2c_pi_setup`
-enter your github username and password if prompted
+## AVS SDK installation and Raspberry Pi audio setup
+Complete Raspberry Pi setup instructions are detailed in the **Getting Started Guide** available from: http://xmos.com/vocalfusion-avs.
 
-2. Run the main script, sourcing it with `source i2s_i2c_pi_setup/auto_install.sh`
+Brief instructions and additional notes are below.
 
-3. Enter Amazon developer details if necessary
+1. Install Raspbian Stretch on the Raspberry Pi.
 
-4. Wait for the Sensory repo to clone and press enter to read and accept the license
+2. Open a terminal on the Raspberry Pi and clone this respository: `cd; git clone https://github.com/xmos/i2s_i2c_pi_setup`
 
-5. Wait for the script to complete the installation, this can take a very long time (an example given)
+3. Either, create a new Alexa device by following: https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile (Note: the *Allowed Origins* and *Allowed Return URLs* should use http, not https.)  
+Or, use an existing Alexa device by placing your `AlexaClientSDKConfig.json` file (with a valid refresh token) in the `i2s_i2c_pi_setup/scripts/` folder.
+
+4. Run the installation script: `source i2s_i2c_pi_setup/auto_install.sh`  
+If necessary, enter your Alexa device details (*ProductID*, *ClientID* and *ClientSecret*).  
+Wait for the sensory (keyword detection) repository to clone, then read and accept the license agreement.  
+Wait for the script to complete the installation. This can take a while, for example:
    - apt-get deps: 3m53s
    - getsrc: 2m33s
    - nghttp2: 1m35s
@@ -39,12 +54,11 @@ enter your github username and password if prompted
    - getsdk: 0m23s
    - configsdk: 0m14s
    - buildsdk: 36m23s
+   - **TOTAL: 1h56m26s**
 
-   - TOTAL: 1h56m26s
-
-6. Open localhost:3000 in browser and enter credentials, you won't have to do this if you already have a valid configuration file.
+5. Open http://localhost:3000 in a browser on the Raspberry Pi and enter your Amazon Developer credentials (you won't have to do this if you already have a valid configuration file).  
 If you want to add one later, paste it into `~/BUILD/Integration/`
 
-7. Type `sudo reboot` to reboot the Pi
+6. Enter `sudo reboot` to reboot the Raspberry Pi and complete the audio setup.
 
-8. Enter `avsrun [DEBUG9]` to run the sample app, `avsunit` to run the unit tests and `avsintegration` to run the integration tests.
+7. Enter `avsrun [DEBUG9]` to run the sample app, `avsunit` to run the unit tests and `avsintegration` to run the integration tests.
