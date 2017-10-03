@@ -5,12 +5,14 @@ if [ -z $SOURCE_FOLDER ]; then
 fi
 
 cd $SOURCE_FOLDER
-wget https://github.com/nghttp2/nghttp2/releases/download/v1.0.0/nghttp2-1.0.0.tar.gz
-tar xzf nghttp2-1.0.0.tar.gz
-wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2a.tar.gz
-tar xzf openssl-1.0.2a.tar.gz
-wget https://curl.haxx.se/download/curl-7.50.2.tar.gz
-tar xzf curl-7.50.2.tar.gz
+if [ ! $VERSION == '9' ]; then
+	wget https://github.com/nghttp2/nghttp2/releases/download/v1.0.0/nghttp2-1.0.0.tar.gz
+	tar xzf nghttp2-1.0.0.tar.gz
+	wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2a.tar.gz
+	tar xzf openssl-1.0.2a.tar.gz
+	wget https://curl.haxx.se/download/curl-7.50.2.tar.gz
+	tar xzf curl-7.50.2.tar.gz
+fi
 wget https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.10.4.tar.xz
 tar xf gstreamer-1.10.4.tar.xz
 wget https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.10.4.tar.xz
