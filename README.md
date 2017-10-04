@@ -34,15 +34,15 @@ Brief instructions and additional notes are below:
 1. Install Raspbian (Stretch) on the Raspberry Pi.
 
 2. Open a terminal on the Raspberry Pi and clone this respository:  
-`cd; git clone https://github.com/xmos/i2s_i2c_pi_setup`
+`cd ~; git clone https://github.com/xmos/vocalfusion-avs-setup`
 
 3. Either:  
 create a new Alexa device by following: https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile  
 (Note: the *Allowed Origins* and *Allowed Return URLs* should use http, not https.)  
 Or:  
-use an existing Alexa device by placing your `AlexaClientSDKConfig.json` file (with a valid refresh token) in the `~/i2s_i2c_pi_setup/scripts/` folder.
+use an existing Alexa device by placing your `AlexaClientSDKConfig.json` file (with a valid refresh token) in the `~/vocalfusion-avs-setup/scripts/` folder.
 
-4. Run the installation script: `source ~/i2s_i2c_pi_setup/auto_install.sh`  
+4. Run the installation script: `source ~/vocalfusion-avs-setup/auto_install.sh`  
 If necessary, enter your Alexa device details (*ProductID*, *ClientID* and *ClientSecret*).  
 Wait for the sensory (keyword detection) repository to clone, then read and accept the license agreement.  
 Wait for the script to complete the installation. This can take a while, for example:
@@ -64,8 +64,8 @@ Wait for the script to complete the installation. This can take a while, for exa
    - buildsdk: 36m28s
    - **TOTAL: 1h59m28s**
 
-5. Open http://localhost:3000 in a browser on the Raspberry Pi and enter your Amazon Developer credentials (you won't have to do this if you already have a valid configuration file).  
-If you want to add one later, paste it into `~/BUILD/Integration/`
+5. As a final step, the script will open http://localhost:3000 in a browser on the Raspberry Pi. Enter your Amazon Developer credentials and close the browser window when prompted. (You won't have to do this if you already have a valid configuration file.)  
+If you want to add your own configuration file later, paste it into: `~/BUILD/Integration/`
 
 6. Enter `sudo reboot` to reboot the Raspberry Pi and complete the audio setup.
 
