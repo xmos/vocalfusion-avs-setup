@@ -14,12 +14,6 @@ pcm.i2s_48k {
     rate 48000
 }
 
-ctl.i2s_48k {
-    type hw
-    card sndrpisimplecar
-    device 0
-}
-
 pcm.mix_i2s_48k {
     type dmix
     ipc_key 115 # Must be unique
@@ -28,10 +22,17 @@ pcm.mix_i2s_48k {
     }
 }
 
-ctl.mix_i2s_48k {
-    type dmix
+#
+# Note that the name must contain "Master" for the task bar to find it
+#
+pcm.mix_vol {
+    type softvol
     slave {
-        pcm i2s_48k
+        pcm mix_i2s_48k
+    }
+    control {
+        name "Playback"
+        card 0
     }
 }
 
@@ -43,10 +44,14 @@ pcm.snoop_i2s_48k {
     }
 }
 
-ctl.snoop_i2s_48k {
-    type dsnoop
+pcm.snoop_vol {
+    type softvol
     slave {
-        pcm i2s_48k
+        pcm snoop_i2s_48k
+    }
+    control {
+        name "Record"
+        card 0
     }
 }
 
@@ -59,32 +64,13 @@ pcm.!default {
     playback.pcm {
         type plug
         slave {
-            pcm mix_i2s_48k
+            pcm mix_vol
         }
     }
     capture.pcm {
         type plug
         slave {
-            pcm snoop_i2s_48k
-        }
-    }
-}
-
-#
-# Create the control interfaces
-#
-ctl.!default {
-    type asym
-    playback.pcm {
-        type plug
-        slave {
-            pcm mix_i2s_48k
-        }
-    }
-    capture.pcm {
-        type plug
-        slave {
-            pcm snoop_i2s_48k
+            pcm snoop_vol
         }
     }
 }
