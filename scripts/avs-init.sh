@@ -9,8 +9,8 @@ echo "export VERSION=$(sed 's/\..*//' /etc/debian_version)" >> $HOME/.bash_alias
 echo "export SDKBUILDTYPE=$BUILDTYPE" >> $HOME/.bash_aliases
 echo "alias avsmake=\"cd ~ && . $SCRIPTS_DIR/../auto_install.sh\"" >>  $HOME/.bash_aliases
 echo "alias avsrun=\"LD_LIBRARY_PATH=$HOME/local-builds/lib:$LD_LIBRARY_PATH TZ=UTC ~/BUILD/SampleApp/src/SampleApp ~/BUILD/Integration/AlexaClientSDKConfig.json $HOME/local-builds/models\"" >> $HOME/.bash_aliases
-echo "alias avsunit=\"pushd LD_LIBRARY_PATH=$HOME/local-builds/lib:$LD_LIBRARY_PATH ~/BUILD && sudo make all test && popd\"" >> $HOME/.bash_aliases
-echo "alias avsintegration=\"pushd LD_LIBRARY_PATH=$HOME/local-builds/lib:$LD_LIBRARY_PATH ~/BUILD && sudo make all integration && popd\"" >> $HOME/.bash_aliases
+echo "alias avsunit=\"LD_LIBRARY_PATH=$HOME/local-builds/lib:$LD_LIBRARY_PATH pushd ~/BUILD && sudo make all test && popd\"" >> $HOME/.bash_aliases
+echo "alias avsintegration=\"LD_LIBRARY_PATH=$HOME/local-builds/lib:$LD_LIBRARY_PATH pushd ~/BUILD && sudo make all integration && popd\"" >> $HOME/.bash_aliases
 echo "echo \"Available AVS aliases:\"" >> $HOME/.bash_aliases
 echo "echo -e \"\tavsmake, avsrun, avsunit, avsintegration\"" >> $HOME/.bash_aliases
 echo "echo \"If authentication fails, please check ~/BUILD/Integration/AlexaClientSDKConfig.json\"" >> $HOME/.bash_aliases
