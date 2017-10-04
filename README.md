@@ -69,4 +69,4 @@ If you want to add your own configuration file later, paste it into: `~/BUILD/In
 
 6. Enter `sudo reboot` to reboot the Raspberry Pi and complete the audio setup.
 
-7. Enter `avsrun [DEBUG9]` to run the sample app, `avsunit` to run the unit tests and `avsintegration` to run the integration tests.
+7. Enter `avsrun` to run the sample app, `avsunit` to run the unit tests and `avsintegration` to run the integration tests.
