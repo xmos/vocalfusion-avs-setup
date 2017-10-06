@@ -4,6 +4,8 @@
 SCRIPTS_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 source $SCRIPTS_DIR/avs-config.sh
 
+source $SCRIPTS_DIR/avs-userinput.sh
+
 cd $SDK_BUILD
 cmake $SDK_SRC \
   -DCMAKE_BUILD_TYPE=$BUILD_TYPE \

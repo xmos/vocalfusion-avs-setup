@@ -16,7 +16,7 @@ pushd . > /dev/null
 grep avsrun ~/.bash_aliases > /dev/null 2>&1
 init_needed=$?
 if [ $init_needed != 0 ]; then
-	source $SCRIPTS_DIR/avs-init.sh
+    source $SCRIPTS_DIR/avs-init.sh
 fi
 
 mkdir -p $SOURCES_FOLDER
@@ -24,22 +24,18 @@ mkdir -p $SDK_BUILD
 mkdir -p $THIRD_PARTY
 mkdir -p $SOUND_FILES
 
-# Set authentication information
-if [ -z $SDK_CONFIG_CLIENT_ID ]; then
-	if  [ ! -e $SCRIPTS_DIR/AlexaClientSDKConfig.json ]; then
-		source $SCRIPTS_DIR/avs-userinput.sh
-	fi
-fi
+# Prompt the user for settings at the start
+source $SCRIPTS_DIR/avs-userinput.sh
 
 # Clone sensory and complete license
 if [ ! -d $THIRD_PARTY/alexa-rpi ]; then
-	cd $THIRD_PARTY
-	git clone git://github.com/Sensory/alexa-rpi.git
-	cd alexa-rpi
-	git checkout $SENSORY_MODEL_HASH -- models/spot-alexa-rpi-31000.snsr
+    cd $THIRD_PARTY
+    git clone git://github.com/Sensory/alexa-rpi.git
+    cd alexa-rpi
+    git checkout $SENSORY_MODEL_HASH -- models/spot-alexa-rpi-31000.snsr
 fi
 if [ -e $THIRD_PARTY/alexa-rpi/bin/license.sh ]; then
-	bash $THIRD_PARTY/alexa-rpi/bin/license.sh
+    bash $THIRD_PARTY/alexa-rpi/bin/license.sh
 fi
 
 TIMES_FILE=$SCRIPTS_DIR/time_taken.txt
@@ -56,9 +52,9 @@ $SCRIPTS_DIR/avs-sensory.sh | sed "s/^/[sensory] /"
 echo "sensory: $SECONDS" >> $TIMES_FILE
 
 if [ -e /usr/share/alsa/pulse-alsa.conf ] ; then
-	# Rename existing file
-	sudo mv /usr/share/alsa/pulse-alsa.conf  /usr/share/alsa/pulse-alsa.conf.bak
-	sudo mv ~/.config/lxpanel/LXDE-pi/panels/panel ~/.config/lxpanel/LXDE-pi/panels/panel.bak
+    # Rename existing file
+    sudo mv /usr/share/alsa/pulse-alsa.conf  /usr/share/alsa/pulse-alsa.conf.bak
+    sudo mv ~/.config/lxpanel/LXDE-pi/panels/panel ~/.config/lxpanel/LXDE-pi/panels/panel.bak
 fi
 
 $SCRIPTS_DIR/avs-getsdk.sh | sed "s/^/[sdk download] /"
