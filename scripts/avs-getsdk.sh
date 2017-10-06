@@ -1,11 +1,12 @@
-G!/usr/bin/env bash
+#!/usr/bin/env bash
 
 # Setup paths
 SCRIPTS_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" 
 source $SCRIPTS_DIR/avs-config.sh
 
 cd $SOURCES_FOLDER
-git clone -b xmos-v1.1 git://github.com/xmos/avs-device-sdk.git
+#git clone -b xmos-v1.1 git://github.com/xmos/avs-device-sdk.git
+git clone git://github.com/alexa/avs-device-sdk.git
 
 cd $SOUND_FILES
 wget -c https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-voice-service/docs/audio/states/med_system_alerts_melodic_02._TTH_.mp3 -O timer.wav

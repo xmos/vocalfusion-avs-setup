@@ -4,7 +4,7 @@
 SCRIPTS_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 source $SCRIPTS_DIR/avs-config.sh
 
-cd ~/$SDK_BUILD
+cd $SDK_BUILD
 cmake $SDK_SRC \
   -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
   -DSENSORY_KEY_WORD_DETECTOR=ON \
@@ -15,11 +15,10 @@ cmake $SDK_SRC \
   -DPORTAUDIO_LIB_PATH=$THIRD_PARTY/portaudio/lib/.libs/libportaudio.a \
   -DPORTAUDIO_INCLUDE_DIR=$THIRD_PARTY/portaudio/include
 
-# If you have a cached copy, then use that
-# Else substitute the values and cache this copy
 if [ -e $SCRIPTS_DIR/AlexaClientSDKConfig.json ]; then
-    rm $HOME/BUILD/Integration/AlexaClientSDKConfig.json
-    cp $SCRIPTS_DIR/AlexaClientSDKConfig.json $HOME/BUILD/Integration/
+    # If you have a cached copy, then use that
+    cp $SCRIPTS_DIR/AlexaClientSDKConfig.json $HOME/BUILD/Integration/AlexaClientSDKConfig.json
 else
-    envsubst < $SDK_SRC/Integration/AlexaClientSDKConfig.json > $HOME/BUILD/Integration/AlexaClientSDKConfig.json
+    # Else substitute the values and cache this copy
+    envsubst < $SDK_SRC/Integration/AlexaClientSDKConfig.json > $SDK_BUILD/Integration/AlexaClientSDKConfig.json
 fi
