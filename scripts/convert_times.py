@@ -1,8 +1,15 @@
 #! /usr/bin/env python
 import os
+import sys
 from pprint import pprint
 
-with open(os.path.join(os.environ["SCRIPTS_DIR"], "time_taken.txt"), "r") as f:
+if len(sys.argv) < 2:
+    print "Please specify the times file"
+    sys.exit(1)
+
+times_file=sys.argv[1]
+
+with open(os.path.join(times_file), "r") as f:
     lines = f.read().splitlines()
 
 results = []
