@@ -15,7 +15,7 @@ You will need:
 - **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
 - Raspberry Pi 3
 - Micro-USB power supply (min. 2A)
-- MicroSD card (min. 8GB)
+- MicroSD card (min. 16GB)
 - Powered mono speaker with audio 3.5mm analogue plug
 - Monitor with HDMI input
 - HDMI cable
