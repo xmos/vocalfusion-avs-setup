@@ -15,7 +15,7 @@ You will need:
 - **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
 - Raspberry Pi 3
 - Micro-USB power supply (min. 2A)
-- MicroSD card (min. 8GB)
+- MicroSD card (min. 16GB)
 - Powered mono speaker with audio 3.5mm analogue plug
 - Monitor with HDMI input
 - HDMI cable
@@ -38,15 +38,14 @@ Brief instructions and additional notes are below:
 
 3. Either:  
 create a new Alexa device by following: https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile  
-(Note: the *Allowed Origins* and *Allowed Return URLs* should use http, not https.)  
+(Note: the *Allowed Origins* and *Allowed Return URLs* should use **http**, not https.)  
 Or:  
 use an existing Alexa device by placing your `AlexaClientSDKConfig.json` file (with a valid refresh token) in the `~/vocalfusion-avs-setup/scripts/` folder.
 
 4. Run the installation script: `source ~/vocalfusion-avs-setup/auto_install.sh`  
-If necessary, enter your Alexa device details (*ProductID*, *ClientID* and *ClientSecret*).  
+If necessary, enter your Alexa device details (*ProductID*, *ClientID* and *ClientSecret*), a serial number and your location.  
 Wait for the sensory (keyword detection) repository to clone, then read and accept the license agreement.  
-Wait for the script to complete the installation. This can take a while, for example:
-####~~~~BUILD TIMES~~~~####
+Wait for the script to complete the installation. This can take a while, for example:  
    - audio-setup: 4m40s
    - apt-get deps: 3m14s
    - getsrc: 3m11s
