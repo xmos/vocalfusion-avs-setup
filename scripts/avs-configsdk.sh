@@ -19,7 +19,7 @@ cmake $SDK_SRC \
 
 if [ -e $SCRIPTS_DIR/AlexaClientSDKConfig.json ]; then
     # If you have a cached copy, then use that
-    cp $SCRIPTS_DIR/AlexaClientSDKConfig.json $HOME/BUILD/Integration/AlexaClientSDKConfig.json
+    cp $SCRIPTS_DIR/AlexaClientSDKConfig.json $SDK_BUILD/Integration/AlexaClientSDKConfig.json
 else
     # Else substitute the values and cache this copy
     envsubst < $SDK_SRC/Integration/AlexaClientSDKConfig.json > $SDK_BUILD/Integration/AlexaClientSDKConfig.json
