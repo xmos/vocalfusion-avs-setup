@@ -57,7 +57,7 @@ Wait for the script to complete the installation. This can take a while, for exa
    - **TOTAL: 35m0s**
 
 5. As a final step, the script will open http://localhost:3000 in a browser on the Raspberry Pi. Enter your Amazon Developer credentials and close the browser window when prompted. (You won't have to do this if you already have a valid configuration file.)  
-If you want to add your own configuration file later, paste it into: `~/BUILD/Integration/`
+If you want to add your own configuration file later, paste it into: `~/sdk-folder/sdk-build/Integration/`
 
 6. Enter `sudo reboot` to reboot the Raspberry Pi and complete the audio setup.
 
