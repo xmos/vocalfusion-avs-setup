@@ -64,3 +64,6 @@ If you want to add your own credentials configuration file later, paste it into:
 6. Enter `sudo reboot` to reboot the Raspberry Pi and complete the audio setup.
 
 7. Enter `avsrun` to run the sample app, `avsunit` to run the unit tests and `avsintegration` to run the integration tests.
+   - If `avsrun` results in a segfault, there is a good chance that the authorisation has failed for some reason.
+   - Open `~/sdk-folder/sdk-build/Integration/AlexaClientSDKConfig.json` and enter manually the client_id, client_secret, product_id and serial_number
+   - run  `$SCRIPTS_DIR/avs_pyauth.sh` and log in using the browser windows that appears (you are currently unable to do this from elsewhere)
