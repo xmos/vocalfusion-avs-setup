@@ -38,31 +38,23 @@ Brief instructions and additional notes are below:
 
 3. Either:  
 create a new Alexa device by following: https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile  
-(Note: the *Allowed Origins* and *Allowed Return URLs* should use http, not https.)  
+(Note: the *Allowed Origins* and *Allowed Return URLs* should use **http**, not https.)  
 Or:  
 use an existing Alexa device by placing your `AlexaClientSDKConfig.json` file (with a valid refresh token) in the `~/vocalfusion-avs-setup/scripts/` folder.
 
 4. Run the installation script: `source ~/vocalfusion-avs-setup/auto_install.sh`  
-If necessary, enter your Alexa device details (*ProductID*, *ClientID* and *ClientSecret*).  
+If necessary, enter your Alexa device details (*ProductID*, *ClientID* and *ClientSecret*), a serial number and your location.  
 Wait for the sensory (keyword detection) repository to clone, then read and accept the license agreement.  
-Wait for the script to complete the installation. This can take a while, for example:
-   - audio-setup: 5m25s
-   - apt-get deps: 2m13s
+Wait for the script to complete the installation. This can take a while, for example:  
+   - audio-setup: 4m40s
+   - apt-get deps: 3m14s
    - getsrc: 3m11s
-   - nghttp2: 1m29s
-   - openssl: 9m19s
-   - curl: 3m50s
-   - gstreamer: 5m47s
-   - gst-plugins-base: 6m35s
-   - libav: 22m45s
-   - gst-plugins-bad: 9m33s
-   - gst-plugins-good: 11m3s
    - portaudio: 1m1s
    - sensory: 0m1s
    - getsdk: 0m34s
-   - configsdk: 0m14s
-   - buildsdk: 36m28s
-   - **TOTAL: 1h59m28s**
+   - configsdk: 0m17s
+   - buildsdk: 24m2s
+   - **TOTAL: 35m0s**
 
 5. As a final step, the script will open http://localhost:3000 in a browser on the Raspberry Pi. Enter your Amazon Developer credentials and close the browser window when prompted. (You won't have to do this if you already have a valid configuration file.)  
 If you see a `400 Bad Request - HTTP` error it may be necessary to add http:// URLs to your device origins and return fields. To do this, go to your amazon developer AVS home page (https://developer.amazon.com/avs/home.html) and from `My products` select `manage` and then `security profile`. Now add http://localhost:3000 to the `Allowed origins` and http://localhost:3000/authresponse to the `Allowed return URLs`. Now refresh the browser window with the original error.

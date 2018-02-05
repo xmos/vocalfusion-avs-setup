@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-cd $SOURCE_FOLDER/*portaudio*/
-./configure --prefix=$LOCAL_BUILD
+
+# Setup paths
+SCRIPTS_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" 
+source $SCRIPTS_DIR/avs-config.sh
+
+cd $THIRD_PARTY/*portaudio*/
+./configure --without-jack
 make -j3
-sudo make install
