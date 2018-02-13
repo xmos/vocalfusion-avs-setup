@@ -1,20 +1,40 @@
-#!/usr/bin/env bash
-echo "Enter your ClientId:"
-read CLIENT_ID
-echo "Enter your ClientSecret:"
-read CLIENT_SECRET
-echo "Enter your deviceTypeId/ProductId:"
-read DEVICE_TYPE_ID
-echo "Enter your deviceSerialNumber (this can be any number):"
-read DEVICE_SERIAL_NUMBER
+if [[ (! -z $SDK_CONFIG_CLIENT_ID) || (-e $SCRIPTS_DIR/AlexaClientSDKConfig.json) ]]; then
+    return
+fi
 
-echo "export SDK_CONFIG_CLIENT_ID=$CLIENT_ID" >> $HOME/.bash_aliases
-echo "export SDK_CONFIG_CLIENT_SECRET=$CLIENT_SECRET" >> $HOME/.bash_aliases
-echo "export SDK_CONFIG_DEVICE_TYPE_ID=$DEVICE_TYPE_ID" >> $HOME/.bash_aliases
-echo "export SDK_CONFIG_DEVICE_SERIAL_NUMBER=$DEVICE_SERIAL_NUMBER" >> $HOME/.bash_aliases
-echo "export SDK_SQLITE_DATABASE_FILE_PATH=\"$HOME/BUILD/alerts.db\"" >> $HOME/.bash_aliases
-echo "export SDK_ALARM_DEFAULT_SOUND_FILE_PATH=\"$HOME/BUILD/alrm.wav\"" >> $HOME/.bash_aliases
-echo "export SDK_ALARM_SHORT_SOUND_FILE_PATH=\"$HOME/BUILD/alrm_sht.wav\"" >> $HOME/.bash_aliases
-echo "export SDK_TIMER_DEFAULT_SOUND_FILE_PATH=\"$HOME/BUILD/tmr.wav\"" >> $HOME/.bash_aliases
-echo "export SDK_TIMER_SHORT_SOUND_FILE_PATH=\"$HOME/BUILD/tmr_sht.wav\"" >> $HOME/.bash_aliases
-source $HOME/.bashrc
+while [[ -z $SDK_CONFIG_CLIENT_ID ]] ; do
+    echo "Enter your ClientId:"
+    read SDK_CONFIG_CLIENT_ID
+    export SDK_CONFIG_CLIENT_ID
+done
+while [[ -z $SDK_CONFIG_CLIENT_SECRET ]] ; do
+    echo "Enter your ClientSecret:"
+    read SDK_CONFIG_CLIENT_SECRET
+    export SDK_CONFIG_CLIENT_SECRET
+done
+while [[ -z $SDK_CONFIG_PRODUCT_ID ]] ; do
+    echo "Enter your ProductId:"
+    read SDK_CONFIG_PRODUCT_ID
+    export SDK_CONFIG_PRODUCT_ID
+done
+while [[ -z $SDK_CONFIG_DEVICE_SERIAL_NUMBER ]] ; do
+    echo "Enter your deviceSerialNumber (this can be any number):"
+    read SDK_CONFIG_DEVICE_SERIAL_NUMBER
+    export SDK_CONFIG_DEVICE_SERIAL_NUMBER
+done
+while [[ ( "$SETTING_LOCALE_VALUE" != "en-US" ) && \
+         ( "$SETTING_LOCALE_VALUE" != "en-GB" ) && \
+         ( "$SETTING_LOCALE_VALUE" != "de-DE" ) ]] ; do
+    echo "Enter your desired locale (valid values are en-US, en-GB, de-DE):"
+    read SETTING_LOCALE_VALUE
+    export SETTING_LOCALE_VALUE
+done
+
+export SDK_SQLITE_DATABASE_FILE_PATH=$APPS_FILES/alerts.db
+export SDK_ALARM_DEFAULT_SOUND_FILE_PATH=$SOUND_FILES/alarm.wav
+export SDK_ALARM_SHORT_SOUND_FILE_PATH=$SOUND_FILES/alarm_short.wav
+export SDK_TIMER_DEFAULT_SOUND_FILE_PATH=$SOUND_FILES/timer.wav
+export SDK_TIMER_SHORT_SOUND_FILE_PATH=$SOUND_FILES/timer_short.wav
+
+export SDK_SQLITE_SETTINGS_DATABASE_FILE_PATH=$APPS_FILES/settings.db
+export SDK_CERTIFIED_SENDER_DATABASE_FILE_PATH=$APPS_FILES/certifiedSender.db
