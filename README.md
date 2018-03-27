@@ -21,7 +21,7 @@ You will need:
 - HDMI cable
 - Fast-Ethernet connection with internet connectivity
 
-You will also need an Amazon Developer account: https://developer.amazon.com 
+You will also need an Amazon Developer account: https://developer.amazon.com
 
 ## Hardware setup
 Setup your hardware by following the **Hardware Setup** at: https://xmos.com/vocalfusion-avs
@@ -36,14 +36,11 @@ Brief instructions and additional notes are below:
 2. Open a terminal on the Raspberry Pi and clone this respository:  
 `cd ~; git clone https://github.com/xmos/vocalfusion-avs-setup`
 
-3. Either:  
-create a new Alexa device by following: https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile  
+3. Create a new Alexa device by following: https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile  
 (Note: the *Allowed Origins* and *Allowed Return URLs* should use **http**, not https.)  
-Or:  
-use an existing Alexa device by placing your `AlexaClientSDKConfig.json` file (with a valid refresh token) in the `~/vocalfusion-avs-setup/scripts/` folder.
 
-4. Run the installation script: `source ~/vocalfusion-avs-setup/auto_install.sh`  
-If necessary, enter your Alexa device details (*ProductID*, *ClientID* and *ClientSecret*), a serial number and your location.  
+4. Run the installation script: `source ~/vocalfusion-stereo-avs-setup/auto_install.sh`  
+You will be prompted enter your Alexa device details (*ProductID*, *ClientID* and *ClientSecret*), a serial number and your location.  
 Wait for the sensory (keyword detection) repository to clone, then read and accept the license agreement.  
 Wait for the script to complete the installation. This can take a while, for example:  
    - audio-setup: 4m40s
