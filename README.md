@@ -57,8 +57,11 @@ Wait for the script to complete the installation. This can take a while, for exa
    - **TOTAL: 35m0s**
 
 5. As a final step, the script will open http://localhost:3000 in a browser on the Raspberry Pi. Enter your Amazon Developer credentials and close the browser window when prompted. (You won't have to do this if you already have a valid configuration file.)  
-If you want to add your own configuration file later, paste it into: `~/BUILD/Integration/`
+If you want to add your own configuration file later, paste it into: `~/sdk-folder/sdk-build/Integration/`
 
 6. Enter `sudo reboot` to reboot the Raspberry Pi and complete the audio setup.
 
 7. Enter `avsrun` to run the sample app, `avsunit` to run the unit tests and `avsintegration` to run the integration tests.
+   - If `avsrun` results in a segfault, there is a good chance that the authorisation has failed for some reason.
+   - Open `~/sdk-folder/sdk-build/Integration/AlexaClientSDKConfig.json` and enter manually the client_id, client_secret, product_id and serial_number
+   - run  `$SCRIPTS_DIR/avs_pyauth.sh` and log in using the browser windows that appears (you are currently unable to do this from elsewhere)
