@@ -39,7 +39,7 @@ Brief instructions and additional notes are below:
 3. Create a new Alexa device by following: https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile  
 (Note: the *Allowed Origins* and *Allowed Return URLs* should use **http**, not https.)  
 
-4. Run the installation script: `source ~/vocalfusion-stereo-avs-setup/auto_install.sh`  
+4. Run the installation script: `source ~/vocalfusion-avs-setup/auto_install.sh`  
 You will be prompted enter your Alexa device details (*ProductID*, *ClientID* and *ClientSecret*), a serial number and your location.  
 Wait for the sensory (keyword detection) repository to clone, then read and accept the license agreement.  
 Wait for the script to complete the installation. This can take a while, for example:  
