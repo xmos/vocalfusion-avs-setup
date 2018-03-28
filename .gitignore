@@ -1,6 +1,0 @@
-*.o.cmd
-*.o
-*.ko
-*.order
-AlexaClientSDKConfig*
-time_taken.txt
