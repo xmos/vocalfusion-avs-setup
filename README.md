@@ -40,28 +40,21 @@ Brief instructions and additional notes are below:
 (Note: the *Allowed Origins* and *Allowed Return URLs* should use **http**, not https.)  
 
 4. Run the installation script: `source ~/vocalfusion-avs-setup/auto_install.sh`    
-Wait for the sensory (keyword detection) repository to clone, then read and accept the license agreement.  
-Wait for the script to complete the installation. This can take a while, for example:  
-   - audio-setup: 4m40s
-   - apt-get deps: 3m14s
-   - getsrc: 3m11s
-   - portaudio: 1m1s
-   - sensory: 0m1s
-   - getsdk: 0m34s
-   - configsdk: 0m17s
-   - buildsdk: 24m2s
-   - **TOTAL: 35m0s**
+Read and accept the AVS Device SDK license agreement.
 
 5. You will be prompted enter your Alexa device details and asked whether you want the Sample App to run automatically when the Raspberry Pi boots.
 
-6. As a final step, the script will open http://localhost:3000 in a browser on the Raspberry Pi. Enter your Amazon Developer credentials and close the browser window when prompted. (You won't have to do this if you already have a valid configuration file.)  
+6. Read and accept the Sensory license agreement.
+Wait for the script to complete the installation. This can take some time.
+
+7. As a final step, the script will open http://localhost:3000 in a browser on the Raspberry Pi. Enter your Amazon Developer credentials and close the browser window when prompted. (You won't have to do this if you already have a valid configuration file.)  
 If you see a `400 Bad Request - HTTP` error it may be necessary to add http:// URLs to your device origins and return fields. To do this, go to your amazon developer AVS home page (https://developer.amazon.com/avs/home.html) and from `My products` select `manage` and then `security profile`. Now add http://localhost:3000 to the `Allowed origins` and http://localhost:3000/authresponse to the `Allowed return URLs`. Now refresh the browser window with the original error.
 
-7. Enter `sudo reboot` to reboot the Raspberry Pi and complete the audio setup.
+8. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
 
 ## Running the AVS SDK Sample App
 The following commands will be available to run from a terminal:
 - `avsrun` to run the Sample App.
-- `avsauth` to re-enter your Alexa device details.
+- `avsauth` to re-authenticate your Alexa device details.
 - `avsunit` to run the unit tests.
-- `avsintegration` to run the integration tests.
+- `avssetup` to re-install the Sample App.
