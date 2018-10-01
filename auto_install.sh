@@ -3,7 +3,7 @@ pushd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null
 SETUP_DIR="$( pwd )"
 RPI_SETUP_DIR=$SETUP_DIR/vocalfusion-rpi-setup
 
-RPI_SETUP_TAG="v1.2"
+RPI_SETUP_TAG="v1.2.1"
 AVS_DEVICE_SDK_TAG="xmos_v1.6"
 AVS_SCRIPT="setup.sh"
 
