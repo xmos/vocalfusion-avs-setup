@@ -3,6 +3,7 @@
 ## 1.5.1
 
   * Added a check of SDK folder and version
+  * Stop on error in either the RPI setup or AVS SDK scripts
 
 ## 1.5.0
 

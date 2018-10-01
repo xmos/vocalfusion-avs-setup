@@ -39,13 +39,15 @@ fi
 
 # Execute (rather than source) the setup scripts
 echo "Installing VocalFusion Raspberry Pi Setup..."
-$RPI_SETUP_DIR/setup.sh vocalfusion
+if $RPI_SETUP_DIR/setup.sh vocalfusion ; then
 
-echo "Installing Amazon AVS SDK..."
-wget -O $AVS_SCRIPT https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/$AVS_SCRIPT
-chmod +x $AVS_SCRIPT
-./$AVS_SCRIPT
+  echo "Installing Amazon AVS SDK..."
+  wget -O $AVS_SCRIPT https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/$AVS_SCRIPT
+  chmod +x $AVS_SCRIPT
+  if ./$AVS_SCRIPT ; then
 
-echo "Type 'sudo reboot' below to reboot the Raspberry Pi and complete the AVS setup."
+    echo "Type 'sudo reboot' below to reboot the Raspberry Pi and complete the AVS setup."
+  fi
+fi
 
 popd > /dev/null
