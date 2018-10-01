@@ -33,24 +33,30 @@ Brief instructions and additional notes are below:
 
 1. Install Raspbian (Stretch) on the Raspberry Pi.
 
-2. Open a terminal on the Raspberry Pi and clone this repository:  
+2. Ensure running kernel version matches headers kernel headers package. A typical system requires the following `--reinstall` command:
+
+   ```sudo apt-get install --reinstall raspberrypi-bootloader raspberrypi-kernel```
+
+   followed by a reboot.
+
+3. Open a terminal on the Raspberry Pi and clone this repository:  
 `cd ~; git clone https://github.com/xmos/vocalfusion-avs-setup`
 
-3. Create a new Alexa device by following: https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile  
+4. Create a new Alexa device by following: https://github.com/alexa/alexa-avs-sample-app/wiki/Create-Security-Profile  
 (Note: the *Allowed Origins* and *Allowed Return URLs* should use **http**, not https.)  
 
-4. Run the installation script: `source ~/vocalfusion-avs-setup/auto_install.sh`    
+5. Run the installation script: `source ~/vocalfusion-avs-setup/auto_install.sh`    
 Read and accept the AVS Device SDK license agreement.
 
-5. You will be prompted enter your Alexa device details and asked whether you want the Sample App to run automatically when the Raspberry Pi boots.
+6. You will be prompted enter your Alexa device details and asked whether you want the Sample App to run automatically when the Raspberry Pi boots.
 
-6. Read and accept the Sensory license agreement.
+7. Read and accept the Sensory license agreement.
 Wait for the script to complete the installation. This can take some time.
 
-7. As a final step, the script will open http://localhost:3000 in a browser on the Raspberry Pi. Enter your Amazon Developer credentials and close the browser window when prompted. (You won't have to do this if you already have a valid configuration file.)  
+8. As a final step, the script will open http://localhost:3000 in a browser on the Raspberry Pi. Enter your Amazon Developer credentials and close the browser window when prompted. (You won't have to do this if you already have a valid configuration file.)  
 If you see a `400 Bad Request - HTTP` error it may be necessary to add http:// URLs to your device origins and return fields. To do this, go to your amazon developer AVS home page (https://developer.amazon.com/avs/home.html) and from `My products` select `manage` and then `security profile`. Now add http://localhost:3000 to the `Allowed origins` and http://localhost:3000/authresponse to the `Allowed return URLs`. Now refresh the browser window with the original error.
 
-8. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
+9. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
 
 ## Running the AVS SDK Sample App
 The following commands will be available to run from a terminal:
