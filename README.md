@@ -20,8 +20,8 @@ You will need:
 
 - Either
 
-   Raspberry Pi 3 with Micro-USB power supply (min. 2A)  
-   Raspberry Pi 4 with USB-C power supply (min. 3A)
+   Raspberry Pi 3 with Micro-USB power supply (min. 2A) and HDMI cable
+   Raspberry Pi 4 with USB-C power supply (min. 3A) and Micro HDMI to Standard HDMI (A/M) Cable
 
 - MicroSD card (min. 16GB)
 - Powered speakers with audio 3.5mm analogue plug
@@ -30,8 +30,7 @@ You will need:
    Mono for the XVF3100
    
 - Monitor with HDMI input
-- HDMI cable
-- Fast-Ethernet connection with internet connectivity
+- Fast-Ethernet connection or WiFi with internet connectivity
 
 You will also need an Amazon Developer account: https://developer.amazon.com
 
