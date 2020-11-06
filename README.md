@@ -12,13 +12,23 @@ This repository provides a simple-to-use automated script to install the Amazon 
 ## Prerequisites
 You will need:
 
-- Either **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71
-- or     **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS
-- or     **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
-- Raspberry Pi 3
-- Micro-USB power supply (min. 2A)
+- Either
+
+   **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71  
+   **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS  
+   **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
+
+- Either
+
+   Raspberry Pi 3 with Micro-USB power supply (min. 2A)  
+   Raspberry Pi 4 with USB-C power supply (min. 3A)
+
 - MicroSD card (min. 16GB)
-- Powered stereo speakers with audio 3.5mm analogue plug
+- Powered speakers with audio 3.5mm analogue plug
+
+   Stereo for the XVF3500 and XVF3500  
+   Mono for the XVF3100
+   
 - Monitor with HDMI input
 - HDMI cable
 - Fast-Ethernet connection with internet connectivity
@@ -56,7 +66,7 @@ The **Getting Started Guide** details setup steps up until this point. What foll
 
 5. Register an AVS product, create a security profile and save a *config.json* file by following https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/register-a-product.html
 
-6. Copy the *config.json* into the directory `vocalfusion_3510_avs_setup`
+6. Copy the *config.json* into the directory `vocalfusion-avs-setup`
 
 7. Run the installation script by entering:
 
