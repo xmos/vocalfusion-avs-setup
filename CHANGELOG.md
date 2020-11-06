@@ -1,5 +1,9 @@
 # VocalFusion AVS Setup Change Log
 
+## 2.0.0
+
+  * Support for all XMOS Vocalfusion products (currently 3100, 3500, and 3510).
+
 ## 1.5.1
 
   * Added a check of SDK folder and version
