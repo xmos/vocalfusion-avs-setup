@@ -97,7 +97,6 @@ The **Getting Started Guide** details setup steps up until this point. What foll
 The automated installation script creates a number of aliases which can be used to execute the AVS Device SDK client, or run the unit tests:
 - `avsrun` to run the Sample App.
 - `avsunit` to run the unit tests (invoke Amazon's `test.sh`).
-- `avssetup` to re-install the Sample App (re-run XMOS modified `setup.sh`).
 
 ## Using different Amazon details
 To change client and product ID, download your updated config.json and in the same folder run `avssetup config.json rebuild`. Subsequent `avsrun` calls will use the new details.
