@@ -104,16 +104,8 @@ To change client and product ID, download your updated config.json and in the sa
 
 ## Changing Sensory operating point
 
-To change to operating point of the Sensory keyword engine, navigate to 
-```
-~/sdk-folder/avs-device-sdk/KWD/Sensory/src/
-```
+To change to operating point of the Sensory keyword engine, edit the shell script run by the `avsrun` alias: 
+
+   `~/sdk-folder/avs-device-sdk/tools/Install/.avsrun-startup.sh`
    
-Change line 61 in `SensoryKeywordDetector.cpp` to your desired value:
-
-```c++
-/// The Sensory operating point
-static const unsigned int SENSORY_OPERATING_POINT = 12;
-```
-
-In a terminal, navigate to `~/vocalfustion_3510_avs_setup` and run `avssetup config.json rebuild`. This will rebuild AVS using your config.json with the new operating point.
+and change the third argument to SampleApp from the default value of `12` to the desired value.
