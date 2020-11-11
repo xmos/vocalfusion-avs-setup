@@ -56,7 +56,7 @@ if [ ! -f "$CONFIG_JSON_FILE" ]; then
     exit 1
 fi
 
-OPTIONS=s:x:h
+OPTIONS=s:h
 while getopts "$OPTIONS" opt ; do
     case $opt in
         s )
