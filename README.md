@@ -98,9 +98,6 @@ The automated installation script creates a number of aliases which can be used 
 - `avsrun` to run the Sample App.
 - `avsunit` to run the unit tests (invoke Amazon's `test.sh`).
 
-## Using different Amazon details
-To change client and product ID, download your updated config.json and in the same folder run `avssetup config.json rebuild`. Subsequent `avsrun` calls will use the new details.
-
 ## Changing Sensory operating point
 
 To change to operating point of the Sensory keyword engine, edit the shell script run by the `avsrun` alias: 
