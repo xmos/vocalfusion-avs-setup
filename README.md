@@ -14,19 +14,19 @@ You will need:
 
 - Either
 
-   **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71  
-   **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS  
+   **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71, or  
+   **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS, or  
    **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
 
 - Either
 
-   Raspberry Pi 3 with Micro-USB power supply (min. 2A) and HDMI cable
+   Raspberry Pi 3 with Micro-USB power supply (min. 2A) and HDMI cable, or  
    Raspberry Pi 4 with USB-C power supply (min. 3A) and Micro HDMI to Standard HDMI (A/M) Cable
 
 - MicroSD card (min. 16GB)
 - Powered speakers with audio 3.5mm analogue plug
 
-   Stereo for the XVF3500 and XVF3500  
+   Stereo for the XVF3510 and XVF3500, or  
    Mono for the XVF3100
    
 - Monitor with HDMI input
@@ -72,18 +72,10 @@ The **Getting Started Guide** details setup steps up until this point. What foll
    ``` cd vocalfusion-avs-setup```
 
    And then either
-
-   ```./auto_install.sh xvf3510```
-
-   for the xCORE VocalFusion XVF3510,
-
-   ```./auto_install.sh xvf3500```
-
-   for the xCORE VocalFusion XVF3500, or
-
-   ```./auto_install.sh xvf3100```
-
-   for the xCORE VocalFusion XVF3100.
+   
+   ```./auto_install.sh xvf3510``` for the xCORE VocalFusion XVF3510, or  
+   ```./auto_install.sh xvf3500``` for the xCORE VocalFusion XVF3500, or  
+   ```./auto_install.sh xvf3100``` for the xCORE VocalFusion XVF3100
 
    Read and accept the AVS Device SDK license agreement.
 
@@ -93,14 +85,13 @@ The **Getting Started Guide** details setup steps up until this point. What foll
 
 10. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
 
-11. If you selected the option to run the Sample App on boot you should now be able to complete the registration by following the steps from 2 onward here:
-https://github.com/alexa/avs-device-sdk/wiki/Raspberry-Pi-Quick-Start-Guide-with-Script#finish-authorization-using-login-with-amazon
+11. If you selected the option to run the Sample App on boot you should now be able to complete the registration by following the instructions on the screen, although you may need to scroll back to see them. A code will be printed on the screen, and you will be prompted to visit https://amazon.com/us/code, log in to your developer account, and enter the code when prompted.
 
 12. Now you can execute an AVS command such as "Alexa, what time is it?".
 
    On the XMOS **xCORE VocalFusion XVF3510 Kit for Amazon AVS**, the LED on the Pi HAT board will change colour when the system hears the "Alexa" keyword, and will then cycle back and forth whilst waiting for a response from the Amazon AVS server.
 
-   On the XMOS **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**, the LEDs on the development board should reflect the approximate direction from which the microphones are receiving a stimulus.
+   On the XMOS **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS** and **xCORE VocalFusion 4-Mic Kit for Amazon AVS**, the LEDs on the development board should reflect the approximate direction from which the microphones are receiving a stimulus.
 
 ## Running the AVS SDK Sample App
 The automated installation script creates a number of aliases which can be used to execute the AVS Device SDK client, or run the unit tests:
