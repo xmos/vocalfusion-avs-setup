@@ -96,7 +96,6 @@ The **Getting Started Guide** details setup steps up until this point. What foll
 ## Running the AVS SDK Sample App
 The automated installation script creates a number of aliases which can be used to execute the AVS Device SDK client, or run the unit tests:
 - `avsrun` to run the Sample App.
-- `avsunit` to run the unit tests (invoke Amazon's `test.sh`).
 
 ## Changing Sensory operating point
 
