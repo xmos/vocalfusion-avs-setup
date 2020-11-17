@@ -42,7 +42,7 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
    https://www.xmos.ai/file/xvf3510-int-release for the XVF3510  
    https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries for the XVF3500  
    https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries for the XVF3100  
-To upgrage the firmware you will need the XMOS xTAG 2 adapter https://www.xmos.ai/xtag-debug-adapter/
+To upgrage the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
 
 ## AVS SDK installation and Raspberry Pi audio setup
 The **Getting Started Guide** details setup steps up until this point. What follows are setup steps specific to the AVS SDK.
