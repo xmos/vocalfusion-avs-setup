@@ -1,13 +1,14 @@
-# xCORE VocalFusion Kit for Amazon AVS on a Raspberry Pi
+# xCORE VocalFusion Kits for Amazon AVS on a Raspberry Pi
 
-The XMOS **xCORE VocalFusion Kit for Amazon AVS** provides far-field voice capture using the XMOS XVF3100, XVF3500, and XVF3510 voice processors.
+This repository provides a simple-to-use automated script to install the Amazon AVS SDK on a Raspberry Pi and configure the Raspberry Pi to use the **xCORE VocalFusion Kits for Amazon AVS**.
 
-Combined with a Raspberry Pi running the Amazon Alexa Voice Service (AVS) Software Development Kit (SDK), this kit allows you to quickly prototype and evaluate talking with Alexa.
+The XMOS **xCORE VocalFusion Kits for Amazon AVS** provide far-field voice capture using the XMOS XVF3100, XVF3500, and XVF3510 voice processors.
 
-To find out more, visit: https://xmos.com/vocalfusion-avs  
+Combined with a Raspberry Pi running the Amazon Alexa Voice Service (AVS) Software Development Kit (SDK), these kits allow you to quickly prototype and evaluate talking with Alexa.
+
+To find out more, visit: https://www.xmos.ai/vocalfusion-voice-interfaces/ (XVF3510/3500)  
+or https://www.xmos.ai/vocalfusion-conference-calling/ (XVF3100)  
 and: https://developer.amazon.com/alexa-voice-service
-
-This repository provides a simple-to-use automated script to install the Amazon AVS SDK on a Raspberry Pi and configure the Raspberry Pi to use the **xCORE VocalFusion Kit for Amazon AVS** for audio.
 
 ## Prerequisites
 You will need:
@@ -30,6 +31,7 @@ You will need:
    Mono for the XVF3100
    
 - Monitor with HDMI input
+- USB keyboard and mouse
 - Fast-Ethernet connection or WiFi with internet connectivity
 
 You will also need an Amazon Developer account: https://developer.amazon.com
@@ -37,42 +39,38 @@ You will also need an Amazon Developer account: https://developer.amazon.com
 ## Hardware Setup
 Set up your hardware by following the **Hardware Setup Guide** for your product.
 
+   XVF3510: https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides  
+   XVF3500: https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides  
+   XVF3100: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides  
+
 ## Firmware Upgrade
 Once the hardware is setup, upgrade the firmware on your AVS development kit. The firmware can be found here:  
-   https://www.xmos.ai/file/xvf3510-int-release for the XVF3510  
-   https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries for the XVF3500  
-   https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries for the XVF3100  
+
+   XVF3510: https://www.xmos.ai/file/xvf3510-int-release  
+   XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries  
+   XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries  
+   
 To upgrage the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
 
+## Create a Raspberry Pi system disk
+Install the Raspberry Pi Imager on a host computer, and install Raspberry Pi OS (32-bit). Raspberry Pi Imager is available here: https://www.raspberrypi.org/software/
+
 ## AVS SDK installation and Raspberry Pi audio setup
-The **Getting Started Guide** details setup steps up until this point. What follows are setup steps specific to the AVS SDK.
+The **Getting Started Guide** for your platform details setup steps up to this point. What follows at the steps specific to setting up the AVS SDK.
 
-1. Install Raspbian (Buster) on the Raspberry Pi.
+1. Boot the Raspberry Pi from the SD card, and follow the instructions to set up your locale, connect to WiFi, and update the system.
 
-   NOOBS is available here: http://raspberrypi.org/downloads/
-   
-   IMPORTANT: To prevent inadvertent (and possibly incompatible) updates, ensure that there are no network cables connected to the Pi. 
-   
-   On first boot, follow the instructions to set your locale settings, connect to a WiFi network and update the kernel.
+2. Reboot the system to ensure the latest kernel is running.
 
-2. Ensure running kernel version matches headers kernel headers package. A typical system requires the following `--reinstall` command:
-
-   ```
-   sudo apt-get update
-   sudo apt-get install --reinstall raspberrypi-bootloader raspberrypi-kernel
-   ```
-
-   followed by a reboot.
-
-3. Clone the vocalfusion-avs-setup repository:
+3. Open a terminal window on the Raspberry Pi desktop and clone the vocalfusion-avs-setup repository:
 
    ```git clone https://github.com/xmos/vocalfusion-avs-setup```
 
-4. Close any other application such as browsers to avoid the Raspberry Pi freezing during the AVS SDK installation.
+4. Register an AVS product, create a security profile and save a *config.json* file by following https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/register-a-product.html. It is strongly recommended that the config.json file should be saved onto a USB memory stick for future use.
 
-5. Register an AVS product, create a security profile and save a *config.json* file by following https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/register-a-product.html
+5. Close the browser and any other applications to avoid the Raspberry Pi freezing during the AVS SDK installation.
 
-6. Copy the *config.json* into the directory `vocalfusion-avs-setup`
+6. Copy the *config.json* from the location it was saved to in step 4. into the directory `vocalfusion-avs-setup`
 
 7. Run the installation script by entering:
 
@@ -80,9 +78,9 @@ The **Getting Started Guide** details setup steps up until this point. What foll
 
    And then either
    
-   ```./auto_install.sh xvf3510``` for the xCORE VocalFusion XVF3510, or  
-   ```./auto_install.sh xvf3500``` for the xCORE VocalFusion XVF3500, or  
-   ```./auto_install.sh xvf3100``` for the xCORE VocalFusion XVF3100
+   XVF3510: ```./auto_install.sh xvf3510```  
+   XVF3500: ```./auto_install.sh xvf3500```  
+   XVF3100: ```./auto_install.sh xvf3100```
 
    Read and accept the AVS Device SDK license agreement.
 
