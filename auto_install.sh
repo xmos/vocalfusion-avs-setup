@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright 2021 XMOS LIMITED. This software is subject to the terms of the
+# XMOS Public Licence, Version 1
 pushd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null
 SETUP_DIR="$( pwd )"
 RPI_SETUP_REPO=vocalfusion-rpi-setup
