@@ -53,7 +53,7 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
 To upgrage the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
 
 ## Create a Raspberry Pi system disk
-Install the Raspberry Pi Imager on a host computer, and install Raspberry Pi OS (32-bit). Raspberry Pi Imager is available here: https://www.raspberrypi.org/software/
+Install the Raspberry Pi Imager on a host computer, and install Raspberry Pi OS (32-bit). Raspberry Pi Imager is available here: https://www.raspberrypi.org/software/. This will install the 'buster' version (currently) of Raspberry Pi OS. Do not use a previous version.
 
 ## AVS SDK installation and Raspberry Pi audio setup
 The **Getting Started Guide** for your platform details setup steps up to this point. What follows are the steps specific to setting up the AVS SDK.
