@@ -53,26 +53,40 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
 To upgrage the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
 
 ## Create a Raspberry Pi system disk
-Install the Raspberry Pi Imager on a host computer, and install Raspberry Pi OS (32-bit). Raspberry Pi Imager is available here: https://www.raspberrypi.org/software/
+First, obtain the required version of the Raspberry Pi operating system, which is available here:
+
+https://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip
+
+We cannot use the latest as updates to linux kernel v5 have broken the I2S sub-system.
+
+Then, install the Raspberry Pi Imager on a host computer. Raspberry Pi Imager is available here:
+
+https://www.raspberrypi.org/software/
+
+Run the Raspberry Pi Imager, and select the 'CHOOSE OS' button. Scroll to the bottom of the displayed list, and select "Use custom". 
+Then select the file downloaded above (2020-02-13-raspbian-buster.zip) and select "Open". The archive file does not have to be unzipped, the imager software will do that.
+
+Select the CHOOSE SD CARD button to which to download the image, and then select the "WRITE" button.
+
+When prompted, remove the written SD card and insert it into the Raspberry Pi. 
+
+Connect up the keyboard, mouse, speakers and display to the Raspberry Pi and power up the system. Refer to the **Getting Started Guide** for you platform.
+
+**DO NOT** follow the prompt to update the software on the system. Set up the locale, and setup a network connect, but **DO NOT** update the software on the Raspberry Pi. This will update the kernel, and then the audio sub-system will not work.
 
 ## AVS SDK installation and Raspberry Pi audio setup
-The **Getting Started Guide** for your platform details setup steps up to this point. What follows are the steps specific to setting up the AVS SDK.
 
-1. Boot the Raspberry Pi from the SD card, and follow the instructions to set up your locale, connect to WiFi, and update the system.
-
-2. Reboot the system to ensure the latest kernel is running.
-
-3. Open a terminal window on the Raspberry Pi desktop and clone the vocalfusion-avs-setup repository:
+1. Open a terminal window on the Raspberry Pi desktop and clone the vocalfusion-avs-setup repository:
 
    ```git clone https://github.com/xmos/vocalfusion-avs-setup```
 
-4. Register an AVS product, create a security profile and save a *config.json* file by following https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/register-a-product.html. It is strongly recommended that the config.json file should be saved onto a USB memory stick for future use.
+2. Register an AVS product, create a security profile and save a *config.json* file by following https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/register-a-product.html. It is strongly recommended that the config.json file should be saved onto a USB memory stick for future use.
 
-5. Close the browser and any other applications to avoid the Raspberry Pi freezing during the AVS SDK installation.
+3. Close the browser and any other applications to avoid the Raspberry Pi freezing during the AVS SDK installation.
 
-6. Copy the *config.json* from the location it was saved to in step 4. into the directory `vocalfusion-avs-setup`
+4. Copy the *config.json* from the location it was saved to in step 4. into the directory `vocalfusion-avs-setup`
 
-7. Run the installation script by entering:
+5. Run the installation script by entering:
 
    ``` cd vocalfusion-avs-setup```
 
@@ -84,15 +98,15 @@ The **Getting Started Guide** for your platform details setup steps up to this p
 
    Read and accept the AVS Device SDK license agreement.
 
-8. You will be asked whether you want the Sample App to run automatically when the Raspberry Pi boots. It is recommended that you respond "yes" to this option.
+6. You will be asked whether you want the Sample App to run automatically when the Raspberry Pi boots. It is recommended that you respond "yes" to this option.
 
-9. Read and accept the Sensory license agreement. Wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
+7. Read and accept the Sensory license agreement. Wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
 
-10. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
+8. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
 
-11. If you selected the option to run the Sample App on boot you should now be able to complete the registration by following the instructions on the screen, although you may need to scroll back to see them. A code will be printed on the screen, and you will be prompted to visit https://amazon.com/us/code, log in to your developer account, and enter the code when prompted.
+9. If you selected the option to run the Sample App on boot you should now be able to complete the registration by following the instructions on the screen, although you may need to scroll back to see them. A code will be printed on the screen, and you will be prompted to visit https://amazon.com/us/code, log in to your developer account, and enter the code when prompted.
 
-12. Now you can execute an AVS command such as "Alexa, what time is it?".
+10. Now you can execute an AVS command such as "Alexa, what time is it?".
 
    On the XMOS **xCORE VocalFusion XVF3510 Kit for Amazon AVS**, the LED on the Pi HAT board will change colour when the system hears the "Alexa" keyword, and will then cycle back and forth whilst waiting for a response from the Amazon AVS server.
 
