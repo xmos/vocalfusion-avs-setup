@@ -2,12 +2,12 @@
 
 This repository provides a simple-to-use automated script to install the Amazon AVS SDK on a Raspberry Pi and configure the Raspberry Pi to use the **xCORE VocalFusion Kits for Amazon AVS**.
 
-The XMOS **xCORE VocalFusion Kits for Amazon AVS** provide far-field voice capture using the XMOS XVF3100, XVF3500, and XVF3510 voice processors.
+The XMOS **xCORE VocalFusion Kits for Amazon AVS** provide far-field voice capture using the XMOS XVF3000, XVF3100, XVF3500, XVF3510 and XVF3610 voice processors.
 
 Combined with a Raspberry Pi running the Amazon Alexa Voice Service (AVS) Software Development Kit (SDK), these kits allow you to quickly prototype and evaluate talking with Alexa.
 
 To find out more, visit: https://www.xmos.ai/vocalfusion-voice-interfaces/ (XVF3510/3500)  
-or https://www.xmos.ai/vocalfusion-conference-calling/ (XVF3100)  
+or https://www.xmos.ai/vocalfusion-conference-calling/ (XVF3100/3000)  
 and: https://developer.amazon.com/alexa-voice-service
 
 ## Prerequisites
@@ -27,8 +27,8 @@ You will need:
 - MicroSD card (min. 16GB)
 - Powered speakers with audio 3.5mm analogue plug
 
-   Stereo for the XVF3510 and XVF3500, or  
-   Mono for the XVF3100
+   Stereo for the XVF3610, XVF3510 and XVF3500, or  
+   Mono for the XVF3100 and XVF3000
    
 - Monitor with HDMI input
 - USB keyboard and mouse
@@ -42,6 +42,7 @@ Set up your hardware by following the **Hardware Setup Guide** for your product.
    XVF3510: https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides  
    XVF3500: https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides  
    XVF3100: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides  
+   XVF3000: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides  
 
 ## Firmware Upgrade
 Once the hardware is setup, upgrade the firmware on your AVS development kit. The firmware can be found here:  
@@ -49,6 +50,7 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
    XVF3510: https://www.xmos.ai/file/xvf3510-int-release  
    XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries  
    XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries  
+   XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries  
    
 To upgrage the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
 
@@ -92,9 +94,11 @@ Connect up the keyboard, mouse, speakers and display to the Raspberry Pi and pow
 
    And then either
    
+   XVF3610: ```./auto_install.sh xvf3610```  
    XVF3510: ```./auto_install.sh xvf3510```  
    XVF3500: ```./auto_install.sh xvf3500```  
-   XVF3100: ```./auto_install.sh xvf3100```
+   XVF3100: ```./auto_install.sh xvf3100```  
+   XVF3000: ```./auto_install.sh xvf3100```
 
    Read and accept the AVS Device SDK license agreement.
 
