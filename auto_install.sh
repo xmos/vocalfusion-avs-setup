@@ -7,7 +7,7 @@ RPI_SETUP_REPO=vocalfusion-rpi-setup
 RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
-RPI_SETUP_TAG="v4.1.0"
+RPI_SETUP_TAG=feature/xvf3610_support # "v4.1.0"
 AVS_DEVICE_SDK_TAG="v1.21.0"
 AVS_SCRIPT="setup.sh"
 
