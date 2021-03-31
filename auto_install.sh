@@ -7,12 +7,12 @@ RPI_SETUP_REPO=vocalfusion-rpi-setup
 RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
-RPI_SETUP_TAG="v4.0.0"
+RPI_SETUP_TAG="v4.1.0"
 AVS_DEVICE_SDK_TAG="v1.21.0"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
-VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510"
+VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510 xvf3610"
 XMOS_DEVICE=
 
 # Default device serial number if nothing is specified
@@ -122,7 +122,7 @@ mkdir $SDK_DIR
 if [ -d $RPI_SETUP_DIR ]; then
   rm -rf $RPI_SETUP_DIR
 fi
-git clone -b $RPI_SETUP_TAG git://github.com/xmos/$RPI_SETUP_REPO.git
+git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
 
 # Execute (rather than source) the setup scripts
 echo "Installing VocalFusion ${XMOS_DEVICE:3} Raspberry Pi Setup..."
