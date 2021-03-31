@@ -97,7 +97,7 @@ Connect up the keyboard, mouse, speakers and display to the Raspberry Pi and pow
    XVF3610: ```./auto_install.sh xvf3610```  
    XVF3510: ```./auto_install.sh xvf3510```  
    XVF3500: ```./auto_install.sh xvf3500```  
-   XVF3100: ```./auto_install.sh xvf3100```
+   XVF3100: ```./auto_install.sh xvf3100```  
    XVF3000: ```./auto_install.sh xvf3100```
 
    Read and accept the AVS Device SDK license agreement.
