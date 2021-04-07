@@ -1,5 +1,9 @@
 # VocalFusion AVS Setup Change Log
 
+## 2.1.1
+
+  * Changes to README.md to emphasize the necessity of not updating the kernel.
+
 ## 2.1.0
 
   * Added support for xvf3610.
