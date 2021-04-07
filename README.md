@@ -1,8 +1,8 @@
 # xCORE VocalFusion Kits for Amazon AVS on a Raspberry Pi
 
-This repository provides a simple-to-use automated script to install the Amazon AVS SDK on a Raspberry Pi and configure the Raspberry Pi to use the **xCORE VocalFusion Kits for Amazon AVS**.
+This repository provides a simple-to-use automated script to install the Amazon AVS SDK on a Raspberry Pi and configure the Raspberry Pi to use the appropriate **xCORE VocalFusion Kit for Amazon AVS**.
 
-The XMOS **xCORE VocalFusion Kits for Amazon AVS** provide far-field voice capture using the XMOS XVF3000, XVF3100, XVF3500, XVF3510 and XVF3610 voice processors.
+The XMOS **xCORE VocalFusion Kit for Amazon AVS** provides far-field voice capture using one of the XMOS XVF3000, XVF3100, XVF3500, XVF3510 or XVF3610 voice processors.
 
 Combined with a Raspberry Pi running the Amazon Alexa Voice Service (AVS) Software Development Kit (SDK), these kits allow you to quickly prototype and evaluate talking with Alexa.
 
@@ -72,15 +72,27 @@ Select the CHOOSE SD CARD button to which to download the image, and then select
 
 When prompted, remove the written SD card and insert it into the Raspberry Pi. 
 
-Connect up the keyboard, mouse, speakers and display to the Raspberry Pi and power up the system. Refer to the **Getting Started Guide** for you platform.
+Connect up the keyboard, mouse, speakers and display to the Raspberry Pi and power up the system. Refer to the **Getting Started Guide** for your platform.
 
-**DO NOT** follow the prompt to update the software on the system. Set up the locale, and setup a network connect, but **DO NOT** update the software on the Raspberry Pi. This will update the kernel, and then the audio sub-system will not work.
+When the Raspberry Pi boots up, give these answers to the following questions:
+
+- Welcome to the Raspberry Pi Desktop!: select 'Next'
+- Set Country: Make the appropriate changes and select 'Next'
+- Change Password: Set the password appropriately and select 'Next'
+- Set Up Screen: Follow the instructions, and then select 'Next'
+- Select WiFi Network: If you are using WiFi, select your SSID from the list and then select 'Next'
+- (If you selected a WiFi network, you will be prompted to enter the password, and then select 'Next')
+- Update Software: select **Skip**
+
+**DO NOT FOLLOW THE PROMPT TO UPDATE THE SOFTWARE ON THE SYSTEM.** Set up the locale, and setup a network connect, but **DO NOT** update the software on the Raspberry Pi. This will update the kernel, and then the audio sub-system will not work.
 
 ## AVS SDK installation and Raspberry Pi audio setup
 
 1. Open a terminal window on the Raspberry Pi desktop and clone the vocalfusion-avs-setup repository:
 
    ```git clone https://github.com/xmos/vocalfusion-avs-setup```
+   
+   **DO NOT** use the command 'apt update' to update the software database. This will cause the installation to fail. **DO NOT** update the kernel, as this will cause the audio sub-sytem to fail.
 
 2. Register an AVS product, create a security profile and save a *config.json* file by following https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/register-a-product.html. It is strongly recommended that the config.json file should be saved onto a USB memory stick for future use.
 
