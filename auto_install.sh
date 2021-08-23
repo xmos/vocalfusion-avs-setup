@@ -12,7 +12,7 @@ AVS_DEVICE_SDK_TAG="v1.21.0"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
-VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510"
+VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510 xvf3600-slave xvf3600-master"
 XMOS_DEVICE=
 
 # Default device serial number if nothing is specified
