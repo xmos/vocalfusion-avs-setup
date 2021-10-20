@@ -7,12 +7,12 @@ RPI_SETUP_REPO=vocalfusion-rpi-setup
 RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
-RPI_SETUP_TAG="v4.1.0"
+RPI_SETUP_TAG="v4.2.0"
 AVS_DEVICE_SDK_TAG="v1.21.0"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
-VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510 xvf3610"
+VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510 xvf3600-slave xvf3600-master xvf3610"
 XMOS_DEVICE=
 
 # Default device serial number if nothing is specified
@@ -127,6 +127,11 @@ git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
 # Execute (rather than source) the setup scripts
 echo "Installing VocalFusion ${XMOS_DEVICE:3} Raspberry Pi Setup..."
 if $RPI_SETUP_SCRIPT $XMOS_DEVICE; then
+
+  # The line below is needed to avoid the error:
+  # E: Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'testing' to 'stable'
+  # N: This must be accepted explicitly before updates for this repository can be applied. See apt-secure(8) manpage for details.
+  sudo apt update --allow-releaseinfo-change
 
   echo "Installing Amazon AVS SDK..."
   wget -O $AVS_SCRIPT https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/$AVS_SCRIPT

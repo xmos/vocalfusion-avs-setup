@@ -1,5 +1,9 @@
 # VocalFusion AVS Setup Change Log
 
+## 2.2.0
+
+  * Support for all xvf3600 master and slave products
+
 ## 2.1.1
 
   * Changes to README.md to emphasize the necessity of not updating the kernel.
