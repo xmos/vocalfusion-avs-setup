@@ -7,8 +7,8 @@ RPI_SETUP_REPO=vocalfusion-rpi-setup
 RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
-RPI_SETUP_TAG="v4.2.0"
-AVS_DEVICE_SDK_TAG="v1.21.0"
+RPI_SETUP_TAG="feature/3610_evk"
+AVS_DEVICE_SDK_TAG="feature/gpio_int_n"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
@@ -17,6 +17,8 @@ XMOS_DEVICE=
 
 # Default device serial number if nothing is specified
 DEVICE_SERIAL_NUMBER="123456"
+# Disable GPIO keyword detector by default
+GPIO_KEY_WORD_DETECTOR_FLAG=""
 
 usage() {
   local VALID_XMOS_DEVICES_DISPLAY_STRING=
@@ -45,6 +47,7 @@ contain the following:
 Optional parameters:
   -s <serial-number>  If nothing is provided, the default device serial number
                       is 123456
+  -g          	      Flag to enable keyword detector on GPIO interrupt
   -h                  Display this help and exit
   DEVICE-TYPE         XMOS device to setup: $VALID_XMOS_DEVICES_DISPLAY_STRING
 EOT
@@ -58,11 +61,13 @@ if [ ! -f "$CONFIG_JSON_FILE" ]; then
     exit 1
 fi
 
-OPTIONS=s:h
+OPTIONS=s:gh
 while getopts "$OPTIONS" opt ; do
     case $opt in
         s )
             DEVICE_SERIAL_NUMBER="$OPTARG"
+            ;;
+        g ) GPIO_KEY_WORD_DETECTOR_FLAG="-g"
             ;;
         h )
             usage
@@ -70,7 +75,6 @@ while getopts "$OPTIONS" opt ; do
             ;;
     esac
 done
-
 shift $(( OPTIND - 1 ))
 
 if [[ $# -ge 1 ]]; then
@@ -120,9 +124,11 @@ fi
 mkdir $SDK_DIR
 
 if [ -d $RPI_SETUP_DIR ]; then
+  echo "Delete $RPI_SETUP_DIR directory"	
   rm -rf $RPI_SETUP_DIR
 fi
-git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
+
+git clone -b $RPI_SETUP_TAG https://github.com/lucianomartin/$RPI_SETUP_REPO.git
 
 # Execute (rather than source) the setup scripts
 echo "Installing VocalFusion ${XMOS_DEVICE:3} Raspberry Pi Setup..."
@@ -132,14 +138,14 @@ if $RPI_SETUP_SCRIPT $XMOS_DEVICE; then
   # E: Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'testing' to 'stable'
   # N: This must be accepted explicitly before updates for this repository can be applied. See apt-secure(8) manpage for details.
   sudo apt update --allow-releaseinfo-change
-
   echo "Installing Amazon AVS SDK..."
-  wget -O $AVS_SCRIPT https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/$AVS_SCRIPT
-  wget -O pi.sh https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/pi.sh
-  wget -O genConfig.sh https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/genConfig.sh
+  wget -O $AVS_SCRIPT https://raw.githubusercontent.com/lucianomartin/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/$AVS_SCRIPT
+  wget -O pi.sh https://raw.githubusercontent.com/lucianomartin/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/pi.sh
+  wget -O genConfig.sh https://raw.githubusercontent.com/lucianomartin/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/genConfig.sh
   chmod +x $AVS_SCRIPT
-
-  if ./$AVS_SCRIPT $CONFIG_JSON_FILE $AVS_DEVICE_SDK_TAG -s $DEVICE_SERIAL_NUMBER -x $XMOS_DEVICE; then
+AVS_CMD="./${AVS_SCRIPT} ${CONFIG_JSON_FILE} ${AVS_DEVICE_SDK_TAG} -s ${DEVICE_SERIAL_NUMBER} -x ${XMOS_DEVICE} ${GPIO_KEY_WORD_DETECTOR_FLAG}"
+echo "Running command ${AVS_CMD}"
+  if $AVS_CMD; then
     echo "Type 'sudo reboot' below to reboot the Raspberry Pi and complete the AVS setup."
   fi
 fi
