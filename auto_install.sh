@@ -36,7 +36,7 @@ usage() {
   done
 
   cat <<EOT
-usage: auto_install.sh [OPTIONS] [DEVICE-TYPE]
+usage: auto_install.sh <DEVICE-TYPE> [OPTIONS]
 
 A JSON config file, config.json, must be present in the current working
 directory. The config.json can be downloaded from developer portal and must
@@ -44,12 +44,13 @@ contain the following:
    "clientId": "<Auth client ID>"
    "productId": "<your product name for device>"
 
+The DEVICE-TYPE is the XMOS device to setup: $VALID_XMOS_DEVICES_DISPLAY_STRING
+
 Optional parameters:
   -s <serial-number>  If nothing is provided, the default device serial number
                       is 123456
-  -g          	      Flag to enable keyword detector on GPIO interrupt
+  -g                  Flag to enable keyword detector on GPIO interrupt
   -h                  Display this help and exit
-  DEVICE-TYPE         XMOS device to setup: $VALID_XMOS_DEVICES_DISPLAY_STRING
 EOT
 }
 
@@ -61,13 +62,22 @@ if [ ! -f "$CONFIG_JSON_FILE" ]; then
     exit 1
 fi
 
+if [ $# -lt 1 ] || [ $1 == '-h' ]; then
+    usage
+    exit 1
+fi
+
+XMOS_DEVICE=$1
+shift 1
+
 OPTIONS=s:gh
 while getopts "$OPTIONS" opt ; do
     case $opt in
         s )
             DEVICE_SERIAL_NUMBER="$OPTARG"
             ;;
-        g ) GPIO_KEY_WORD_DETECTOR_FLAG="-g"
+        g )
+            GPIO_KEY_WORD_DETECTOR_FLAG="-g"
             ;;
         h )
             usage
@@ -75,19 +85,6 @@ while getopts "$OPTIONS" opt ; do
             ;;
     esac
 done
-shift $(( OPTIND - 1 ))
-
-if [[ $# -ge 1 ]]; then
-  XMOS_DEVICE=$1
-else
-  echo No device specified.
-  PS3="Type the number corresponding to one of the above devices: "
-  select XMOS_DEVICE in $VALID_XMOS_DEVICES; do
-    if [[ -n "$XMOS_DEVICE" ]]; then
-      break;
-    fi
-  done
-fi
 
 # validate XMOS_DEVICE value
 validate_device() {
