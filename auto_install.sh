@@ -7,8 +7,8 @@ RPI_SETUP_REPO=vocalfusion-rpi-setup
 RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
-RPI_SETUP_TAG="feature/3610_evk"
-AVS_DEVICE_SDK_TAG="feature/gpio_int_n"
+RPI_SETUP_TAG="v4.3.0"
+AVS_DEVICE_SDK_TAG="xmos_v1.21.0_gpio"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
@@ -125,7 +125,7 @@ if [ -d $RPI_SETUP_DIR ]; then
   rm -rf $RPI_SETUP_DIR
 fi
 
-git clone -b $RPI_SETUP_TAG https://github.com/lucianomartin/$RPI_SETUP_REPO.git
+git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
 
 # Execute (rather than source) the setup scripts
 echo "Installing VocalFusion ${XMOS_DEVICE:3} Raspberry Pi Setup..."
@@ -136,9 +136,9 @@ if $RPI_SETUP_SCRIPT $XMOS_DEVICE; then
   # N: This must be accepted explicitly before updates for this repository can be applied. See apt-secure(8) manpage for details.
   sudo apt update --allow-releaseinfo-change
   echo "Installing Amazon AVS SDK..."
-  wget -O $AVS_SCRIPT https://raw.githubusercontent.com/lucianomartin/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/$AVS_SCRIPT
-  wget -O pi.sh https://raw.githubusercontent.com/lucianomartin/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/pi.sh
-  wget -O genConfig.sh https://raw.githubusercontent.com/lucianomartin/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/genConfig.sh
+  wget -O $AVS_SCRIPT https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/$AVS_SCRIPT
+  wget -O pi.sh https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/pi.sh
+  wget -O genConfig.sh https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/genConfig.sh
   chmod +x $AVS_SCRIPT
 AVS_CMD="./${AVS_SCRIPT} ${CONFIG_JSON_FILE} ${AVS_DEVICE_SDK_TAG} -s ${DEVICE_SERIAL_NUMBER} -x ${XMOS_DEVICE} ${GPIO_KEY_WORD_DETECTOR_FLAG}"
 echo "Running command ${AVS_CMD}"
