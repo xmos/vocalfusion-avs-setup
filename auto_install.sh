@@ -8,11 +8,11 @@ RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
 RPI_SETUP_TAG="v4.3.0"
-AVS_DEVICE_SDK_TAG="xmos_v1.21.0_gpio"
+AVS_DEVICE_SDK_TAG="v1.25.0.0"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
-VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510 xvf3600-slave xvf3600-master xvf3610"
+VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510 xvf3600-slave xvf3600-master xvf3610 xvf3615"
 XMOS_DEVICE=
 
 # Default device serial number if nothing is specified
@@ -126,6 +126,12 @@ if [ -d $RPI_SETUP_DIR ]; then
 fi
 
 git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
+
+# Convert xvf3615 device into xvf3610 device and '-g' argument
+if [[ "$XMOS_DEVICE" == "xvf3615" ]]; then
+  XMOS_DEVICE="xvf3610"
+  GPIO_KEY_WORD_DETECTOR_FLAG="-g"
+fi
 
 # Execute (rather than source) the setup scripts
 echo "Installing VocalFusion ${XMOS_DEVICE:3} Raspberry Pi Setup..."
