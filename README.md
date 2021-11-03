@@ -6,8 +6,8 @@ The XMOS **xCORE VocalFusion Kit for Amazon AVS** provides far-field voice captu
 
 Combined with a Raspberry Pi running the Amazon Alexa Voice Service (AVS) Software Development Kit (SDK), these kits allow you to quickly prototype and evaluate talking with Alexa.
 
-To find out more, visit: https://www.xmos.ai/vocalfusion-voice-interfaces/ (XVF3510/3500)  
-or https://www.xmos.ai/vocalfusion-conference-calling/ (XVF3100/3000)  
+To find out more, visit: https://www.xmos.ai/vocalfusion-voice-interfaces/ (XVF3510/3500)
+or https://www.xmos.ai/vocalfusion-conference-calling/ (XVF3100/3000)
 and: https://developer.amazon.com/alexa-voice-service
 
 ## Prerequisites
@@ -15,21 +15,21 @@ You will need:
 
 - Either
 
-   **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71, or  
-   **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS, or  
+   **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71, or
+   **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS, or
    **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
 
 - Either
 
-   Raspberry Pi 3 with Micro-USB power supply (min. 2A) and HDMI cable, or  
+   Raspberry Pi 3 with Micro-USB power supply (min. 2A) and HDMI cable, or
    Raspberry Pi 4 with USB-C power supply (min. 3A) and Micro HDMI to Standard HDMI (A/M) Cable
 
 - MicroSD card (min. 16GB)
 - Powered speakers with audio 3.5mm analogue plug
 
-   Stereo for the XVF3510 and XVF3500, or  
+   Stereo for the XVF3510 and XVF3500, or
    Mono for the XVF3100 and XVF3000
-   
+
 - Monitor with HDMI input
 - USB keyboard and mouse
 - Fast-Ethernet connection or WiFi with internet connectivity
@@ -39,19 +39,19 @@ You will also need an Amazon Developer account: https://developer.amazon.com
 ## Hardware Setup
 Set up your hardware by following the **Hardware Setup Guide** for your product.
 
-   XVF3510: https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides  
-   XVF3500: https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides  
-   XVF3100: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides  
-   XVF3000: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides  
+   XVF3510: https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides
+   XVF3500: https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides
+   XVF3100: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
+   XVF3000: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
 
 ## Firmware Upgrade
-Once the hardware is setup, upgrade the firmware on your AVS development kit. The firmware can be found here:  
+Once the hardware is setup, upgrade the firmware on your AVS development kit. The firmware can be found here:
 
-   XVF3510: https://www.xmos.ai/file/xvf3510-int-release  
-   XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries  
-   XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries  
-   XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries  
-   
+   XVF3510: https://www.xmos.ai/file/xvf3510-int-release
+   XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries
+   XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
+   XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
+
 To upgrage the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
 
 ## Create a Raspberry Pi system disk
@@ -65,12 +65,12 @@ Then, install the Raspberry Pi Imager on a host computer. Raspberry Pi Imager is
 
 https://www.raspberrypi.org/software/
 
-Run the Raspberry Pi Imager, and select the 'CHOOSE OS' button. Scroll to the bottom of the displayed list, and select "Use custom". 
+Run the Raspberry Pi Imager, and select the 'CHOOSE OS' button. Scroll to the bottom of the displayed list, and select "Use custom".
 Then select the file downloaded above (2020-02-13-raspbian-buster.zip) and select "Open". The archive file does not have to be unzipped, the imager software will do that.
 
 Select the CHOOSE SD CARD button to which to download the image, and then select the "WRITE" button.
 
-When prompted, remove the written SD card and insert it into the Raspberry Pi. 
+When prompted, remove the written SD card and insert it into the Raspberry Pi.
 
 Connect up the keyboard, mouse, speakers and display to the Raspberry Pi and power up the system. Refer to the **Getting Started Guide** for your platform.
 
@@ -91,7 +91,7 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 1. Open a terminal window on the Raspberry Pi desktop and clone the vocalfusion-avs-setup repository:
 
    ```git clone https://github.com/xmos/vocalfusion-avs-setup```
-   
+
    **DO NOT** use the command 'apt update' to update the software database. This will cause the installation to fail. **DO NOT** update the kernel, as this will cause the audio sub-sytem to fail.
 
 2. Register an AVS product, create a security profile and save a *config.json* file by following https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/register-a-product.html. It is strongly recommended that the config.json file should be saved onto a USB memory stick for future use.
@@ -105,11 +105,13 @@ When the Raspberry Pi boots up, give these answers to the following questions:
    ``` cd vocalfusion-avs-setup```
 
    And then either
-   
-   XVF3510: ```./auto_install.sh xvf3510```  
-   XVF3500: ```./auto_install.sh xvf3500```  
-   XVF3100: ```./auto_install.sh xvf3100```  
+
+   XVF3510: ```./auto_install.sh xvf3510```
+   XVF3500: ```./auto_install.sh xvf3500```
+   XVF3100: ```./auto_install.sh xvf3100```
    XVF3000: ```./auto_install.sh xvf3100```
+
+   If you need to use the keyword detection using the GPIO2 pin, use the flag '-g' after the device name. If this option is not selected, the Sensory engine is used.
 
    Read and accept the AVS Device SDK license agreement.
 
@@ -133,8 +135,8 @@ The automated installation script creates a number of aliases which can be used 
 
 ## Changing Sensory operating point
 
-To change to operating point of the Sensory keyword engine, edit the shell script run by the `avsrun` alias: 
+To change to operating point of the Sensory keyword engine, edit the shell script run by the `avsrun` alias:
 
    `~/sdk-folder/avs-device-sdk/tools/Install/.avsrun-startup.sh`
-   
+
 and change the third argument to SampleApp from the default value of `12` to the desired value.

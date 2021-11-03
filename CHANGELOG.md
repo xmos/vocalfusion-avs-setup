@@ -1,5 +1,10 @@
 # VocalFusion AVS Setup Change Log
 
+## 2.3.0
+
+  * Added support for xvf3615
+  * Added support for KWD using GPIO2 pin
+
 ## 2.2.0
 
   * Support for all xvf3600 master and slave products
