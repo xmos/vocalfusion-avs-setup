@@ -39,6 +39,7 @@ You will also need an Amazon Developer account: https://developer.amazon.com
 ## Hardware Setup
 Set up your hardware by following the **Hardware Setup Guide** for your product.
 
+   XVF3610: https://www.xmos.ai/file/xvf3610-dev-kit-setup-guides
    XVF3510: https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides
    XVF3500: https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides
    XVF3100: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
@@ -47,6 +48,7 @@ Set up your hardware by following the **Hardware Setup Guide** for your product.
 ## Firmware Upgrade
 Once the hardware is setup, upgrade the firmware on your AVS development kit. The firmware can be found here:
 
+   XVF3610: https://www.xmos.ai/file/xvf3610-int-release
    XVF3510: https://www.xmos.ai/file/xvf3510-int-release
    XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries
    XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
