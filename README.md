@@ -16,7 +16,7 @@ You will need:
 
 - Either
 
-   **xCORE VocalFusion XVF6510 Kit for Amazon AVS**: XK-VOICE-REFERENCE, or
+   **xCORE VocalFusion XVF6510 Kit for Amazon AVS**: XK-VOICE-L71, or
    **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71, or
    **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS, or
    **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
