@@ -2,11 +2,12 @@
 
 This repository provides a simple-to-use automated script to install the Amazon AVS SDK on a Raspberry Pi and configure the Raspberry Pi to use the appropriate **xCORE VocalFusion Kit for Amazon AVS**.
 
-The XMOS **xCORE VocalFusion Kit for Amazon AVS** provides far-field voice capture using one of the XMOS XVF3000, XVF3100, XVF3500 or XVF3510 voice processors.
+The XMOS **xCORE VocalFusion Kit for Amazon AVS** provides far-field voice capture using one of the XMOS XVF3000, XVF3100, XVF3500, XVF3510 OR XVF3610 voice processors.
 
 Combined with a Raspberry Pi running the Amazon Alexa Voice Service (AVS) Software Development Kit (SDK), these kits allow you to quickly prototype and evaluate talking with Alexa.
 
-To find out more, visit: https://www.xmos.ai/vocalfusion-voice-interfaces/ (XVF3510/3500)
+To find out more, visit: https://www.xmos.ai/vocalfusion-voice-interfaces/ (XVF3610/3500),
+https://www.xmos.ai/xvf3510/ (XVF3510)
 or https://www.xmos.ai/vocalfusion-conference-calling/ (XVF3100/3000)
 and: https://developer.amazon.com/alexa-voice-service
 
@@ -15,6 +16,7 @@ You will need:
 
 - Either
 
+   **xCORE VocalFusion XVF6510 Kit for Amazon AVS**: XK-VOICE-L71, or
    **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71, or
    **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS, or
    **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
@@ -27,7 +29,7 @@ You will need:
 - MicroSD card (min. 16GB)
 - Powered speakers with audio 3.5mm analogue plug
 
-   Stereo for the XVF3510 and XVF3500, or
+   Stereo for the XVF3610, XVF3510 and XVF3500, or
    Mono for the XVF3100 and XVF3000
 
 - Monitor with HDMI input
@@ -108,6 +110,7 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
    And then either
 
+   XVF3610: ```./auto_install.sh xvf3610```
    XVF3510: ```./auto_install.sh xvf3510```
    XVF3500: ```./auto_install.sh xvf3500```
    XVF3100: ```./auto_install.sh xvf3100```
