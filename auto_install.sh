@@ -128,8 +128,12 @@ fi
 git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
 
 # Convert xvf3615 device into xvf3610 device and '-g' argument
-if [[ "$XMOS_DEVICE" == "xvf3615" ]]; then
-  XMOS_DEVICE="xvf3610"
+if [[ "$XMOS_DEVICE" == "xvf3615-int" ]]; then
+  XMOS_DEVICE="xvf3610-int"
+  GPIO_KEY_WORD_DETECTOR_FLAG="-g"
+fi
+if [[ "$XMOS_DEVICE" == "xvf3615-ua" ]]; then
+  XMOS_DEVICE="xvf3610-ua"
   GPIO_KEY_WORD_DETECTOR_FLAG="-g"
 fi
 
