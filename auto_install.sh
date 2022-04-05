@@ -7,8 +7,8 @@ RPI_SETUP_REPO=vocalfusion-rpi-setup
 RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
-RPI_SETUP_TAG="v4.3.1"
-AVS_DEVICE_SDK_TAG="v1.25.0.1"
+RPI_SETUP_TAG="feature/xvf3615-ua"
+AVS_DEVICE_SDK_TAG="feature/test_hid"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
@@ -19,6 +19,8 @@ XMOS_DEVICE=
 DEVICE_SERIAL_NUMBER="123456"
 # Disable GPIO keyword detector by default
 GPIO_KEY_WORD_DETECTOR_FLAG=""
+# Disable HID keyword detector by default
+HID_KEY_WORD_DETECTOR_FLAG=""
 
 usage() {
   local VALID_XMOS_DEVICES_DISPLAY_STRING=
@@ -50,6 +52,7 @@ Optional parameters:
   -s <serial-number>  If nothing is provided, the default device serial number
                       is 123456
   -g                  Flag to enable keyword detector on GPIO interrupt
+  -k                  Flag to enable keyword detector on HID event
   -h                  Display this help and exit
 EOT
 }
@@ -70,7 +73,7 @@ fi
 XMOS_DEVICE=$1
 shift 1
 
-OPTIONS=s:gh
+OPTIONS=s:gkh
 while getopts "$OPTIONS" opt ; do
     case $opt in
         s )
@@ -78,6 +81,9 @@ while getopts "$OPTIONS" opt ; do
             ;;
         g )
             GPIO_KEY_WORD_DETECTOR_FLAG="-g"
+            ;;
+        k )
+            HID_KEY_WORD_DETECTOR_FLAG="-k"
             ;;
         h )
             usage
@@ -125,7 +131,7 @@ if [ -d $RPI_SETUP_DIR ]; then
   rm -rf $RPI_SETUP_DIR
 fi
 
-git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
+git clone -b $RPI_SETUP_TAG https://github.com/lucianomartin/$RPI_SETUP_REPO.git
 
 # Convert xvf3615 device into xvf3610 device and '-g' argument
 if [[ "$XMOS_DEVICE" == "xvf3615-int" ]]; then
@@ -134,7 +140,7 @@ if [[ "$XMOS_DEVICE" == "xvf3615-int" ]]; then
 fi
 if [[ "$XMOS_DEVICE" == "xvf3615-ua" ]]; then
   XMOS_DEVICE="xvf3610-ua"
-  GPIO_KEY_WORD_DETECTOR_FLAG="-g"
+  HID_KEY_WORD_DETECTOR_FLAG="-k"
 fi
 
 # Execute (rather than source) the setup scripts
