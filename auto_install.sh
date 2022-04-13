@@ -7,18 +7,20 @@ RPI_SETUP_REPO=vocalfusion-rpi-setup
 RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
-RPI_SETUP_TAG="v4.3.1"
-AVS_DEVICE_SDK_TAG="v1.25.0.1"
+RPI_SETUP_TAG="v5.0.0"
+AVS_DEVICE_SDK_TAG="v1.25.0.2"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
-VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510 xvf3600-slave xvf3600-master xvf3610 xvf3615"
+VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510 xvf3600-slave xvf3600-master xvf3610-int xvf3610-ua xvf3615-int xvf3615-ua"
 XMOS_DEVICE=
 
 # Default device serial number if nothing is specified
 DEVICE_SERIAL_NUMBER="123456"
 # Disable GPIO keyword detector by default
 GPIO_KEY_WORD_DETECTOR_FLAG=""
+# Disable HID keyword detector by default
+HID_KEY_WORD_DETECTOR_FLAG=""
 
 usage() {
   local VALID_XMOS_DEVICES_DISPLAY_STRING=
@@ -49,7 +51,8 @@ The DEVICE-TYPE is the XMOS device to setup: $VALID_XMOS_DEVICES_DISPLAY_STRING
 Optional parameters:
   -s <serial-number>  If nothing is provided, the default device serial number
                       is 123456
-  -g                  Flag to enable keyword detector on GPIO interrupt
+  -G                  Flag to enable keyword detector on GPIO interrupt
+  -H                  Flag to enable keyword detector on HID event
   -h                  Display this help and exit
 EOT
 }
@@ -70,14 +73,17 @@ fi
 XMOS_DEVICE=$1
 shift 1
 
-OPTIONS=s:gh
+OPTIONS=s:GHh
 while getopts "$OPTIONS" opt ; do
     case $opt in
         s )
             DEVICE_SERIAL_NUMBER="$OPTARG"
             ;;
-        g )
-            GPIO_KEY_WORD_DETECTOR_FLAG="-g"
+        G )
+            GPIO_KEY_WORD_DETECTOR_FLAG="-G"
+            ;;
+        H )
+            HID_KEY_WORD_DETECTOR_FLAG="-H"
             ;;
         h )
             usage
@@ -128,9 +134,13 @@ fi
 git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
 
 # Convert xvf3615 device into xvf3610 device and '-g' argument
-if [[ "$XMOS_DEVICE" == "xvf3615" ]]; then
-  XMOS_DEVICE="xvf3610"
-  GPIO_KEY_WORD_DETECTOR_FLAG="-g"
+if [[ "$XMOS_DEVICE" == "xvf3615-int" ]]; then
+  XMOS_DEVICE="xvf3610-int"
+  GPIO_KEY_WORD_DETECTOR_FLAG="-G"
+fi
+if [[ "$XMOS_DEVICE" == "xvf3615-ua" ]]; then
+  XMOS_DEVICE="xvf3610-ua"
+  HID_KEY_WORD_DETECTOR_FLAG="-H"
 fi
 
 # Execute (rather than source) the setup scripts
@@ -146,7 +156,7 @@ if $RPI_SETUP_SCRIPT $XMOS_DEVICE; then
   wget -O pi.sh https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/pi.sh
   wget -O genConfig.sh https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/genConfig.sh
   chmod +x $AVS_SCRIPT
-AVS_CMD="./${AVS_SCRIPT} ${CONFIG_JSON_FILE} ${AVS_DEVICE_SDK_TAG} -s ${DEVICE_SERIAL_NUMBER} -x ${XMOS_DEVICE} ${GPIO_KEY_WORD_DETECTOR_FLAG}"
+AVS_CMD="./${AVS_SCRIPT} ${CONFIG_JSON_FILE} ${AVS_DEVICE_SDK_TAG} -s ${DEVICE_SERIAL_NUMBER} -x ${XMOS_DEVICE} ${GPIO_KEY_WORD_DETECTOR_FLAG} ${HID_KEY_WORD_DETECTOR_FLAG}"
 echo "Running command ${AVS_CMD}"
   if $AVS_CMD; then
     echo "Type 'sudo reboot' below to reboot the Raspberry Pi and complete the AVS setup."

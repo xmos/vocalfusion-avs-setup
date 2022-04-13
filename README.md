@@ -16,15 +16,15 @@ You will need:
 
 - Either
 
-   **xCORE VocalFusion XVF6510 Kit for Amazon AVS**: XK-VOICE-L71, or
-   **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71, or
-   **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS, or
-   **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
+   - **xCORE VocalFusion XVF3610/XVF3615 Kit for Amazon AVS**: XK-VOICE-L71, or
+   - **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71, or
+   - **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS, or
+   - **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
 
 - Either
 
-   Raspberry Pi 3 with Micro-USB power supply (min. 2A) and HDMI cable, or
-   Raspberry Pi 4 with USB-C power supply (min. 3A) and Micro HDMI to Standard HDMI (A/M) Cable
+   - Raspberry Pi 3 with Micro-USB power supply (min. 2A) and HDMI cable, or
+   - Raspberry Pi 4 with USB-C power supply (min. 3A) and Micro HDMI to Standard HDMI (A/M) Cable
 
 - MicroSD card (min. 16GB)
 - Powered speakers with audio 3.5mm analogue plug
@@ -41,20 +41,24 @@ You will also need an Amazon Developer account: https://developer.amazon.com
 ## Hardware Setup
 Set up your hardware by following the **Hardware Setup Guide** for your product.
 
-   XVF3610: https://www.xmos.ai/file/xvf3610-dev-kit-setup-guides
-   XVF3510: https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides
-   XVF3500: https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides
-   XVF3100: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
-   XVF3000: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
+   - XVF3615: https://www.xmos.ai/file/xvf3615-dev-kit-setup-guides
+   - XVF3610: https://www.xmos.ai/file/xvf3610-dev-kit-setup-guides
+   - XVF3510: https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides
+   - XVF3500: https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides
+   - XVF3100: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
+   - XVF3000: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
 
 ## Firmware Upgrade
 Once the hardware is setup, upgrade the firmware on your AVS development kit. The firmware can be found here:
 
-   XVF3610: https://www.xmos.ai/file/xvf3610-int-release
-   XVF3510: https://www.xmos.ai/file/xvf3510-int-release
-   XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries
-   XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
-   XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
+   - XVF3615-INT: https://www.xmos.ai/file/xvf3615-int-release
+   - XVF3615-UA: https://www.xmos.ai/file/xvf3615-ua-release
+   - XVF3610-INT: https://www.xmos.ai/file/xvf3610-int-release
+   - XVF3610-UA: https://www.xmos.ai/file/xvf3610-ua-release
+   - XVF3510: https://www.xmos.ai/file/xvf3510-int-release
+   - XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries
+   - XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
+   - XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
 
 To upgrage the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
 
@@ -110,11 +114,14 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
    And then either
 
-   XVF3610: ```./auto_install.sh xvf3610```
-   XVF3510: ```./auto_install.sh xvf3510```
-   XVF3500: ```./auto_install.sh xvf3500```
-   XVF3100: ```./auto_install.sh xvf3100```
-   XVF3000: ```./auto_install.sh xvf3100```
+   - XVF3615-INT: ```./auto_install.sh xvf3615-int```
+   - XVF3615-UA: ```./auto_install.sh xvf3615-ua```
+   - XVF3610-INT: ```./auto_install.sh xvf3610-int```
+   - XVF3610-UA: ```./auto_install.sh xvf3610-ua```
+   - XVF3510: ```./auto_install.sh xvf3510```
+   - XVF3500: ```./auto_install.sh xvf3500```
+   - XVF3100: ```./auto_install.sh xvf3100```
+   - XVF3000: ```./auto_install.sh xvf3100```
 
    If you need to use the keyword detection using the GPIO2 pin, use the flag '-g' after the device name. If this option is not selected, the Sensory engine is used.
 
