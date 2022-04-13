@@ -51,8 +51,8 @@ The DEVICE-TYPE is the XMOS device to setup: $VALID_XMOS_DEVICES_DISPLAY_STRING
 Optional parameters:
   -s <serial-number>  If nothing is provided, the default device serial number
                       is 123456
-  -g                  Flag to enable keyword detector on GPIO interrupt
-  -k                  Flag to enable keyword detector on HID event
+  -G                  Flag to enable keyword detector on GPIO interrupt
+  -H                  Flag to enable keyword detector on HID event
   -h                  Display this help and exit
 EOT
 }
@@ -73,17 +73,17 @@ fi
 XMOS_DEVICE=$1
 shift 1
 
-OPTIONS=s:gkh
+OPTIONS=s:GHh
 while getopts "$OPTIONS" opt ; do
     case $opt in
         s )
             DEVICE_SERIAL_NUMBER="$OPTARG"
             ;;
-        g )
-            GPIO_KEY_WORD_DETECTOR_FLAG="-g"
+        G )
+            GPIO_KEY_WORD_DETECTOR_FLAG="-G"
             ;;
-        k )
-            HID_KEY_WORD_DETECTOR_FLAG="-k"
+        H )
+            HID_KEY_WORD_DETECTOR_FLAG="-H"
             ;;
         h )
             usage
@@ -136,11 +136,11 @@ git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
 # Convert xvf3615 device into xvf3610 device and '-g' argument
 if [[ "$XMOS_DEVICE" == "xvf3615-int" ]]; then
   XMOS_DEVICE="xvf3610-int"
-  GPIO_KEY_WORD_DETECTOR_FLAG="-g"
+  GPIO_KEY_WORD_DETECTOR_FLAG="-G"
 fi
 if [[ "$XMOS_DEVICE" == "xvf3615-ua" ]]; then
   XMOS_DEVICE="xvf3610-ua"
-  HID_KEY_WORD_DETECTOR_FLAG="-k"
+  HID_KEY_WORD_DETECTOR_FLAG="-H"
 fi
 
 # Execute (rather than source) the setup scripts

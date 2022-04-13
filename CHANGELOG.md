@@ -1,6 +1,6 @@
 # VocalFusion AVS Setup Change Log
 
-## 2.4.0
+## 3.0.0
 
   * Added support for xvf3610-ua and xvf3615-ua
   * Renamed xvf3615 device as xvf3615-int
