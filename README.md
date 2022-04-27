@@ -60,7 +60,7 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
    - XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
    - XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
 
-To upgrage the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
+To upgrade the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
 
 ## Create a Raspberry Pi system disk
 First, obtain the required version of the Raspberry Pi operating system, which is available here:
