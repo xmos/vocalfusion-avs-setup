@@ -55,7 +55,8 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
    - XVF3615-UA: https://www.xmos.ai/file/xvf3615-ua-release
    - XVF3610-INT: https://www.xmos.ai/file/xvf3610-int-release
    - XVF3610-UA: https://www.xmos.ai/file/xvf3610-ua-release
-   - XVF3510: https://www.xmos.ai/file/xvf3510-int-release
+   - XVF3510-INT: https://www.xmos.ai/file/xvf3510-int-release
+   - XVF3510-UA: https://www.xmos.ai/file/xvf3510-int-release
    - XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries
    - XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
    - XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
@@ -118,7 +119,8 @@ When the Raspberry Pi boots up, give these answers to the following questions:
    - XVF3615-UA: ```./auto_install.sh xvf3615-ua```
    - XVF3610-INT: ```./auto_install.sh xvf3610-int```
    - XVF3610-UA: ```./auto_install.sh xvf3610-ua```
-   - XVF3510: ```./auto_install.sh xvf3510```
+   - XVF3510-INT: ```./auto_install.sh xvf3510-int```
+   - XVF3510-UA: ```./auto_install.sh xvf3510-ua```
    - XVF3500: ```./auto_install.sh xvf3500```
    - XVF3100: ```./auto_install.sh xvf3100```
    - XVF3000: ```./auto_install.sh xvf3100```
