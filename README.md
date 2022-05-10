@@ -131,7 +131,7 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
 6. You will be asked whether you want the Sample App to run automatically when the Raspberry Pi boots. It is recommended that you respond "yes" to this option.
 
-7. Read and accept the Sensory license agreement. Wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
+7. Wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
 
 8. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
 
@@ -147,10 +147,4 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 The automated installation script creates a number of aliases which can be used to execute the AVS Device SDK client, or run the unit tests:
 - `avsrun` to run the Sample App.
 
-## Changing Sensory operating point
-
-To change to operating point of the Sensory keyword engine, edit the shell script run by the `avsrun` alias:
-
-   `~/sdk-folder/avs-device-sdk/tools/Install/.avsrun-startup.sh`
-
-and change the third argument to SampleApp from the default value of `12` to the desired value.
+The XVF3615-INT and XVF3615-UA devices have an internal wakeword detector which switches the AVS console to listening mode when saying "Alexa". The other devices don't have any wakeword detection mechanism, neither on the device nor on host. Before the user issues a command, they must use the 'tap-to-talk' option, by pressing 't' on the AVS console.
