@@ -131,7 +131,7 @@ if [ -d $RPI_SETUP_DIR ]; then
   rm -rf $RPI_SETUP_DIR
 fi
 
-git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
+git clone -b $RPI_SETUP_TAG https://github.com/lucianomartin/$RPI_SETUP_REPO.git
 
 # Convert xvf3615 device into xvf3610 device and '-g' argument
 if [[ "$XMOS_DEVICE" == "xvf3615-int" ]]; then
