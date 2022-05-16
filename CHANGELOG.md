@@ -1,5 +1,9 @@
 # VocalFusion AVS Setup Change Log
 
+## 3.1.0
+
+  * Updated Readme
+
 ## 3.0.0
 
   * Added support for xvf3610-ua and xvf3615-ua
