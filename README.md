@@ -131,12 +131,6 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
 7. Read and accept the Sensory license agreement. Wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
 
-   Known Issue: If the installation fails, then it may be required that you install libevdev
-   
-   ```sudo apt install libevdev-dev```
-   
-   This issue currently affects xvf3615-ua, xvf3610-ua and xvf3510-ua
-
 8. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
 
 9. If you selected the option to run the Sample App on boot there should now be a terminal open with the sample app runnning. If the sample app is not running, then open a terminal and use `avsrun` to start the app. You should now be able to complete the registration by following the instructions on the screen, although you may need to scroll back to see them. A code will be printed on the screen, and you will be prompted to visit https://amazon.com/us/code, log in to your developer account, and enter the code when prompted.
