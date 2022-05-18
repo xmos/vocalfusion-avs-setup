@@ -64,7 +64,6 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
 To upgrade the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
 
 ## Create a Raspberry Pi system disk
-**_NOTE:_**  It is recommended to always start this procedure from a blank SD card.
 
 First, obtain the required version of the Raspberry Pi operating system, which is available here:
 
@@ -150,3 +149,10 @@ The automated installation script creates a number of aliases which can be used 
 - `avsrun` to run the Sample App.
 
 The XVF3615-INT and XVF3615-UA devices have an internal wakeword detector which switches the AVS console to listening mode when saying "Alexa". The other devices don't have any wakeword detection mechanism, neither on the device nor on host. Before the user issues a command, they must use the 'tap-to-talk' option, by pressing 't' on the AVS console.
+
+## Reinstalling the AVS SDK and Raspberry Pi audio setup
+
+In case of re-installation, please repeat the full procedure as described in the sections "Create a Raspberry Pi system disk" and "AVS SDK installation and Raspberry Pi audio setup". It is recommended the re-installation procedure starts always from a blank SD card.
+
+
+
