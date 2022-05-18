@@ -7,8 +7,8 @@ RPI_SETUP_REPO=vocalfusion-rpi-setup
 RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
-RPI_SETUP_TAG="feature/3510_updates"
-AVS_DEVICE_SDK_TAG="feature/remove_sensory"
+RPI_SETUP_TAG="v5.1.0"
+AVS_DEVICE_SDK_TAG="xmos_v1.25.0.3"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
@@ -131,7 +131,7 @@ if [ -d $RPI_SETUP_DIR ]; then
   rm -rf $RPI_SETUP_DIR
 fi
 
-git clone -b $RPI_SETUP_TAG https://github.com/lucianomartin/$RPI_SETUP_REPO.git
+git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
 
 # Convert xvf3615 device into xvf3610 device and '-g' argument
 if [[ "$XMOS_DEVICE" == "xvf3615-int" ]]; then
