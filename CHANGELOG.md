@@ -2,8 +2,12 @@
 
 ## 3.1.0
 
+<<<<<<< HEAD
   * Renamed xvf3510 device as xvf3510-int
   * Added support for xvf3510-ua
+=======
+  * Updated Readme
+>>>>>>> 26f3ca1289bba0c7e3557b7e41f147f82a54c69a
 
 ## 3.0.0
 
