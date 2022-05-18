@@ -64,6 +64,8 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
 To upgrade the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
 
 ## Create a Raspberry Pi system disk
+**_NOTE:_**  It is recommended to always start this procedure from a blank SD card.
+
 First, obtain the required version of the Raspberry Pi operating system, which is available here:
 
 https://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip
