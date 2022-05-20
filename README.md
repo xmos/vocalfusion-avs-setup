@@ -56,7 +56,7 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
    - XVF3610-INT: https://www.xmos.ai/file/xvf3610-int-release
    - XVF3610-UA: https://www.xmos.ai/file/xvf3610-ua-release
    - XVF3510-INT: https://www.xmos.ai/file/xvf3510-int-release
-   - XVF3510-UA: https://www.xmos.ai/file/xvf3510-int-release
+   - XVF3510-UA: https://www.xmos.ai/file/xvf3510-ua-release
    - XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries
    - XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
    - XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
