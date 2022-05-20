@@ -55,7 +55,8 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
    - XVF3615-UA: https://www.xmos.ai/file/xvf3615-ua-release
    - XVF3610-INT: https://www.xmos.ai/file/xvf3610-int-release
    - XVF3610-UA: https://www.xmos.ai/file/xvf3610-ua-release
-   - XVF3510: https://www.xmos.ai/file/xvf3510-int-release
+   - XVF3510-INT: https://www.xmos.ai/file/xvf3510-int-release
+   - XVF3510-UA: https://www.xmos.ai/file/xvf3510-int-release
    - XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries
    - XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
    - XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
@@ -63,6 +64,7 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
 To upgrade the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
 
 ## Create a Raspberry Pi system disk
+
 First, obtain the required version of the Raspberry Pi operating system, which is available here:
 
 https://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip
@@ -118,7 +120,8 @@ When the Raspberry Pi boots up, give these answers to the following questions:
    - XVF3615-UA: ```./auto_install.sh xvf3615-ua```
    - XVF3610-INT: ```./auto_install.sh xvf3610-int```
    - XVF3610-UA: ```./auto_install.sh xvf3610-ua```
-   - XVF3510: ```./auto_install.sh xvf3510```
+   - XVF3510-INT: ```./auto_install.sh xvf3510-int```
+   - XVF3510-UA: ```./auto_install.sh xvf3510-ua```
    - XVF3500: ```./auto_install.sh xvf3500```
    - XVF3100: ```./auto_install.sh xvf3100```
    - XVF3000: ```./auto_install.sh xvf3100```
@@ -129,7 +132,7 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
 6. You will be asked whether you want the Sample App to run automatically when the Raspberry Pi boots. It is recommended that you respond "yes" to this option.
 
-7. Read and accept the Sensory license agreement. Wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
+7. Wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
 
 8. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
 
@@ -145,10 +148,11 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 The automated installation script creates a number of aliases which can be used to execute the AVS Device SDK client, or run the unit tests:
 - `avsrun` to run the Sample App.
 
-## Changing Sensory operating point
+The XVF3615-INT and XVF3615-UA devices have an internal wakeword detector which switches the AVS console to listening mode when saying "Alexa". The other devices don't have any wakeword detection mechanism, neither on the device nor on host. Before the user issues a command, they must use the 'tap-to-talk' option, by pressing 't' on the AVS console.
 
-To change to operating point of the Sensory keyword engine, edit the shell script run by the `avsrun` alias:
+## Reinstalling the AVS SDK and Raspberry Pi audio setup
 
-   `~/sdk-folder/avs-device-sdk/tools/Install/.avsrun-startup.sh`
+In case of re-installation, please repeat the full procedure as described in the sections "Create a Raspberry Pi system disk" and "AVS SDK installation and Raspberry Pi audio setup". It is recommended the re-installation procedure starts always from a blank SD card.
 
-and change the third argument to SampleApp from the default value of `12` to the desired value.
+
+
