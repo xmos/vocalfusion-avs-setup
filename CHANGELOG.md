@@ -1,5 +1,11 @@
 # VocalFusion AVS Setup Change Log
 
+## 3.1.0
+
+  * Renamed xvf3510 device as xvf3510-int
+  * Added support for xvf3510-ua
+  * Updated Readme
+
 ## 3.0.0
 
   * Added support for xvf3610-ua and xvf3615-ua
