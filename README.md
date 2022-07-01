@@ -65,18 +65,17 @@ To upgrade the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/
 
 ## Create a Raspberry Pi system disk
 
-First, obtain the required version of the Raspberry Pi operating system, which is available here:
+First, obtain the required version of the Raspberry Pi operating system (Buster), which is available[here](https://downloads.raspberrypi.org/raspios_oldstable_armhf/images/raspios_oldstable_armhf-2022-04-07/2022-04-04-raspios-buster-armhf.img.xz).
 
-https://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip
-
-We cannot use the latest as updates to linux kernel v5 have broken the I2S sub-system.
+We cannot use the latest version (Bullseye), as the AVS device SDK doesn't support it.
 
 Then, install the Raspberry Pi Imager on a host computer. Raspberry Pi Imager is available here:
 
 https://www.raspberrypi.org/software/
 
 Run the Raspberry Pi Imager, and select the 'CHOOSE OS' button. Scroll to the bottom of the displayed list, and select "Use custom".
-Then select the file downloaded above (2020-02-13-raspbian-buster.zip) and select "Open". The archive file does not have to be unzipped, the imager software will do that.
+Then select the file downloaded above (2022-04-04-raspios-buster-armhf.img.xz
+) and select "Open". The archive file does not have to be unzipped, the imager software will do that.
 
 Select the CHOOSE SD CARD button to which to download the image, and then select the "WRITE" button.
 
