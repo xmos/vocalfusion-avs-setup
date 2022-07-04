@@ -51,8 +51,7 @@ The DEVICE-TYPE is the XMOS device to setup: $VALID_XMOS_DEVICES_DISPLAY_STRING
 Optional parameters:
   -s <serial-number>  If nothing is provided, the default device serial number
                       is 123456
-  -G                  Flag to enable keyword detector on GPIO interrupt
-  -H                  Flag to enable keyword detector on HID event
+  -w <keyword-detector-type> Keyword detector to setup: possible values are S (Sensory), A (Amazon), G (GPIO trigger), H (HID trigger), default is no keyword detector, only tap-to-talk is enabled'
   -h                  Display this help and exit
 EOT
 }
@@ -73,17 +72,14 @@ fi
 XMOS_DEVICE=$1
 shift 1
 
-OPTIONS=s:GHh
+OPTIONS=s:w:h
 while getopts "$OPTIONS" opt ; do
     case $opt in
         s )
             DEVICE_SERIAL_NUMBER="$OPTARG"
             ;;
-        G )
-            GPIO_KEY_WORD_DETECTOR_FLAG="-G"
-            ;;
-        H )
-            HID_KEY_WORD_DETECTOR_FLAG="-H"
+        w )
+            KEY_WORD_DETECTOR_FLAG="-w $OPTARG"
             ;;
         h )
             usage
@@ -136,11 +132,11 @@ git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
 # Convert xvf3615 device into xvf3610 device and '-g' argument
 if [[ "$XMOS_DEVICE" == "xvf3615-int" ]]; then
   XMOS_DEVICE="xvf3610-int"
-  GPIO_KEY_WORD_DETECTOR_FLAG="-G"
+  KEY_WORD_DETECTOR_FLAG="-w G"
 fi
 if [[ "$XMOS_DEVICE" == "xvf3615-ua" ]]; then
   XMOS_DEVICE="xvf3610-ua"
-  HID_KEY_WORD_DETECTOR_FLAG="-H"
+  KEY_WORD_DETECTOR_FLAG="-w H"
 fi
 
 # Execute (rather than source) the setup scripts
@@ -156,7 +152,7 @@ if $RPI_SETUP_SCRIPT $XMOS_DEVICE; then
   wget -O pi.sh https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/pi.sh
   wget -O genConfig.sh https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/genConfig.sh
   chmod +x $AVS_SCRIPT
-  AVS_CMD="./${AVS_SCRIPT} ${CONFIG_JSON_FILE} ${AVS_DEVICE_SDK_TAG} -s ${DEVICE_SERIAL_NUMBER} -x ${XMOS_DEVICE} ${GPIO_KEY_WORD_DETECTOR_FLAG} ${HID_KEY_WORD_DETECTOR_FLAG}"
+  AVS_CMD="./${AVS_SCRIPT} ${CONFIG_JSON_FILE} ${AVS_DEVICE_SDK_TAG} -s ${DEVICE_SERIAL_NUMBER} -x ${XMOS_DEVICE} ${KEY_WORD_DETECTOR_FLAG}"
   echo "Running command ${AVS_CMD}"
   if $AVS_CMD; then
     echo "Type 'sudo reboot' below to reboot the Raspberry Pi and complete the AVS setup."
