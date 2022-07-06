@@ -17,11 +17,8 @@ XMOS_DEVICE=
 
 # Default device serial number if nothing is specified
 DEVICE_SERIAL_NUMBER="123456"
-# Disable GPIO keyword detector by default
-GPIO_KEY_WORD_DETECTOR_FLAG=""
-# Disable HID keyword detector by default
-HID_KEY_WORD_DETECTOR_FLAG=""
-
+# Disable any keyword detector by default
+KEY_WORD_DETECTOR_FLAG=""
 usage() {
   local VALID_XMOS_DEVICES_DISPLAY_STRING=
   local NUMBER_OF_VALID_DEVICES=$(echo $VALID_XMOS_DEVICES | wc -w)
@@ -132,11 +129,15 @@ git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
 # Convert xvf3615 device into xvf3610 device and '-g' argument
 if [[ "$XMOS_DEVICE" == "xvf3615-int" ]]; then
   XMOS_DEVICE="xvf3610-int"
-  KEY_WORD_DETECTOR_FLAG="-w G"
+  if [ -z $KEY_WORD_DETECTOR_FLAG ]; then
+    KEY_WORD_DETECTOR_FLAG="-w G"
+  fi
 fi
 if [[ "$XMOS_DEVICE" == "xvf3615-ua" ]]; then
   XMOS_DEVICE="xvf3610-ua"
-  KEY_WORD_DETECTOR_FLAG="-w H"
+  if [ -z $KEY_WORD_DETECTOR_FLAG ]; then
+    KEY_WORD_DETECTOR_FLAG="-w H"
+  fi
 fi
 
 # Execute (rather than source) the setup scripts
