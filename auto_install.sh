@@ -13,6 +13,8 @@ AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
 VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510-int xvf3510-ua xvf3600-slave xvf3600-master xvf3610-int xvf3610-ua xvf3615-int xvf3615-ua"
+VALID_KEY_WORD_DETECTOR="A G H S"
+
 XMOS_DEVICE=
 
 # Default device serial number if nothing is specified
@@ -48,7 +50,7 @@ The DEVICE-TYPE is the XMOS device to setup: $VALID_XMOS_DEVICES_DISPLAY_STRING
 Optional parameters:
   -s <serial-number>  If nothing is provided, the default device serial number
                       is 123456
-  -w <keyword-detector-type> Keyword detector to setup: possible values are S (Sensory), A (Amazon), G (GPIO trigger), H (HID trigger), default is no keyword detector, only tap-to-talk is enabled'
+  -w <keyword-detector-type> Keyword detector to setup: possible values are A (Amazon), G (GPIO trigger), H (HID trigger), S (Sensory),  default is no keyword detector, only tap-to-talk is enabled'
   -h                  Display this help and exit
 EOT
 }
@@ -103,6 +105,24 @@ if ! validate_device $XMOS_DEVICE $VALID_XMOS_DEVICES; then
   exit 1
 fi
 
+# validate keyword detector value
+validate_kwd() {
+  local KEY_WORD_DETECTOR=$1
+  shift
+  for d in $*; do
+    if [[ "$KEY_WORD_DETECTOR" = "$d" ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
+KEY_WORD_DETECTOR=${KEY_WORD_DETECTOR_FLAG#"-w "}
+if ! validate_kwd $KEY_WORD_DETECTOR $VALID_KEY_WORD_DETECTOR; then
+  echo "error: $KEY_WORD_DETECTOR is not a valid keyword detector."
+  echo
+  usage
+  exit 1
+fi
 # Exit if chromium browser is open
 if pgrep chromium > /dev/null ; then
   echo "Error: Chromium browser is open"
