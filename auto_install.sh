@@ -7,8 +7,8 @@ RPI_SETUP_REPO=vocalfusion-rpi-setup
 RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
-RPI_SETUP_TAG="v5.2.0"
-AVS_DEVICE_SDK_TAG="v1.26.0.0"
+RPI_SETUP_TAG="release/v5.2.0"
+AVS_DEVICE_SDK_TAG="xmos_v1.26.0.0"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
@@ -118,7 +118,7 @@ validate_kwd() {
 }
 # Extract key word detector type
 KEY_WORD_DETECTOR=${KEY_WORD_DETECTOR_FLAG#"-w "}
-if ! validate_kwd $KEY_WORD_DETECTOR $VALID_KEY_WORD_DETECTOR; then
+if [ -n $KEY_WORD_DETECTOR_FLAG ] && [! validate_kwd $KEY_WORD_DETECTOR $VALID_KEY_WORD_DETECTOR]; then
   echo "error: $KEY_WORD_DETECTOR is not a valid keyword detector."
   echo
   usage
