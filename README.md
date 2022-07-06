@@ -130,7 +130,7 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
 6. You will be asked whether you want the Sample App to run automatically when the Raspberry Pi boots. It is recommended that you respond "yes" to this option.
 
-7. Wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
+7. Follow the instructions from the console and wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
 
 8. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
 
@@ -144,18 +144,16 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
 ## Choose a different keyword detection mechanism
 
-Every product in step 5. above, has a default keyword detection mechanism. This can be overriden from the command line, by using the CLI argument `-w` with the `auto_install.sh` script. The possible options for the `-w` argument are:
+Every product in step 5. in the section above, has a default keyword detection mechanism. This can be overriden from the command line, by using the CLI argument `-w` with the `auto_install.sh` script. The possible options for the `-w` argument are:
 
    - A: Amazon keyword detector, this option requires additional instructions and files as specified by Amazon
    - G: GPIO triggered keyword detector, this option only works in combination with the XVF3615-INT device
    - H: HID triggered keyword detector, this option only works in combination with the XVF3615-UA device
    - S: Sensory keyword detector, this option requires additional instructions and files as specified by Sensory
 
-For example to configure XVF3610-INT to use the Amazon keyword detection, the user must request the necessary instructions and files from Amazon. After updating the scripts and files in `avs-device-sdk` as described by Amazon, the Raspberry Pi can be configured by typing from a terminal in `vocalfusion-avs-setup`:
+For example to configure XVF3610-INT to use the Amazon keyword detection, the user must request the necessary instructions and files from Amazon and update the scripts and files in `avs-device-sdk` as described by Amazon. ~The Raspberry Pi can be configured by following the steps in the section above and replace the command in step 5. with:
 
 ```./auto_install.sh xvf3610-int -w A```
-
-
 
 ## Running the AVS SDK Sample App
 The automated installation script creates a number of aliases which can be used to execute the AVS Device SDK client, or run the unit tests:

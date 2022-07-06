@@ -107,15 +107,16 @@ fi
 
 # validate keyword detector value
 validate_kwd() {
-  local KEY_WORD_DETECTOR=$1
+  local KWD=$1
   shift
   for d in $*; do
-    if [[ "$KEY_WORD_DETECTOR" = "$d" ]]; then
+    if [[ "$KWD" = "$d" ]]; then
       return 0
     fi
   done
   return 1
 }
+# Extract key word detector type
 KEY_WORD_DETECTOR=${KEY_WORD_DETECTOR_FLAG#"-w "}
 if ! validate_kwd $KEY_WORD_DETECTOR $VALID_KEY_WORD_DETECTOR; then
   echo "error: $KEY_WORD_DETECTOR is not a valid keyword detector."
@@ -123,6 +124,7 @@ if ! validate_kwd $KEY_WORD_DETECTOR $VALID_KEY_WORD_DETECTOR; then
   usage
   exit 1
 fi
+
 # Exit if chromium browser is open
 if pgrep chromium > /dev/null ; then
   echo "Error: Chromium browser is open"
