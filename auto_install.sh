@@ -118,7 +118,7 @@ validate_kwd() {
 }
 # Extract key word detector type
 KEY_WORD_DETECTOR=${KEY_WORD_DETECTOR_FLAG#"-w "}
-if [ -n $KEY_WORD_DETECTOR_FLAG ] && [! validate_kwd $KEY_WORD_DETECTOR $VALID_KEY_WORD_DETECTOR]; then
+if [ -n "$KEY_WORD_DETECTOR_FLAG" ] && ! validate_kwd $KEY_WORD_DETECTOR $VALID_KEY_WORD_DETECTOR; then
   echo "error: $KEY_WORD_DETECTOR is not a valid keyword detector."
   echo
   usage
