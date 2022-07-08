@@ -65,18 +65,16 @@ To upgrade the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/
 
 ## Create a Raspberry Pi system disk
 
-First, obtain the required version of the Raspberry Pi operating system, which is available here:
+First, obtain the required version of the Raspberry Pi operating system (Buster), which is available [here](https://downloads.raspberrypi.org/raspios_oldstable_armhf/images/raspios_oldstable_armhf-2022-04-07/2022-04-04-raspios-buster-armhf.img.xz).
 
-https://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip
-
-We cannot use the latest as updates to linux kernel v5 have broken the I2S sub-system.
+We cannot use the latest version (Bullseye), as the AVS device SDK doesn't support it.
 
 Then, install the Raspberry Pi Imager on a host computer. Raspberry Pi Imager is available here:
 
 https://www.raspberrypi.org/software/
 
 Run the Raspberry Pi Imager, and select the 'CHOOSE OS' button. Scroll to the bottom of the displayed list, and select "Use custom".
-Then select the file downloaded above (2020-02-13-raspbian-buster.zip) and select "Open". The archive file does not have to be unzipped, the imager software will do that.
+Then select the file downloaded above (*2022-04-04-raspios-buster-armhf.img.xz*) and select "Open". The archive file does not have to be unzipped, the imager software will do that.
 
 Select the CHOOSE SD CARD button to which to download the image, and then select the "WRITE" button.
 
@@ -126,13 +124,13 @@ When the Raspberry Pi boots up, give these answers to the following questions:
    - XVF3100: ```./auto_install.sh xvf3100```
    - XVF3000: ```./auto_install.sh xvf3100```
 
-   If you need to use the keyword detection using the GPIO2 pin, use the flag '-g' after the device name. If this option is not selected, the Sensory engine is used.
+   The XVF3615-INT and XVF3615-UA devices have an internal keyword detector which switches the AVS console to listening mode when saying "Alexa". The other devices don't have any keyword detection mechanism, neither on the device nor on host. Before the user issues a command, they must use the 'tap-to-talk' option, by pressing 't' on the AVS console.
 
    Read and accept the AVS Device SDK license agreement.
 
 6. You will be asked whether you want the Sample App to run automatically when the Raspberry Pi boots. It is recommended that you respond "yes" to this option.
 
-7. Wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
+7. Follow the instructions from the console and wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
 
 8. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
 
@@ -144,11 +142,22 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
    On the XMOS **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS** and **xCORE VocalFusion 4-Mic Kit for Amazon AVS**, the LEDs on the development board should reflect the approximate direction from which the microphones are receiving a stimulus.
 
+## Choose a different keyword detection mechanism
+
+Every product in step 5. in the section above, has a default keyword detection mechanism. This can be overriden from the command line, by using the CLI argument `-w` with the `auto_install.sh` script. The possible options for the `-w` argument are:
+
+   - A: Amazon keyword detector, this option requires additional instructions and files as specified by Amazon
+   - G: GPIO triggered keyword detector, this option only works in combination with the XVF3615-INT device
+   - H: HID triggered keyword detector, this option only works in combination with the XVF3615-UA device
+   - S: Sensory keyword detector, this option requires additional instructions and files as specified by Sensory
+
+For example to configure XVF3610-INT to use the Amazon keyword detection, the user must request the necessary instructions and files from Amazon and update the scripts and files in `avs-device-sdk` as described by Amazon. The Raspberry Pi can be configured by following the steps in the section above and replace the command in step 5. with:
+
+```./auto_install.sh xvf3610-int -w A```
+
 ## Running the AVS SDK Sample App
 The automated installation script creates a number of aliases which can be used to execute the AVS Device SDK client, or run the unit tests:
 - `avsrun` to run the Sample App.
-
-The XVF3615-INT and XVF3615-UA devices have an internal wakeword detector which switches the AVS console to listening mode when saying "Alexa". The other devices don't have any wakeword detection mechanism, neither on the device nor on host. Before the user issues a command, they must use the 'tap-to-talk' option, by pressing 't' on the AVS console.
 
 ## Reinstalling the AVS SDK and Raspberry Pi audio setup
 

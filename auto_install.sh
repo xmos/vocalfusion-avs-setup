@@ -7,21 +7,20 @@ RPI_SETUP_REPO=vocalfusion-rpi-setup
 RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
-RPI_SETUP_TAG="v5.1.0"
-AVS_DEVICE_SDK_TAG="v1.25.0.3"
+RPI_SETUP_TAG="release/v5.2.0"
+AVS_DEVICE_SDK_TAG="xmos_v1.26.0.0"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
 VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510-int xvf3510-ua xvf3600-slave xvf3600-master xvf3610-int xvf3610-ua xvf3615-int xvf3615-ua"
+VALID_KEY_WORD_DETECTOR="A G H S"
+
 XMOS_DEVICE=
 
 # Default device serial number if nothing is specified
 DEVICE_SERIAL_NUMBER="123456"
-# Disable GPIO keyword detector by default
-GPIO_KEY_WORD_DETECTOR_FLAG=""
-# Disable HID keyword detector by default
-HID_KEY_WORD_DETECTOR_FLAG=""
-
+# Disable any keyword detector by default
+KEY_WORD_DETECTOR_FLAG=""
 usage() {
   local VALID_XMOS_DEVICES_DISPLAY_STRING=
   local NUMBER_OF_VALID_DEVICES=$(echo $VALID_XMOS_DEVICES | wc -w)
@@ -51,8 +50,7 @@ The DEVICE-TYPE is the XMOS device to setup: $VALID_XMOS_DEVICES_DISPLAY_STRING
 Optional parameters:
   -s <serial-number>  If nothing is provided, the default device serial number
                       is 123456
-  -G                  Flag to enable keyword detector on GPIO interrupt
-  -H                  Flag to enable keyword detector on HID event
+  -w <keyword-detector-type> Keyword detector to setup: possible values are A (Amazon), G (GPIO trigger), H (HID trigger), S (Sensory),  default is no keyword detector, only tap-to-talk is enabled'
   -h                  Display this help and exit
 EOT
 }
@@ -73,17 +71,14 @@ fi
 XMOS_DEVICE=$1
 shift 1
 
-OPTIONS=s:GHh
+OPTIONS=s:w:h
 while getopts "$OPTIONS" opt ; do
     case $opt in
         s )
             DEVICE_SERIAL_NUMBER="$OPTARG"
             ;;
-        G )
-            GPIO_KEY_WORD_DETECTOR_FLAG="-G"
-            ;;
-        H )
-            HID_KEY_WORD_DETECTOR_FLAG="-H"
+        w )
+            KEY_WORD_DETECTOR_FLAG="-w $OPTARG"
             ;;
         h )
             usage
@@ -105,6 +100,26 @@ validate_device() {
 }
 if ! validate_device $XMOS_DEVICE $VALID_XMOS_DEVICES; then
   echo "error: $XMOS_DEVICE is not a valid device type."
+  echo
+  usage
+  exit 1
+fi
+
+# validate keyword detector value
+validate_kwd() {
+  local KWD=$1
+  shift
+  for d in $*; do
+    if [[ "$KWD" = "$d" ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
+# Extract key word detector type
+KEY_WORD_DETECTOR=${KEY_WORD_DETECTOR_FLAG#"-w "}
+if [ -n "$KEY_WORD_DETECTOR_FLAG" ] && ! validate_kwd $KEY_WORD_DETECTOR $VALID_KEY_WORD_DETECTOR; then
+  echo "error: $KEY_WORD_DETECTOR is not a valid keyword detector."
   echo
   usage
   exit 1
@@ -136,11 +151,15 @@ git clone -b $RPI_SETUP_TAG https://github.com/xmos/$RPI_SETUP_REPO.git
 # Convert xvf3615 device into xvf3610 device and '-g' argument
 if [[ "$XMOS_DEVICE" == "xvf3615-int" ]]; then
   XMOS_DEVICE="xvf3610-int"
-  GPIO_KEY_WORD_DETECTOR_FLAG="-G"
+  if [ -z $KEY_WORD_DETECTOR_FLAG ]; then
+    KEY_WORD_DETECTOR_FLAG="-w G"
+  fi
 fi
 if [[ "$XMOS_DEVICE" == "xvf3615-ua" ]]; then
   XMOS_DEVICE="xvf3610-ua"
-  HID_KEY_WORD_DETECTOR_FLAG="-H"
+  if [ -z $KEY_WORD_DETECTOR_FLAG ]; then
+    KEY_WORD_DETECTOR_FLAG="-w H"
+  fi
 fi
 
 # Execute (rather than source) the setup scripts
@@ -156,7 +175,7 @@ if $RPI_SETUP_SCRIPT $XMOS_DEVICE; then
   wget -O pi.sh https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/pi.sh
   wget -O genConfig.sh https://raw.githubusercontent.com/xmos/avs-device-sdk/$AVS_DEVICE_SDK_TAG/tools/Install/genConfig.sh
   chmod +x $AVS_SCRIPT
-  AVS_CMD="./${AVS_SCRIPT} ${CONFIG_JSON_FILE} ${AVS_DEVICE_SDK_TAG} -s ${DEVICE_SERIAL_NUMBER} -x ${XMOS_DEVICE} ${GPIO_KEY_WORD_DETECTOR_FLAG} ${HID_KEY_WORD_DETECTOR_FLAG}"
+  AVS_CMD="./${AVS_SCRIPT} ${CONFIG_JSON_FILE} ${AVS_DEVICE_SDK_TAG} -s ${DEVICE_SERIAL_NUMBER} -x ${XMOS_DEVICE} ${KEY_WORD_DETECTOR_FLAG}"
   echo "Running command ${AVS_CMD}"
   if $AVS_CMD; then
     echo "Type 'sudo reboot' below to reboot the Raspberry Pi and complete the AVS setup."
