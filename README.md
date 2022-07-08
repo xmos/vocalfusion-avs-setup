@@ -151,7 +151,7 @@ Every product in step 5. in the section above, has a default keyword detection m
    - H: HID triggered keyword detector, this option only works in combination with the XVF3615-UA device
    - S: Sensory keyword detector, this option requires additional instructions and files as specified by Sensory
 
-For example to configure XVF3610-INT to use the Amazon keyword detection, the user must request the necessary instructions and files from Amazon and update the scripts and files in `avs-device-sdk` as described by Amazon. ~The Raspberry Pi can be configured by following the steps in the section above and replace the command in step 5. with:
+For example to configure XVF3610-INT to use the Amazon keyword detection, the user must request the necessary instructions and files from Amazon and update the scripts and files in `avs-device-sdk` as described by Amazon. The Raspberry Pi can be configured by following the steps in the section above and replace the command in step 5. with:
 
 ```./auto_install.sh xvf3610-int -w A```
 
