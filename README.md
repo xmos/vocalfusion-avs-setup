@@ -27,26 +27,30 @@ You will need:
    - Raspberry Pi 4 with USB-C power supply (min. 3A) and Micro HDMI to Standard HDMI (A/M) Cable
 
 - MicroSD card (min. 16GB)
-- Powered speakers with audio 3.5mm analogue plug
+- Powered speaker(s) with audio 3.5mm analogue plug
 
-   Stereo for the XVF3615, XVF3610, XVF3510 and XVF3500, or
-   Mono for the XVF3100 and XVF3000
+   Mono or Stereo for the XVF3615, XVF3610, XVF3510 and XVF3500, or
+   Mono only for the XVF3100 and XVF3000
 
 - Monitor with HDMI input
 - USB keyboard and mouse
 - Fast-Ethernet connection or WiFi with internet connectivity
+
+- [for -UA configurations] USB A to USB Micro B cable
 
 You will also need an Amazon Developer account: https://developer.amazon.com
 
 ## Hardware Setup
 Set up your hardware by following the **Hardware Setup Guide** for your product.
 
-   - XVF3615: https://www.xmos.ai/file/xvf3615-dev-kit-setup-guides
-   - XVF3610: https://www.xmos.ai/file/xvf3610-dev-kit-setup-guides
+   - XVF3610/3615: https://www.xmos.ai/file/xvf3610-dev-kit-setup-guides
    - XVF3510: https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides
    - XVF3500: https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides
    - XVF3100: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
    - XVF3000: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
+
+If you are using the -UA variant then connect the USB port on the XMOS board to a free
+USB port on the Raspberry Pi.
 
 ## Firmware Upgrade
 Once the hardware is setup, upgrade the firmware on your AVS development kit. The firmware can be found here:
@@ -61,7 +65,8 @@ Once the hardware is setup, upgrade the firmware on your AVS development kit. Th
    - XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
    - XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
 
-To upgrade the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
+To upgrade the firmware you will need an XMOS xTAG adapter. The appropriate xTAG is supplied with each evaluation kit.
+ 
 
 ## Create a Raspberry Pi system disk
 
@@ -162,6 +167,3 @@ The automated installation script creates a number of aliases which can be used 
 ## Reinstalling the AVS SDK and Raspberry Pi audio setup
 
 In case of re-installation, please repeat the full procedure as described in the sections "Create a Raspberry Pi system disk" and "AVS SDK installation and Raspberry Pi audio setup". It is recommended the re-installation procedure starts always from a blank SD card.
-
-
-
