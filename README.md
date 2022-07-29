@@ -55,9 +55,10 @@ USB port on the Raspberry Pi.
 ## Firmware Upgrade
 Once the hardware is setup, upgrade the firmware on your AVS development kit. The firmware can be found here:
 
-   - XVF3615 - Firmware requires approval from Amazon - Please contact XMOS via https://www.xmos.ai/contact/  
    - XVF3610-INT: https://www.xmos.ai/file/xvf3610-int
    - XVF3610-UA: https://www.xmos.ai/file/xvf3610-ua
+
+   - XVF3615 - Amazon licensing terms require additional approvals to obtain XVF3615 firmware - Please contact XMOS via https://www.xmos.ai/contact/  
 
    - XVF3510-INT: https://www.xmos.ai/file/xvf3510-int-release
    - XVF3510-UA: https://www.xmos.ai/file/xvf3510-ua-release
