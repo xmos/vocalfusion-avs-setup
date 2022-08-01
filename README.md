@@ -6,11 +6,13 @@ The XMOS **xCORE VocalFusion kits for Amazon AVS** provides far-field voice capt
 
 Combined with a Raspberry Pi running the Amazon Alexa Voice Service (AVS) Software Development Kit (SDK), these kits allow you to quickly prototype and evaluate talking with Alexa.
 
-To find out more, visit: https://www.xmos.ai/vocalfusion-voice-interfaces/ (XVF3610/3615 & XVF3500),
-https://www.xmos.ai/xvf3510/ (XVF3510)
-or https://www.xmos.ai/vocalfusion-conference-calling/ (XVF3100/3000)
+To find out more, visit:
 
-Information on the AVS tools and developer support can be found at https://developer.amazon.com/alexa-voice-service
+   - [XVF3610/3615 & XVF3500](https://www.xmos.ai/vocalfusion-voice-interfaces/)
+   - [XVF3510](https://www.xmos.ai/xvf3510/)
+   - [XVF3100/3000](https://www.xmos.ai/vocalfusion-conference-calling/)
+
+Information on the AVS tools and developer support can be found [here](https://developer.amazon.com/alexa-voice-service)
 
 ## Prerequisites
 You will need:
@@ -39,15 +41,15 @@ You will need:
 
 - [for -UA configurations] USB A to USB Micro B cable
 
-You will also need an Amazon Developer account: https://developer.amazon.com
+You will also need an Amazon Developer account from [here](https://developer.amazon.com)
 
 ## Hardware Setup
 Set up your hardware by following the **Hardware Setup Guide** for your product.
 
-   - XVF3610/3615: https://www.xmos.ai/file/xvf3610-Quick-start-guide
-   - XVF3510: https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides
-   - XVF3500: https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides
-   - XVF3000/3100: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
+   - [XVF3610/3615](https://www.xmos.ai/file/xvf3610-Quick-start-guide)
+   - [XVF3510](https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides)
+   - [XVF3500](https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides)
+   - [XVF3000/3100](https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides)
 
 If you are using the -UA variant, connect a USB cable from the micro USB port on the XMOS board to a free
 USB port on the Raspberry Pi.
@@ -55,17 +57,16 @@ USB port on the Raspberry Pi.
 ## Firmware Upgrade
 Once the hardware is setup, upgrade the firmware on your AVS development kit. The firmware can be found here:
 
-   - XVF3610-INT: https://www.xmos.ai/file/xvf3610-int
-   - XVF3610-UA: https://www.xmos.ai/file/xvf3610-ua
+   - [XVF3610-INT](https://www.xmos.ai/file/xvf3610-int)
+   - [XVF3610-UA](https://www.xmos.ai/file/xvf3610-ua)
 
-   - XVF3615 - Amazon licensing terms require additional approvals to obtain XVF3615 firmware - Please contact XMOS via https://www.xmos.ai/contact/  
+   - XVF3615  - Amazon licensing terms require additional approvals to obtain XVF3615 firmware - Please contact XMOS [here](https://www.xmos.ai/contact/)
 
-   - XVF3510-INT: https://www.xmos.ai/file/xvf3510-int-release
-   - XVF3510-UA: https://www.xmos.ai/file/xvf3510-ua-release
+   - [XVF3510-INT](https://www.xmos.ai/file/xvf3510-int-release)
+   - [XVF3510-UA](https://www.xmos.ai/file/xvf3510-ua-release)
 
-   - XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries
-   - XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
-   - XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
+   - [XVF3500](https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries)
+   - [XVF3000/3100](https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries)
 
 To upgrade the firmware you will need an XMOS xTAG adapter. The appropriate xTAG for the board
 is supplied with each evaluation kit.
@@ -77,9 +78,7 @@ First, obtain the required version of the Raspberry Pi operating system (Buster)
 
 We cannot use the latest version (Bullseye), as the AVS device SDK doesn't support it.
 
-Then, install the Raspberry Pi Imager on a host computer. Raspberry Pi Imager is available here:
-
-https://www.raspberrypi.org/software/
+Then, install the Raspberry Pi Imager on a host computer. Raspberry Pi Imager is available [here](https://www.raspberrypi.org/software/)
 
 Run the Raspberry Pi Imager, and select the 'CHOOSE OS' button. Scroll to the bottom of the displayed list, and select "Use custom".
 Then select the file downloaded above (*2022-04-04-raspios-buster-armhf.img.xz*) and select "Open". The archive file does not have to be unzipped, the imager software will do that.
@@ -110,7 +109,7 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
    **DO NOT** use the command 'apt update' to update the software database. This will cause the installation to fail. **DO NOT** update the kernel, as this will cause the audio sub-sytem to fail.
 
-2. Register an AVS product, create a security profile and save a *config.json* file by following https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/register-a-product.html. It is strongly recommended that the config.json file should be saved onto a USB memory stick for future use.
+2. Register an AVS product, create a security profile and save a *config.json* file by following the steps from [here](https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/register-a-product.html). It is strongly recommended that the config.json file should be saved onto a USB memory stick for future use.
 
 3. Close the browser and any other applications to avoid the Raspberry Pi freezing during the AVS SDK installation.
 
