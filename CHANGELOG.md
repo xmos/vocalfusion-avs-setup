@@ -1,5 +1,13 @@
 # VocalFusion AVS Setup Change Log
 
+## 3.2.0
+
+  * Updated version of Raspberry Pi operating system to download
+  * Reworked and extended options for Keyword Detectors
+  * Updated links and instructions in the readme file
+  * Using vocalfusion-rpi-setup v5.2.0. [See details here](https://github.com/xmos/vocalfusion-rpi-setup/blob/release/v5.2.0/CHANGELOG.md).
+  * Using avs-device-sdk v1.26.0.0. [See details here](https://github.com/xmos/avs-device-sdk/blob/xmos_v1.26.0.0/CHANGELOG.md).
+
 ## 3.1.0
 
   * Renamed xvf3510 device as xvf3510-int

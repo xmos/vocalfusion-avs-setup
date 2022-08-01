@@ -2,22 +2,25 @@
 
 This repository provides a simple-to-use automated script to install the Amazon AVS SDK on a Raspberry Pi and configure the Raspberry Pi to use the appropriate **xCORE VocalFusion Kit for Amazon AVS**.
 
-The XMOS **xCORE VocalFusion Kit for Amazon AVS** provides far-field voice capture using one of the XMOS XVF3000, XVF3100, XVF3500, XVF3510 OR XVF3610 voice processors.
+The XMOS **xCORE VocalFusion kits for Amazon AVS** provides far-field voice capture using one of the XMOS XVF3000, XVF3100, XVF3500, XVF3510 OR XVF3610 voice processors.
 
 Combined with a Raspberry Pi running the Amazon Alexa Voice Service (AVS) Software Development Kit (SDK), these kits allow you to quickly prototype and evaluate talking with Alexa.
 
-To find out more, visit: https://www.xmos.ai/vocalfusion-voice-interfaces/ (XVF3610/3500),
-https://www.xmos.ai/xvf3510/ (XVF3510)
-or https://www.xmos.ai/vocalfusion-conference-calling/ (XVF3100/3000)
-and: https://developer.amazon.com/alexa-voice-service
+To find out more, visit:
+
+   - [XVF3610/3615 & XVF3500](https://www.xmos.ai/vocalfusion-voice-interfaces/)
+   - [XVF3510](https://www.xmos.ai/xvf3510/)
+   - [XVF3100/3000](https://www.xmos.ai/vocalfusion-conference-calling/)
+
+Information on the AVS tools and developer support can be found [here](https://developer.amazon.com/alexa-voice-service)
 
 ## Prerequisites
 You will need:
 
 - Either
 
-   - **xCORE VocalFusion XVF3610/XVF3615 Kit for Amazon AVS**: XK-VOICE-L71, or
-   - **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71, or
+   - **Voice Reference Design Evaluation Kit**: XK-VOICE-L71, or
+   - **xCORE VocalFusion XVF3510 Kit for Amazon AVS**: XK-VF3510-L71-AVS, or
    - **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS, or
    - **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
 
@@ -27,56 +30,58 @@ You will need:
    - Raspberry Pi 4 with USB-C power supply (min. 3A) and Micro HDMI to Standard HDMI (A/M) Cable
 
 - MicroSD card (min. 16GB)
-- Powered speakers with audio 3.5mm analogue plug
+- Powered speaker(s) with audio 3.5mm analogue plug
 
-   Stereo for the XVF3615, XVF3610, XVF3510 and XVF3500, or
-   Mono for the XVF3100 and XVF3000
+   Mono or Stereo for the XVF3615, XVF3610, XVF3510 and XVF3500, or
+   Mono only for the XVF3100 and XVF3000
 
 - Monitor with HDMI input
 - USB keyboard and mouse
 - Fast-Ethernet connection or WiFi with internet connectivity
 
-You will also need an Amazon Developer account: https://developer.amazon.com
+- [for -UA configurations] USB A to USB Micro B cable
+
+You will also need an Amazon Developer account from [here](https://developer.amazon.com)
 
 ## Hardware Setup
 Set up your hardware by following the **Hardware Setup Guide** for your product.
 
-   - XVF3615: https://www.xmos.ai/file/xvf3615-dev-kit-setup-guides
-   - XVF3610: https://www.xmos.ai/file/xvf3610-dev-kit-setup-guides
-   - XVF3510: https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides
-   - XVF3500: https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides
-   - XVF3100: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
-   - XVF3000: https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides
+   - [XVF3610/3615](https://www.xmos.ai/file/xvf3610-Quick-start-guide)
+   - [XVF3510](https://www.xmos.ai/file/xvf3510-dev-kit-setup-guides)
+   - [XVF3500](https://www.xmos.ai/file/xvf3500-dev-kit-setup-guides)
+   - [XVF3000/3100](https://www.xmos.ai/file/xvf3000-3100-dev-kit-setup-guides)
+
+If you are using the -UA variant, connect a USB cable from the micro USB port on the XMOS board to a free
+USB port on the Raspberry Pi.
 
 ## Firmware Upgrade
 Once the hardware is setup, upgrade the firmware on your AVS development kit. The firmware can be found here:
 
-   - XVF3615-INT: https://www.xmos.ai/file/xvf3615-int-release
-   - XVF3615-UA: https://www.xmos.ai/file/xvf3615-ua-release
-   - XVF3610-INT: https://www.xmos.ai/file/xvf3610-int-release
-   - XVF3610-UA: https://www.xmos.ai/file/xvf3610-ua-release
-   - XVF3510-INT: https://www.xmos.ai/file/xvf3510-int-release
-   - XVF3510-UA: https://www.xmos.ai/file/xvf3510-ua-release
-   - XVF3500: https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries
-   - XVF3100: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
-   - XVF3000: https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries
+   - [XVF3610-INT](https://www.xmos.ai/file/xvf3610-int)
+   - [XVF3610-UA](https://www.xmos.ai/file/xvf3610-ua)
 
-To upgrade the firmware you will need the XMOS xTAG adapter https://www.xmos.ai/xtag-debug-adapter/
+   - XVF3615  - Amazon licensing terms require additional approvals to obtain XVF3615 firmware - Please contact XMOS [here](https://www.xmos.ai/contact/)
+
+   - [XVF3510-INT](https://www.xmos.ai/file/xvf3510-int-release)
+   - [XVF3510-UA](https://www.xmos.ai/file/xvf3510-ua-release)
+
+   - [XVF3500](https://www.xmos.ai/file/vocalfusion-stereo-evaluation-binaries)
+   - [XVF3000/3100](https://www.xmos.ai/file/vocalfusion-speaker-evaluation-binaries)
+
+To upgrade the firmware you will need an XMOS xTAG adapter. The appropriate xTAG for the board
+is supplied with each evaluation kit.
+
 
 ## Create a Raspberry Pi system disk
 
-First, obtain the required version of the Raspberry Pi operating system, which is available here:
+First, obtain the required version of the Raspberry Pi operating system (Buster), which is available [here](https://downloads.raspberrypi.org/raspios_oldstable_armhf/images/raspios_oldstable_armhf-2022-04-07/2022-04-04-raspios-buster-armhf.img.xz).
 
-https://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip
+We cannot use the latest version (Bullseye), as the AVS device SDK doesn't support it.
 
-We cannot use the latest as updates to linux kernel v5 have broken the I2S sub-system.
-
-Then, install the Raspberry Pi Imager on a host computer. Raspberry Pi Imager is available here:
-
-https://www.raspberrypi.org/software/
+Then, install the Raspberry Pi Imager on a host computer. Raspberry Pi Imager is available [here](https://www.raspberrypi.org/software/)
 
 Run the Raspberry Pi Imager, and select the 'CHOOSE OS' button. Scroll to the bottom of the displayed list, and select "Use custom".
-Then select the file downloaded above (2020-02-13-raspbian-buster.zip) and select "Open". The archive file does not have to be unzipped, the imager software will do that.
+Then select the file downloaded above (*2022-04-04-raspios-buster-armhf.img.xz*) and select "Open". The archive file does not have to be unzipped, the imager software will do that.
 
 Select the CHOOSE SD CARD button to which to download the image, and then select the "WRITE" button.
 
@@ -104,7 +109,7 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
    **DO NOT** use the command 'apt update' to update the software database. This will cause the installation to fail. **DO NOT** update the kernel, as this will cause the audio sub-sytem to fail.
 
-2. Register an AVS product, create a security profile and save a *config.json* file by following https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/register-a-product.html. It is strongly recommended that the config.json file should be saved onto a USB memory stick for future use.
+2. Register an AVS product, create a security profile and save a *config.json* file by following the steps from [here](https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/register-a-product.html). It is strongly recommended that the config.json file should be saved onto a USB memory stick for future use.
 
 3. Close the browser and any other applications to avoid the Raspberry Pi freezing during the AVS SDK installation.
 
@@ -126,13 +131,13 @@ When the Raspberry Pi boots up, give these answers to the following questions:
    - XVF3100: ```./auto_install.sh xvf3100```
    - XVF3000: ```./auto_install.sh xvf3100```
 
-   If you need to use the keyword detection using the GPIO2 pin, use the flag '-g' after the device name. If this option is not selected, the Sensory engine is used.
+   The XVF3615-INT and XVF3615-UA devices have an internal keyword detector which switches the AVS console to listening mode when saying "Alexa". The other devices do not have any keyword detection mechanism, neither on the device nor on host. Before the user issues a command, they must use the 'tap-to-talk' option, by pressing 't' on the AVS console.
 
    Read and accept the AVS Device SDK license agreement.
 
 6. You will be asked whether you want the Sample App to run automatically when the Raspberry Pi boots. It is recommended that you respond "yes" to this option.
 
-7. Wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
+7. Follow the instructions from the console and wait for the script to complete the installation. The script is configuring the Raspberry Pi audio system, downloading and updating dependencies, building and configuring the AVS Device SDK. It takes around 30 minutes to complete.
 
 8. Enter `sudo reboot` to reboot the Raspberry Pi and complete the installation.
 
@@ -144,15 +149,23 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
    On the XMOS **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS** and **xCORE VocalFusion 4-Mic Kit for Amazon AVS**, the LEDs on the development board should reflect the approximate direction from which the microphones are receiving a stimulus.
 
+## Choose a different keyword detection mechanism
+
+Every product in step 5. in the section above, has a default keyword detection mechanism. This can be overriden from the command line, by using the CLI argument `-w` with the `auto_install.sh` script. The possible options for the `-w` argument are:
+
+   - A: Amazon keyword detector, this option requires additional instructions and files as specified by Amazon
+   - G: GPIO triggered keyword detector, this option only works in combination with the XVF3615-INT device
+   - H: HID triggered keyword detector, this option only works in combination with the XVF3615-UA device
+   - S: Sensory keyword detector, this option requires additional instructions and files as specified by Sensory
+
+For example to configure XVF3610-INT to use the Amazon keyword detection, the user must request the necessary instructions and files from Amazon and update the scripts and files in `avs-device-sdk` as described by Amazon. The Raspberry Pi can be configured by following the steps in the section above and replace the command in step 5. with:
+
+```./auto_install.sh xvf3610-int -w A```
+
 ## Running the AVS SDK Sample App
 The automated installation script creates a number of aliases which can be used to execute the AVS Device SDK client, or run the unit tests:
 - `avsrun` to run the Sample App.
 
-The XVF3615-INT and XVF3615-UA devices have an internal wakeword detector which switches the AVS console to listening mode when saying "Alexa". The other devices don't have any wakeword detection mechanism, neither on the device nor on host. Before the user issues a command, they must use the 'tap-to-talk' option, by pressing 't' on the AVS console.
-
 ## Reinstalling the AVS SDK and Raspberry Pi audio setup
 
 In case of re-installation, please repeat the full procedure as described in the sections "Create a Raspberry Pi system disk" and "AVS SDK installation and Raspberry Pi audio setup". It is recommended the re-installation procedure starts always from a blank SD card.
-
-
-
