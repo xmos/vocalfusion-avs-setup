@@ -1,5 +1,9 @@
 # VocalFusion AVS Setup Change Log
 
+## 3.2.1
+
+  * Bumped the vocalfusion-rpi-setup repo tag to v5.4.0
+
 ## 3.2.0
 
   * Updated version of Raspberry Pi operating system to download
