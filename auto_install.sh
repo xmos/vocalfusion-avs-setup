@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright 2022 XMOS LIMITED. This software is subject to the terms of the
+# Copyright 2023 XMOS LIMITED. This software is subject to the terms of the
 # XMOS Public Licence, Version 1
 pushd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null
 SETUP_DIR="$( pwd )"
