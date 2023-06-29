@@ -8,7 +8,7 @@ RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
 RPI_SETUP_TAG="v5.8.0"
-AVS_DEVICE_SDK_TAG="feature/v3.0.0-all-devices"
+AVS_DEVICE_SDK_TAG="feature/alexa-v3.0.0"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
