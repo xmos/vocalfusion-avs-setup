@@ -74,32 +74,7 @@ is supplied with each evaluation kit.
 
 ## Create a Raspberry Pi system disk
 
-First, obtain the required version of the Raspberry Pi operating system (Buster), which is available [here](https://downloads.raspberrypi.org/raspios_oldstable_armhf/images/raspios_oldstable_armhf-2022-04-07/2022-04-04-raspios-buster-armhf.img.xz).
-
-We cannot use the latest version (Bullseye), as the AVS device SDK doesn't support it.
-
-Then, install the Raspberry Pi Imager on a host computer. Raspberry Pi Imager is available [here](https://www.raspberrypi.org/software/)
-
-Run the Raspberry Pi Imager, and select the 'CHOOSE OS' button. Scroll to the bottom of the displayed list, and select "Use custom".
-Then select the file downloaded above (*2022-04-04-raspios-buster-armhf.img.xz*) and select "Open". The archive file does not have to be unzipped, the imager software will do that.
-
-Select the CHOOSE SD CARD button to which to download the image, and then select the "WRITE" button.
-
-When prompted, remove the written SD card and insert it into the Raspberry Pi.
-
-Connect up the keyboard, mouse, speakers and display to the Raspberry Pi and power up the system. Refer to the **Getting Started Guide** for your platform.
-
-When the Raspberry Pi boots up, give these answers to the following questions:
-
-- Welcome to the Raspberry Pi Desktop!: select 'Next'
-- Set Country: Make the appropriate changes and select 'Next'
-- Change Password: Set the password appropriately and select 'Next'
-- Set Up Screen: Follow the instructions, and then select 'Next'
-- Select WiFi Network: If you are using WiFi, select your SSID from the list and then select 'Next'
-- (If you selected a WiFi network, you will be prompted to enter the password, and then select 'Next')
-- Update Software: select **Skip**
-
-**DO NOT FOLLOW THE PROMPT TO UPDATE THE SOFTWARE ON THE SYSTEM.** Set up the locale, and setup a network connect, but **DO NOT** update the software on the Raspberry Pi. This will update the kernel, and then the audio sub-system will not work.
+Follow the instructions in steps 1 to 4 from the [Setup section here](https://github.com/xmos/vocalfusion-rpi-setup/blob/v5.8.0/README.md#setup).
 
 ## AVS SDK installation and Raspberry Pi audio setup
 
