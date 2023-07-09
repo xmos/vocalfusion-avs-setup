@@ -128,10 +128,8 @@ Follow the instructions in steps 1 to 4 from the [Setup section here](https://gi
 
 Every product in step 5. in the section above, has a default keyword detection mechanism. This can be overriden from the command line, by using the CLI argument `-w` with the `auto_install.sh` script. The possible options for the `-w` argument are:
 
-   - A: Amazon keyword detector, this option requires additional instructions and files as specified by Amazon
    - G: GPIO triggered keyword detector, this option only works in combination with the XVF3615-INT device
    - H: HID triggered keyword detector, this option only works in combination with the XVF3615-UA device
-   - S: Sensory keyword detector, this option requires additional instructions and files as specified by Sensory
 
 For example to configure XVF3610-INT to use the Amazon keyword detection, the user must request the necessary instructions and files from Amazon and update the scripts and files in `avs-device-sdk` as described by Amazon. The Raspberry Pi can be configured by following the steps in the section above and replace the command in step 5. with:
 
