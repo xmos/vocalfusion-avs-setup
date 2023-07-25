@@ -97,9 +97,7 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 - Set Up Screen: Follow the instructions, and then select 'Next'
 - Select WiFi Network: If you are using WiFi, select your SSID from the list and then select 'Next'
 - (If you selected a WiFi network, you will be prompted to enter the password, and then select 'Next')
-- Update Software: select **Skip**
-
-**DO NOT FOLLOW THE PROMPT TO UPDATE THE SOFTWARE ON THE SYSTEM.** Set up the locale, and setup a network connect, but **DO NOT** update the software on the Raspberry Pi. This will update the kernel, and then the audio sub-system will not work.
+- Update Software: select **OK**
 
 ## AVS SDK installation and Raspberry Pi audio setup
 
