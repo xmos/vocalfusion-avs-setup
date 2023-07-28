@@ -38,7 +38,7 @@ You will need:
 
 - [for -UA configurations] USB A to USB Micro B cable
 
-We do not advice using a Raspberry Pi 3, in place of a Raspberry Pi 4. Lack of RAM on the Raspberry Pi 3 may cause the AVS device SDK compilation to fail, as reported in [this issue](https://github.com/alexa/avs-device-sdk/issues/2035).
+We do not advise using a Raspberry Pi 3, in place of a Raspberry Pi 4. Lack of RAM on the Raspberry Pi 3 may cause the AVS device SDK compilation to fail, as reported in [this issue](https://github.com/alexa/avs-device-sdk/issues/2035).
 
 You will also need an Amazon Developer account from [here](https://developer.amazon.com)
 
