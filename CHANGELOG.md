@@ -2,7 +2,7 @@
 
 ## 4.0.0
 
-  * Update AVS Device SDK version to version 3.0.0
+  * Update AVS Device SDK to version 3.0.0
   * Update vocalfusion-rpi-setup to version 5.8.0
   * Removed support for Sensory KWD
   * Removed support XMOS AVS tests
