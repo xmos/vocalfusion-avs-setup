@@ -40,8 +40,6 @@ You will need:
 
 We do not advice using a Raspberry Pi 3, in place of a Raspberry Pi 4. Lack of RAM on the Raspberry Pi 3 may cause the AVS device SDK compilation to fail, as reported in [this issue](https://github.com/alexa/avs-device-sdk/issues/2035).
 
-- Raspberry Pi 3 with Micro-USB power supply (min. 2A) and HDMI cable, or
-
 You will also need an Amazon Developer account from [here](https://developer.amazon.com)
 
 ## Hardware Setup
@@ -80,7 +78,7 @@ These steps can take up to 30 minutes.
 
 ## AVS SDK installation and Raspberry Pi audio setup
 
-The instructions below can take up to 45 minutes.
+The instructions below can take up to 45 minutes to complete.
 
 1. Open a terminal window on the Raspberry Pi desktop and clone the vocalfusion-avs-setup repository:
 
