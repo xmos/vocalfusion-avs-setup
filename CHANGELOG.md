@@ -1,5 +1,14 @@
 # VocalFusion AVS Setup Change Log
 
+## 4.0.0
+
+  * Update AVS Device SDK to version 3.0.0
+  * Update vocalfusion-rpi-setup to version 5.8.0
+  * Removed support for Sensory KWD
+  * Removed support XMOS AVS tests
+  * Removed code to control LED's of XVF3510 Pi hat
+  * Removed support for Vocalfusion sales demo
+
 ## 3.2.0
 
   * Updated version of Raspberry Pi operating system to download
