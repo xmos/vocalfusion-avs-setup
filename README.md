@@ -24,11 +24,8 @@ You will need:
    - **xCORE VocalFusion Stereo 4-Mic Kit for Amazon AVS**: XK-VF3500-L33-AVS, or
    - **xCORE VocalFusion 4-Mic Kit for Amazon AVS**: XK-VF3000-L33-AVS
 
-- Either
 
-   - Raspberry Pi 3 with Micro-USB power supply (min. 2A) and HDMI cable, or
-   - Raspberry Pi 4 with USB-C power supply (min. 3A) and Micro HDMI to Standard HDMI (A/M) Cable
-
+- Raspberry Pi 4 with USB-C power supply (min. 3A) and Micro HDMI to Standard HDMI (A/M) Cable
 - MicroSD card (min. 16GB)
 - Powered speaker(s) with audio 3.5mm analogue plug
 
@@ -40,6 +37,10 @@ You will need:
 - Fast-Ethernet connection or WiFi with internet connectivity
 
 - [for -UA configurations] USB A to USB Micro B cable
+
+We do not advice using a Raspberry Pi 3, in place of a Raspberry Pi 4. Lack of RAM on the Raspberry Pi 3 may cause the AVS device SDK compilation to fail, as reported in [this issue](https://github.com/alexa/avs-device-sdk/issues/2035).
+
+- Raspberry Pi 3 with Micro-USB power supply (min. 2A) and HDMI cable, or
 
 You will also need an Amazon Developer account from [here](https://developer.amazon.com)
 
@@ -74,32 +75,12 @@ is supplied with each evaluation kit.
 
 ## Create a Raspberry Pi system disk
 
-First, obtain the required version of the Raspberry Pi operating system (Buster), which is available [here](https://downloads.raspberrypi.org/raspios_oldstable_armhf/images/raspios_oldstable_armhf-2022-04-07/2022-04-04-raspios-buster-armhf.img.xz).
-
-We cannot use the latest version (Bullseye), as the AVS device SDK doesn't support it.
-
-Then, install the Raspberry Pi Imager on a host computer. Raspberry Pi Imager is available [here](https://www.raspberrypi.org/software/)
-
-Run the Raspberry Pi Imager, and select the 'CHOOSE OS' button. Scroll to the bottom of the displayed list, and select "Use custom".
-Then select the file downloaded above (*2022-04-04-raspios-buster-armhf.img.xz*) and select "Open". The archive file does not have to be unzipped, the imager software will do that.
-
-Select the CHOOSE SD CARD button to which to download the image, and then select the "WRITE" button.
-
-When prompted, remove the written SD card and insert it into the Raspberry Pi.
-
-Connect up the keyboard, mouse, speakers and display to the Raspberry Pi and power up the system. Refer to the **Getting Started Guide** for your platform.
-
-When the Raspberry Pi boots up, give these answers to the following questions:
-
-- Welcome to the Raspberry Pi Desktop!: select 'Next'
-- Set Country: Make the appropriate changes and select 'Next'
-- Change Password: Set the password appropriately and select 'Next'
-- Set Up Screen: Follow the instructions, and then select 'Next'
-- Select WiFi Network: If you are using WiFi, select your SSID from the list and then select 'Next'
-- (If you selected a WiFi network, you will be prompted to enter the password, and then select 'Next')
-- Update Software: select **OK**
+Follow the instructions in steps 1 to 4 from the [Setup section here](https://github.com/xmos/vocalfusion-rpi-setup/blob/v5.8.0/README.md#setup).
+These steps can take up to 30 minutes.
 
 ## AVS SDK installation and Raspberry Pi audio setup
+
+The instructions below can take up to 45 minutes.
 
 1. Open a terminal window on the Raspberry Pi desktop and clone the vocalfusion-avs-setup repository:
 
@@ -151,10 +132,8 @@ When the Raspberry Pi boots up, give these answers to the following questions:
 
 Every product in step 5. in the section above, has a default keyword detection mechanism. This can be overriden from the command line, by using the CLI argument `-w` with the `auto_install.sh` script. The possible options for the `-w` argument are:
 
-   - A: Amazon keyword detector, this option requires additional instructions and files as specified by Amazon
    - G: GPIO triggered keyword detector, this option only works in combination with the XVF3615-INT device
    - H: HID triggered keyword detector, this option only works in combination with the XVF3615-UA device
-   - S: Sensory keyword detector, this option requires additional instructions and files as specified by Sensory
 
 For example to configure XVF3610-INT to use the Amazon keyword detection, the user must request the necessary instructions and files from Amazon and update the scripts and files in `avs-device-sdk` as described by Amazon. The Raspberry Pi can be configured by following the steps in the section above and replace the command in step 5. with:
 
