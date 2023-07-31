@@ -7,13 +7,13 @@ RPI_SETUP_REPO=vocalfusion-rpi-setup
 RPI_SETUP_DIR=$SETUP_DIR/$RPI_SETUP_REPO
 RPI_SETUP_SCRIPT=$RPI_SETUP_DIR/setup.sh
 
-RPI_SETUP_TAG="v5.2.0"
-AVS_DEVICE_SDK_TAG="v1.26.0.0"
+RPI_SETUP_TAG="v5.8.0"
+AVS_DEVICE_SDK_TAG="v3.0.0.0"
 AVS_SCRIPT="setup.sh"
 
 # Valid values for XMOS device
 VALID_XMOS_DEVICES="xvf3100 xvf3500 xvf3510-int xvf3510-ua xvf3600-slave xvf3600-master xvf3610-int xvf3610-ua xvf3615-int xvf3615-ua"
-VALID_KEY_WORD_DETECTOR="A G H S"
+VALID_KEY_WORD_DETECTOR="G H"
 
 XMOS_DEVICE=
 
@@ -50,7 +50,7 @@ The DEVICE-TYPE is the XMOS device to setup: $VALID_XMOS_DEVICES_DISPLAY_STRING
 Optional parameters:
   -s <serial-number>  If nothing is provided, the default device serial number
                       is 123456
-  -w <keyword-detector-type> Keyword detector to setup: possible values are A (Amazon), G (GPIO trigger), H (HID trigger), S (Sensory),  default is no keyword detector, only tap-to-talk is enabled'
+  -w <keyword-detector-type> Keyword detector to setup: possible values are G (GPIO trigger), H (HID trigger),  default is no keyword detector, only tap-to-talk is enabled'
   -h                  Display this help and exit
 EOT
 }
